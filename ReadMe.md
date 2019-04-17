@@ -12,9 +12,11 @@ create component directory
 `cd components`
 
 create components: 
-`mkdir Account Admin App Home Landing SignIn SignOut SignUp`
-`mkdir Navigation PasswordChange PasswordForget`
-`mkdir Session Firebase`
+````
+mkdir Account Admin App Home Landing SignIn SignOut SignUp
+mkdir Navigation PasswordChange PasswordForget
+mkdir Session Firebase
+````
 
 create an index.js file for each folder within component (go into directory, create file, go out of directory)
 `cd <component_dir_name>`
