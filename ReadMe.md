@@ -20,3 +20,6 @@ create an index.js file for each folder within component (go into directory, cre
 `cd <component_dir_name>`
 `touch index.js`
 `cd ..`
+
+Create basic components in each index.js with component name the same as its directory. Be sure to import react and export the component.
+
