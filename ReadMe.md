@@ -105,6 +105,14 @@ Route (URL to Component) Navigation: ![Route Navigation](Route_Component_Navigat
 
 
 Firebase: 
-Click the empty closing tag </> to open the script tags from the Project Overview Page. Copy the code, this has your secrets, keys, ids, and other app information into env variables. Install firebase package: `npm install --save firebase`. Use the env variables in the react app with `REACT_APP_` prior to the variable name (i.e. REACT_APP_API_KEY)
+Create firebase.js in your Firebase componenet. On the firebase website; click the empty closing tag </> to open the script tags from the Project Overview Page. Copy the code, this has your secrets, keys, ids, and other app information into the firebase.js, then transfer the sensitive information into a process.env file as variables. Use the env variables in the react app with `REACT_APP_` prior to the variable name (i.e. REACT_APP_API_KEY). Install firebase package: `npm install --save firebase`. Class encapsulate the object variable: 
+
+````
+class Firebase {
+    constructor() {
+        app.initializeApp(config);
+    }
+}
+````
 
 *NOTE: this is setup, firebase is still not connected
