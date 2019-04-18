@@ -105,5 +105,5 @@ Route (URL to Component) Navigation: ![Route Navigation](Route_Component_Navigat
 
 
 Firebase: 
-Click the empty closing tag </> to open the script tags from the Project Overview Page. Copy the code, this has your secrets, keys, ids, and other app information. Install firebase package: `npm install --save firebase`.
+Click the empty closing tag </> to open the script tags from the Project Overview Page. Copy the code, this has your secrets, keys, ids, and other app information into env variables. Install firebase package: `npm install --save firebase`. Use the env variables in the react app with `REACT_APP_` prior to the variable name (i.e. REACT_APP_API_KEY)
 
