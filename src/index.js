@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import Firebase, { FirebaseContext } from './components/Firebase';
+import { FirebaseContext } from './components/Firebase';
 import Firebase from './components/Firebase/firebase';
 
 ReactDOM.render(
