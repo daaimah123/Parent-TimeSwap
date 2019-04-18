@@ -70,7 +70,7 @@ import * as ROUTES from '../../constants/routes';
 </ul>
 ````
 
-URL to URL: [place screen recording here]
+URL to URL: ![test](Url_to_Url.gif)
 
 Route Component:
 Import components  in from directories to App component. Import the routes in from the routes file. Add imported Route to router-dom. Place route paths under the Navigation component. This will make the url routes match the paths displaying the respective components.
