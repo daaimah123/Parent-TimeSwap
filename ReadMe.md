@@ -104,7 +104,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 Route (URL to Component) Navigation: ![Route Navigation](Route_Component_Navigation.gif)
 
 
-Firebase: 
+Firebase Set Up: 
 Create firebase.js in your Firebase componenet. On the firebase website; click the empty closing tag </> to open the script tags from the Project Overview Page. Copy the code, this has your secrets, keys, ids, and other app information into the firebase.js, then transfer the sensitive information into a process.env file as variables. Use the env variables in the react app with `REACT_APP_` prior to the variable name (i.e. REACT_APP_API_KEY). Install firebase package: `npm install --save firebase`. Class encapsulate the object variable: 
 
 ````
@@ -116,3 +116,19 @@ class Firebase {
 ````
 
 *NOTE: this is setup, firebase is still not connected
+
+Firebase Connection through React Context API:
+Create a context.js in your Firebase component folder. Add class FirebaseContext to hold React.creatContext() as a variable, which has two default components (see code notes for more detail)
+
+In the index.js file in the Firebase component directory, import classes FireContext and Firebase. Export FirebaseContext, this will provide firebase to the entire application in src/index.js.
+
+````
+import Firebase, { FirebaseContext } from './components/Firebase';
+import Firebase from './components/Firebase/firebase';
+
+ReactDOM.render(
+    <FirebaseContext.Provider value={new Firebase()}>
+        <App />
+    </FirebaseContext.Provider>, document.getElementById('root')
+);
+````
