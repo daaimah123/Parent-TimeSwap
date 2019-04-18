@@ -1,3 +1,19 @@
+[One line pitch here]
+[Final product recording here]()
+==========
+Next Steps:
+stuff here
+
+Choices: 
+choices made and what could be done differently
+
+Frameworks
+===========
+
+
+
+
+
 Let's build an app that has authentication, authorization, and a database using React with Firebase. 
 ===========
 Built up from [Robin Wieruch](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/) tutorial.
@@ -88,4 +104,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 Route (URL to Component) Navigation: ![Route Navigation](Route_Component_Navigation.gif)
 
 
+Firebase: 
+Click the empty closing tag </> to open the script tags from the Project Overview Page. Copy the code, this has your secrets, keys, ids, and other app information. Install firebase package: `npm install --save firebase`.
 
