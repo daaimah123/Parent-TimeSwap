@@ -1,5 +1,7 @@
-[One line pitch here]
-[Final product recording here]()
+*Parents helping other parents to stay productive by swapping time!*
+
+Final Recording Here:
+[Final product recording here](About_page.png)
 ==========
 Next Steps:
 stuff here
