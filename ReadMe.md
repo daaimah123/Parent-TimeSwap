@@ -1,23 +1,20 @@
 *Parents helping other parents to stay productive by swapping time!*
-
+========
 Final Recording Here:
 [Final product recording here](About_page.png)
-==========
+
 Next Steps:
 stuff here
-==========
+
 Choices: 
 choices made and what could be done differently
-==========
+
 Frameworks:
 frameworks used here
-==========
 
 
 
 
-Let's build an app that has authentication, authorization, and a database using React with Firebase. 
-===========
 Built up from [Robin Wieruch](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/) tutorial.
 
 
