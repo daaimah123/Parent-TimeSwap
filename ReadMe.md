@@ -3,13 +3,13 @@
 ==========
 Next Steps:
 stuff here
-
+==========
 Choices: 
 choices made and what could be done differently
-
-Frameworks
-===========
-
+==========
+Frameworks:
+frameworks used here
+==========
 
 
 
