@@ -70,7 +70,7 @@ import * as ROUTES from '../../constants/routes';
 </ul>
 ````
 
-URL to URL: ![test](Url_to_Url.gif)
+URL to URL: ![Url to Url Navigation](Url_to_Url.gif)
 
 Route Component:
 Import components  in from directories to App component. Import the routes in from the routes file. Add imported Route to router-dom. Place route paths under the Navigation component. This will make the url routes match the paths displaying the respective components.
@@ -82,7 +82,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 <Route path={ROUTES.Page_Name_Variable_From_routes_file} component={component_variable_name_from_index.js}/
 ````
 
-Route (URL to Component) Navigation: [place screen recording here]
+Route (URL to Component) Navigation: ![Route Navigation](Route_Component_Navigation.gif)
 
 
 
