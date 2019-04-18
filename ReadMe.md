@@ -1,5 +1,7 @@
-Let's build an app that has authentication, authorization, and a database using React with Firebase. Built up from [Robin Wieruch](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/) tutorial.
+Let's build an app that has authentication, authorization, and a database using React with Firebase. 
 ===========
+Built up from [Robin Wieruch](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/) tutorial.
+
 
 ````
 npx create-react-app firebase-authentication
@@ -79,6 +81,7 @@ Import components  in from directories to App component. Import the routes in fr
 ````
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+//under navigation
 <Route path={ROUTES.Page_Name_Variable_From_routes_file} component={component_variable_name_from_index.js}/
 ````
 
