@@ -117,9 +117,11 @@ class Firebase {
 *NOTE: this is setup, firebase is still not connected
 
 Firebase Connection through React Context API:
-Create a context.js in your Firebase component folder. Add class FirebaseContext to hold React.creatContext() as a variable, which has two default components (see code notes for more detail)
+Create a context.js in your Firebase component folder. Add class FirebaseContext to hold React.creatContext() as a variable, which has two default components (see code notes for more detail).
 
 In the index.js file in the Firebase component directory, import classes FireContext and Firebase. Export FirebaseContext, this will provide firebase to the entire application in src/index.js.
+
+*NOTE: Take care to understand the layering relationships here.
 
 ````
 import Firebase, { FirebaseContext } from './components/Firebase';
@@ -130,4 +132,13 @@ ReactDOM.render(
         <App />
     </FirebaseContext.Provider>, document.getElementById('root')
 );
+````
+
+Firebase Authentication API: 
+Our react classes and the Firebase API need to communicate. Begin this process by going to Develop > Authentication > Sign-In Method. Enable to the type of authentication you will require. I will be doing email and password. Import package that handles all authorization.
+
+````
+import 'firebase/auth';
+//in constructor
+this.auth = app.auth();
 ````
