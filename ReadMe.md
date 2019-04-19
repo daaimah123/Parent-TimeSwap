@@ -142,3 +142,7 @@ import 'firebase/auth';
 //in constructor
 this.auth = app.auth();
 ````
+
+GO OVER THE AUTHORIZATION API AND EXPLAIN
+
+
