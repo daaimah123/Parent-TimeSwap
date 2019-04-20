@@ -21,11 +21,9 @@ class Navigation extends React.Component {
                         <Link to={ROUTES.HOME}>Home</Link>
                     </li>
                     <li> 
-                    {/* TODO: needs component directory and file */}
                         <Link to={ROUTES.ABOUT}>About</Link>
                     </li>
                     <li>
-                    {/* TODO: needs component directory and file */}
                         <Link to={ROUTES.SEARCH_AVAILABILITY}>Search Availability</Link>
                     </li>
                     <li>
