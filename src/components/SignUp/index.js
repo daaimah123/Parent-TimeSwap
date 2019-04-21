@@ -6,7 +6,7 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
-import { Button, Form, Grid, Header,Icon, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header,Icon, Image, Message, Segment } from 'semantic-ui-react';
 
 
 
@@ -76,6 +76,7 @@ class SignUpFormBase extends React.Component {
             <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='teal' textAlign='center'>
+                    {/* FIXME: image not showing */}
                     <Image src='/ParentTimeSwapLogo.png' size='small' /> Log-in to your account
                 </Header>
                     <Form size='large' onSubmit={this.onSubmit}>

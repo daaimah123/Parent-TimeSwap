@@ -3,6 +3,8 @@ import React from 'react';
 //importing Link component from router-dom to create navigation links
 import { Link } from 'react-router-dom';
 
+import SignOutButton from '../SignOut';
+
 //importing all url routes in from routes file
 import * as ROUTES from '../../constants/routes';
 
@@ -32,7 +34,9 @@ class Navigation extends React.Component {
                     <li>
                         <Link to={ROUTES.ADMIN}>Admin</Link>
                     </li>
-                    
+                    <li>
+                        <SignOutButton />
+                    </li>
                 </ul>
             </div>
         )

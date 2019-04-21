@@ -29,9 +29,10 @@ class SignInFormBase extends React.Component {
         this.state = {...INITIAL_STATE}
     }
 
+    
     onSubmit = event => {
         const { email, password } = this.state;
-        this.props.withFirebase
+        this.props.firebase
         .doSignInWithEmailAndPassword(email, password)
         .then(() => {
             this.setState({...INITIAL_STATE});
@@ -62,6 +63,7 @@ class SignInFormBase extends React.Component {
             <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='teal' textAlign='center'>
+                    {/* FIXME: image not showing */}
                     <Image src='/ParentTimeSwapLogo.png' /> Log-in to your account
                 </Header>
                     <Form size='large' onSubmit={this.onSubmit}>
