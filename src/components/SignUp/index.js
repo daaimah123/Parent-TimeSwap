@@ -6,17 +6,16 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
+import { Button, Form, Grid, Header,Icon, Image, Message, Segment } from 'semantic-ui-react'
 
-class SignUp extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>Sign Up</h1>
-                <SignUpForm />>
-            </div>
-        )
-    }
-}
+
+
+const SignUp = () =>(
+    <div>
+        <h1>Sign Up</h1>
+        <SignUpForm />
+    </div>
+)
 
 const INITIAL_STATE = {
     username: '',
@@ -26,6 +25,7 @@ const INITIAL_STATE = {
     error: null,
 }
 
+//sign up form under hood with firebase
 class SignUpFormBase extends React.Component {
     constructor(props){
         super(props);
@@ -34,15 +34,15 @@ class SignUpFormBase extends React.Component {
 
     onSubmit = event => {
         //both passwords will be the same, so only one is needed
-        const { username, email, passwordOne } = this.state;
+        const {username, email, passwordOne } = this.state;
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
-            this.setState({ ...INITIAL_STATE });
-            this.props.history.push(ROUTES.HOME)
+                this.setState({ ...INITIAL_STATE });
+                this.props.history.push(ROUTES.HOME)
             })
             .catch(error => {
-            this.setState({ error });
+                this.setState({ error });
             });
     
         event.preventDefault();
@@ -64,57 +64,79 @@ class SignUpFormBase extends React.Component {
         email === '' || username === '';
         
         return (
-            <form onSubmit={this.onSubmit}>
-           
-                <input 
-                    name="username"
-                    value={username}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Frist & Last Name"
-                />
-                <input 
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <input 
-                    name="passwordOne"
-                    value={passwordOne}
-                    onChange={this.onChange}
-                    type='password'
-                    placeholder='Enter Password'
-                />
-                <input 
-                    name="passwordTwo"
-                    value={passwordTwo}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder='Confirm Password'
-                />
-                <button disabled={isInvalid} type='submit'>Sign Up</button>
-                {error && <p>{error.message}</p>}
-            </form>
+            <div>
+            <style>{`
+                body > div,
+                body > div > div,
+                body > div > div > div.login-form {
+                    height: 100%;
+                }
+            `}
+            </style>
+            <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+                <Grid.Column style={{ maxWidth: 450 }}>
+                <Header as='h2' color='teal' textAlign='center'>
+                    <Image src='/ParentTimeSwapLogo.png' size='small' /> Log-in to your account
+                </Header>
+                    <Form size='large' onSubmit={this.onSubmit}>
+                        <Segment stacked>
+                        <Form.Input fluid icon='user' iconPosition='left'
+                        name="username"
+                        value={username}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="First & Last Name"
+                        />
+                        <Form.Input fluid icon='mail' iconPosition='left'
+                            name="email"
+                            value={email}
+                            onChange={this.onChange}
+                            type="text"
+                            placeholder="Email Address"
+                        />
+                        <Form.Input fluid icon='lock' iconPosition='left'
+                            name="passwordOne"
+                            value={passwordOne}
+                            onChange={this.onChange}
+                            type='password'
+                            placeholder='Enter Password'
+                        />
+                        <Form.Input fluid icon='lock' iconPosition='left'
+                            name="passwordTwo"
+                            value={passwordTwo}
+                            onChange={this.onChange}
+                            type="password"
+                            placeholder='Confirm Password'
+                        />
+                        <Button color='teal' fluid size='large' disabled={isInvalid} type='submit'>Sign Up</Button>
+                        {error && <p>{error.message}</p>}
+                    </Segment>
+                </Form>
+                </Grid.Column>
+            </Grid> 
+        </div>
         )
     }
 }
 
-class SignUpLink extends React.Component{
-    render(){
-        return(
-            <p>Pssst! Sign Up Here => 
-                <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-            </p>
-        )
-    }
-}
+/* ================= SIGN UP LINK ================= */
+const SignUpLink = () => (
+    <div>
+        <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+            <Grid.Column style={{ maxWidth: 450 }}>
+            <Message > 
+            <Icon name='hand point right' /> Pssst!
+                <Link to={ROUTES.SIGN_UP}> Sign Up</Link> Here
+            </Message>
+            </Grid.Column>
+        </Grid>
+    </div>
+)
+//constructed sign up form
 //history object within router props accessed in withRouter() allows redirection of user to another page
 const SignUpForm = compose(
     withRouter, withFirebase
     )(SignUpFormBase)
 
 export default SignUp;
-
 export { SignUpForm,SignUpLink };

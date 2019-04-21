@@ -147,6 +147,8 @@ GO OVER THE AUTHORIZATION API AND EXPLAIN
 
 Sign Up Page:
 Page, new Form component, new Link component
+MISSING COMPONENTS PLEASE LIST
+
 
 
 EXPLAIN history object
