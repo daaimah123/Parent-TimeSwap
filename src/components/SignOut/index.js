@@ -1,6 +1,6 @@
 import React from 'react';
 import { withFirebase } from '../Firebase';
-import { Button} from 'semantic-ui-react';
+// import { Button} from 'semantic-ui-react';
 
 
 // const SignOut =() => (
@@ -10,7 +10,7 @@ import { Button} from 'semantic-ui-react';
 //         )
 
 const SignOutButton = ({firebase}) => (
-    <Button color='teal' fluid size='large' type='button' onClick={firebase.doSignOut}>Sign Out</Button>
+    <button  type='button' onClick={firebase.doSignOut}>Sign Out</button>
 )
 
 // export default SignOut;
