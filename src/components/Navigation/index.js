@@ -8,39 +8,48 @@ import SignOutButton from '../SignOut';
 //importing all url routes in from routes file
 import * as ROUTES from '../../constants/routes';
 
-class Navigation extends React.Component {
-    render() {
-        return (
-            <div>
-                <ul>
-                    <li>
-                        <Link to={ROUTES.LANDING}>Landing</Link>
-                    </li>
-                    <li>
-                       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-                    </li>
-                    <li>
-                        <Link to={ROUTES.HOME}>Home</Link>
-                    </li>
-                    <li> 
-                        <Link to={ROUTES.ABOUT}>About</Link>
-                    </li>
-                    <li>
-                        <Link to={ROUTES.SEARCH_AVAILABILITY}>Search Availability</Link>
-                    </li>
-                    <li>
-                        <Link to={ROUTES.ACCOUNT}>Account</Link>
-                    </li>
-                    <li>
-                        <Link to={ROUTES.ADMIN}>Admin</Link>
-                    </li>
-                    <li>
-                        <SignOutButton />
-                    </li>
-                </ul>
-            </div>
-        )
-    }
-}
+const Navigation = ({authUser}) => (
+    <div> {authUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>
+)
+const NavigationAuth = () =>(
+    <ul>
+        <li>
+            <Link to={ROUTES.LANDING}>Landing</Link>
+        </li>
+        <li>
+            <Link to={ROUTES.HOME}>Home</Link>
+        </li>
+        <li> 
+            <Link to={ROUTES.ABOUT}>About</Link>
+        </li>
+        <li>
+            <Link to={ROUTES.SEARCH_AVAILABILITY}>Search Availability</Link>
+        </li>
+        <li>
+            <Link to={ROUTES.ACCOUNT}>Account</Link>
+        </li>
+        <li>
+            <Link to={ROUTES.ADMIN}>Admin</Link>
+        </li>
+        <li>
+            <SignOutButton />
+        </li>
+    </ul>
+);
+
+const NavigationNonAuth = () => (
+    <ul>
+        <li>
+            <Link to={ROUTES.LANDING}>Landing</Link>
+        </li>
+        <li>
+            <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+        </li>
+        
+        <li> 
+            <Link to={ROUTES.ABOUT}>About</Link>
+        </li>
+    </ul>
+)
 
 export default Navigation;

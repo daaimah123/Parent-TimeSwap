@@ -9,3 +9,4 @@ export const ADMIN = '/admin'; //protected route with specific verified authenti
 export const FORGET_PASSWORD = '/forget_password';
 export const SEARCH_AVAILABILITY = '/search_availability'; //protected route
 export const ABOUT = '/about'; 
+export const ACCOUNT_SET_UP = '/account_set_up'; //protected route

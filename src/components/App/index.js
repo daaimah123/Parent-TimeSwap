@@ -14,16 +14,38 @@ import Account from '../Account';
 import Admin from '../Admin';
 import About from '../About';
 import SearchAvailability from '../SearchAvailability';
+import AccountSetUp from '../AccountSetUp';
 
 //importing all url routes in from routes file
 import * as ROUTES from '../../constants/routes';
+import { withFirebase } from  '../Firebase'; 
 
 class App extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            authUser: null
+        }; 
+    }
+
+    componentDidMount(){
+        //.onAuthStateChanged() has access to authenticated users, happens each time a user signs up, in or out
+        this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
+            authUser
+            ? this.setState({authUser})
+            : this.setState({authUser:null})
+        })
+    }
+
+    componentWillUnmount(){
+        this.listener();
+    }
+    
     render() {
         return (
             <Router>
                 <div>
-                    <Navigation />
+                    <Navigation authUser={this.state.authUser}/>
                     
                     <hr />
                     {/* CREATING PAGE NAVIGATION WITH ROUTES: notice that the paths are the link-to's from navigation component and components props are pointing to their respective component content  */}
@@ -33,15 +55,14 @@ class App extends React.Component {
                     <Route path={ROUTES.FORGET_PASSWORD} component={PasswordForget}/>
                     <Route path={ROUTES.HOME} component={Home}/>
                     <Route path={ROUTES.ACCOUNT} component={Account}/>
+                    <Route path={ROUTES.ACCOUNT_SET_UP} component={AccountSetUp}/>
                     <Route path={ROUTES.ADMIN} component={Admin}/>
                     <Route path={ROUTES.ABOUT} component={About}/>
                     <Route path={ROUTES.SEARCH_AVAILABILITY} component={SearchAvailability}/>
-                
-
                 </div>
             </Router>
         )
     }
 }
 
-export default App;
+export default withFirebase(App);
