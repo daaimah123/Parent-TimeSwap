@@ -1,15 +1,15 @@
 import React from 'react';
 import {SearchAvailabilityLink} from '../SearchAvailability/index.js';
+import { withAuthorization } from '../Session';
 
-class Home extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>Home</h1>
-                <SearchAvailabilityLink />
-            </div>
-        )
-    }
-}
+const Home = () => (
+  <div>
+    <h1>Home Page</h1>
+    <p>The Home Page is accessible by every signed in user.</p>
+    <SearchAvailabilityLink />
+  </div>
+);
 
-export default Home;
+const condition = authUser => authUser != null;
+
+export default  withAuthorization(condition)(Home);

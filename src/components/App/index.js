@@ -18,34 +18,14 @@ import AccountSetUp from '../AccountSetUp';
 
 //importing all url routes in from routes file
 import * as ROUTES from '../../constants/routes';
-import { withFirebase } from  '../Firebase'; 
+//make authenticated users available to all components
+import { withAuthentication } from '../Session'; 
 
-class App extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            authUser: null
-        }; 
-    }
-
-    componentDidMount(){
-        //.onAuthStateChanged() has access to authenticated users, happens each time a user signs up, in or out
-        this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
-            authUser
-            ? this.setState({authUser})
-            : this.setState({authUser:null})
-        })
-    }
-
-    componentWillUnmount(){
-        this.listener();
-    }
-    
-    render() {
-        return (
+const App = () => (
             <Router>
                 <div>
-                    <Navigation authUser={this.state.authUser}/>
+                    {/* Navigation now uses the context to get the authenticated user */}
+                    <Navigation/>
                     
                     <hr />
                     {/* CREATING PAGE NAVIGATION WITH ROUTES: notice that the paths are the link-to's from navigation component and components props are pointing to their respective component content  */}
@@ -62,7 +42,5 @@ class App extends React.Component {
                 </div>
             </Router>
         )
-    }
-}
 
-export default withFirebase(App);
+export default withAuthentication(App);

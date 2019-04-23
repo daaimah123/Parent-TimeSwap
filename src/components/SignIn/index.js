@@ -8,11 +8,11 @@ import * as ROUTES from '../../constants/routes';
 
 import {Button,Form,Grid,Header,Image,Segment} from 'semantic-ui-react';
 
-
 const SignIn = () => (
     <div>
         <h1>Sign In</h1>
         <SignInForm />
+        
         <SignUpLink />
     </div>
 )

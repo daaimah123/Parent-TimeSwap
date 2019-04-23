@@ -1,4 +1,8 @@
 import React from 'react';
+//authenticated user entry point to module
+import AuthUserContext from './context';
+import withAuthentication from './withAuthentication';
+import withAuthorization from './withAuthorization';
 
 class Session extends React.Component {
     render() {
@@ -11,3 +15,4 @@ class Session extends React.Component {
 }
 
 export default Session;
+export { AuthUserContext, withAuthentication, withAuthorization }; 

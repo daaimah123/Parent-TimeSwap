@@ -7,7 +7,11 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 import { Button, Form, Grid, Header,Icon, Image, Message, Segment } from 'semantic-ui-react';
+import { PasswordForgetLink } from '../PasswordForget';
 
+
+//reactstrap import
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const SignUp = () =>(
@@ -120,14 +124,16 @@ class SignUpFormBase extends React.Component {
     }
 }
 
-/* ================= SIGN UP LINK ================= */
+/* ================= SIGN UP LINK w/ Forget Password ================= */
 const SignUpLink = () => (
     <div>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
+            
             <Message > 
+            
             <Icon name='hand point right' /> Pssst!
-                <Link to={ROUTES.SIGN_UP}> Sign Up</Link> Here
+                <Link to={ROUTES.SIGN_UP}> Sign Up</Link> | <PasswordForgetLink />
             </Message>
             </Grid.Column>
         </Grid>
