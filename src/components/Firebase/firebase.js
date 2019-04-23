@@ -2,6 +2,7 @@
 import app from 'firebase/app'
 //importing package responsible for all authentication
 import 'firebase/auth';
+// import webpack from 'webpack';
 import dotenv from 'dotenv';
 
   // Initialize Firebase
