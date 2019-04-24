@@ -4,6 +4,8 @@ import { Row, Col, Container, Jumbotron} from 'react-bootstrap/';
 import { Card, /*Icon, Item */ Image} from 'semantic-ui-react';
 // import('images/Peter.png');
 
+/* ============= ABOUT PAGE CONTENT ============== */
+
 class About extends React.Component {
     render() {
         return (    
@@ -47,7 +49,7 @@ class About extends React.Component {
     }
 }
 
-/* ============= USER STORY CARDS ============== */
+/* ============= USER STORY CARD CONTENT ============== */
 const userStories = [
     {
     src: 'http://icons.iconarchive.com/icons/icons-land/vista-people/256/Office-Client-Male-Dark-icon.png',
@@ -69,6 +71,7 @@ const userStories = [
     }
 ]
 
+/* ============= USER STORY CARDS ============== */
 
  const UserCard = (props) => (
     <Card>

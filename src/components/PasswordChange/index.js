@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Button,Form,Grid,Header,Segment} from 'semantic-ui-react';
 import { withFirebase } from '../Firebase';
 
 const INITIAL_STATE = {
@@ -41,27 +41,45 @@ class PasswordChangeForm extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="New Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm New Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
-
-        {error && <p>{error.message}</p>}
-      </form>
+      <div>
+        <style>{`
+            body > div,
+            body > div > div,
+            body > div > div > div.login-form {
+                height: 100%;
+            }
+        `}
+        </style>
+        <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+            <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as='h2' color='teal' textAlign='center'>
+              Change Your Password
+            </Header>
+                <Form size='large' onSubmit={this.onSubmit}>
+                <Segment stacked>
+                    <Form.Input fluid icon='lock' iconPosition='left'
+                          name="passwordOne"
+                          value={passwordOne}
+                          onChange={this.onChange}
+                          type="password"
+                          placeholder="New Password"
+                        />
+                    <Form.Input fluid icon='lock' iconPosition='left'
+                      name="passwordTwo"
+                      value={passwordTwo}
+                      onChange={this.onChange}
+                      type="password"
+                      placeholder="Confirm New Password"
+                    />
+                    <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
+                      I'd like to change my password
+                    </Button>
+                      {error && <p>{error.message}</p>}
+                    </Segment>
+                    </Form>
+                </Grid.Column>
+            </Grid> 
+        </div>
     );
   }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import * as ROUTES from '../../constants/routes';
 import { withFirebase } from '../Firebase';
 import { Link } from 'react-router-dom';
+import {Button,Form,Grid,Header, Segment} from 'semantic-ui-react';
 
 const PasswordForget = () => (
     <div>
@@ -20,6 +21,8 @@ class PasswordForgetFormBase extends React.Component{
         this.state = {...INITIAL_STATE};
     }
 
+    emailSent = () => {return "<div>Thank you, an email has been sent to you</div>"}
+
     onSubmit = event => {
         const { email } = this.state;
         this.props.firebase
@@ -27,6 +30,7 @@ class PasswordForgetFormBase extends React.Component{
         .then(()=>
             this.setState({...INITIAL_STATE})
         )
+        .then(this.emailSent) //FIXME: not sure how to get this message printed out once sent, thinking a conditional added to repsective button area
         event.preventDefault();
     }
 
@@ -36,22 +40,42 @@ class PasswordForgetFormBase extends React.Component{
         })
     }
 
+    
     render(){
         const { email, error } = this.state;
         const isInvalid = email === '';
 
         return(
-            <form onSubmit={this.onSubmit}>
-                <input 
-                name = "email"
-                value={email}
-                onChange={this.onChange}
-                type='text'
-                placeholder="Email Address"
-                />
-                <button disabled={isInvalid} type="submit">Reset Password</button>
-                {error && <p>{error.message}</p>}
-            </form>
+        <div>
+            <style>{`
+                body > div,
+                body > div > div,
+                body > div > div > div.login-form {
+                    height: 100%;
+                }
+            `}
+            </style>
+            <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+                <Grid.Column style={{ maxWidth: 450 }}>
+                    <Header as='h2' color='teal' textAlign='center'>
+                    Forget Your Password?
+                    </Header>
+                    <Form size='large' onSubmit={this.onSubmit}>
+                        <Segment stacked>
+                        <Form.Input fluid icon='mail' iconPosition='left' onSubmit={this.onSubmit}
+                            name = "email"
+                            value={email}
+                            onChange={this.onChange}
+                            type='text'
+                            placeholder="Email Address"
+                            />
+                        <Button color='teal' fluid size='large'  disabled={isInvalid} type="submit">Yikes, I forgot my password! <br/>Send me an email with instructions.</Button>
+                        {error && <p>{error.message}</p>}
+                        </Segment>
+                    </Form>
+                </Grid.Column>
+            </Grid> 
+        </div>
         )
     }
 }

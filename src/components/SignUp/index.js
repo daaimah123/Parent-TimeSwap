@@ -38,7 +38,7 @@ class SignUpFormBase extends React.Component {
 
     onSubmit = event => {
         //both passwords will be the same, so only one is needed
-        const {username, email, passwordOne } = this.state;
+        const {/*username,*/ email, passwordOne } = this.state;
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
