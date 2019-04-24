@@ -1,36 +1,25 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "bootstrap": "^4.3.1",
-    "firebase": "^5.9.4",
-    "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.8",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8",
-    "recompose": "^0.30.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.86.0"
-  },
+  "name": "react_firebase_profile_management",
+  "version": "1.0.0",
+  "description": "\"app shell with postgres, express and react\"",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daaimah123/React_Firebase_Profile_Management.git"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "dotenv": "^7.0.0",
-    "react-test-renderer": "^16.8.6"
-  }
+  "author": "Daaimah Tibrey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daaimah123/React_Firebase_Profile_Management/issues"
+  },
+  "homepage": "https://github.com/daaimah123/React_Firebase_Profile_Management#readme",
+  "dependencies": {
+    "create-react-app": "^2.1.8",
+    "express-generator": "^4.16.0",
+    "pg": "^7.9.0"
+  },
+  "devDependencies": {}
 }
