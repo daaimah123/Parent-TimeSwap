@@ -4,7 +4,8 @@
   "description": "\"app shell with postgres, express and react\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "start": "node Server_pg/server.js"
   },
   "repository": {
     "type": "git",

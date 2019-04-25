@@ -1,13 +1,18 @@
 import React from 'react';
-import {SearchAvailabilityLink} from '../SearchAvailability/index.js.js';
+import {SearchAvailabilityLink} from '../SearchAvailability/index.js';
 import './index.css';
-import { Container} from 'semantic-ui-react';
-import { withFirebase } from '../Firebase';
+// import { Container} from 'semantic-ui-react';
+// import { withFirebase } from '../Firebase';
+import CheckboxOrRadioGroup from './form_components/CheckboxOrRadioGroup';
+import SingleInput from './form_components/SingleInput';
+import SelectInput from './form_components/SelectInput';
+import TextArea from './form_components/TextArea';
+
+//TODO: ********* account set up needs to be added to authorization loop *********
 
 //second form with all settings (https://lorenstewart.me/2016/10/31/react-js-forms-controlled-components/)
 // import '../node_modules/spectre.css/dist/spectre.min.css';  
 import './styles.css';  
-import FormContainer from './FormContainer';
 
 class AccountSetUp extends React.Component {
 
@@ -15,108 +20,133 @@ class AccountSetUp extends React.Component {
         return (
             <div>
                 <h1>Account Set Up</h1>
-                    <div className="container">
-                        <div className="columns">
-                        <div className="col-md-9 centered">
-                            <h3>React.js Controlled Form Components</h3>
-                            <FormContainer />
-                        </div>
-                        </div>
-                    </div>
                 <AccountSetUpForm />
-                {/* <SearchAvailabilityLink /> */}
+                <SearchAvailabilityLink />
             </div>
         )
     }
 }
 
-const INITIAL_STATE = {
-    age_range: '', 
-    children_num: '', 
-    name: '',
-    home_zip: '',
-    email: '',
-    phone: '',
-    message: ''
-    };
-
 class AccountSetUpForm extends React.Component{
     constructor(props) {
-        super(props);
-        this.state = { ...INITIAL_STATE };  
-        }
+		super(props);
+		this.state = {
+            userName: '',
+            emailInput: '',
+            phoneNumber: '',
+			childGroupSelections: ["infant", "toddler", "youth", "teen"],
+			selectedChildGroup: [],
+			ageOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+			userNumChildrenSelection: '',
+			currentZipCode: '',
+			description: ''
+		};
+    }
     
-    onChange = event => {
-        /* input name field: input value - onChange handler will take input and change state */
-       this.setState({ [event.target.name]: event.target.value });
-   }
+    // componentDidMount() {
+	// 	fetch('./fake_db.json')
+	// 		.then(res => res.json()) //FIXME: error at this line
+	// 		.then(data => {
+	// 			this.setState({
+	// 				userName: data.userName,
+	// 				childGroupSelections: data.childGroupSelections,
+	// 				selectedChildGroup: data.selectedChildGroup,
+	// 				ageOptions: data.ageOptions,
+	// 				userNumChildrenSelection: data.userNumChildrenSelection,
+	// 				siblingOptions: data.siblingOptions,
+	// 				siblingSelection: data.siblingSelection,
+	// 				currentZipCode: data.currentZipCode,
+	// 				description: data.description
+	// 			});
+	// 		});
+	// }
 
-   onSubmit = event => {
-    event.preventDefault();
-    console.log(123); //test submit button is working
-    //get values 
-    //printing inputs to console
-    console.log(event.target.age_range.value) //undefined 'name'; gets error and fetches 8 times
-    //console.log(event.target.children_num.value) //children_num undefined 'name'
-    // console.log(event.target.name.value) 
-    // console.log(event.target.home_zip.value) //input ignored
-    // console.log(event.target.email.value) 
-    // console.log(event.target.phone.value) 
-    // console.log(event.target.message.value) //outputting error
+/*  =============== HANDLE FUNCTIONS FOR INPUT FORM AREAS =============== */
+    //checkboxes age group
+    handleChildGroupSelection = (event) => {
+		const newSelection = event.target.value;
+		let newSelectionArray;
+		if(this.state.selectedChildGroup.indexOf(newSelection) > -1) {
+			newSelectionArray = this.state.selectedChildGroup.filter(s => s !== newSelection)
+		} else {
+			newSelectionArray = [...this.state.selectedChildGroup, newSelection];
+		}
+		this.setState({ selectedChildGroup: newSelectionArray }, () => console.log('Child Group Selection: ', this.state.selectedChildGroup));
+    }
+    //name single input 
+    handleFullNameChange = (event) => {
+		this.setState({ userName: event.target.value }, () => console.log('User Name: ', this.state.userName));
+        event.preventDefault();
+    }
+    //Select Num Children
+    handleNumChildrenSelect = (event) => {
+		this.setState({ userNumChildrenSelection: event.target.value }, () => console.log('Number of Children: ', this.state.userNumChildrenSelection));
+    }
+    //email single input
+    handleEmailChange = (event) => {
+		this.setState({ emailInput: event.target.value }, () => console.log('Email: ', this.state.emailInput));
+        event.preventDefault();
+    }
+    //home zip code single num input
+    handlecurrentZipCodeChange = (event) => {
+		this.setState({ currentZipCode: event.target.value }, () => console.log('Home Zip Code: ', this.state.currentZipCode));
+    }
+    //phone number single number input
+    handlePhoneNumberChange = (event) => {
+		this.setState({ phoneNumber: event.target.value }, () => console.log('Phone Number: ', this.state.phoneNumber));
+        event.preventDefault();
+    }
+    //description text area
+    handleDescriptionChange = (event) => {
+		const textArray = event.target.value.split('').filter(x => x !== 'e');
+		console.log('string split into array of letters',textArray);
+		const filteredText = textArray.join('');
+		this.setState({ description: filteredText }, () => console.log('Description: ', this.state.description));
+		this.setState({ description: event.target.value }, () => console.log('Description: ', this.state.description));
     }
 
-    //TODO: from react docs on forms https://reactjs.org/docs/forms.html
-    // handleInputChange = (event) => {
-    //     const target = event.target;
-    //     const value = target.type === 'checkbox' ? target.checked : target.value;
-    //     const name = target.name;
-    
-    //     this.setState({
-    //       [name]: value
-    //     });
-    //   }
+/*  =============== CLEAR FORM HANDLER =============== */
 
-    ageRangeNumChildren = () => (
-        <Container>
-        <label>Age Range</label>
-            <select name='age range' value={this.age_range} onChange={this.onChange} placeholder='age group'>
-                <option value="null"> </option>
-                <option value="none">--</option>
-                <option value="infant">infant</option>
-                <option value="toddler">toddler</option>
-                <option value="youth">youth</option>
-                <option value="teenager">teenager</option>
-            </select>
-        <label>Children</label>
-            <select type='number' name='children' value={this.state.children_num} onChange={this.onChange} placeholder='#'>
-                <option value="null"> </option>
-                <option value="none">--</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11+</option>
-            </select>
-        {/* add more children here feature, so not so many rows */}
-        </Container>
-    )
+    //tell form which inputs to clear after form submit
+	handleClearForm = (event) => {
+		event.preventDefault();
+		this.setState({
+            userName: '',
+            emailInput: '',
+            phoneNumber: '',
+			selectedChildGroup: [],
+			userNumChildrenSelection: '',
+			currentZipCode: '',
+			description: ''
+		});
+    }
 
+/*  =============== RESULTS OF FORM SUBMITTED TOGETHER =============== */
+	handleFormSubmit = (event) => {
+		event.preventDefault();
+		const formPayload = {
+            userName: this.state.userName,
+            emailInput: this.state.emailInput,
+            phoneNumber: this.state.phoneNumber,
+			selectedChildGroup: this.state.selectedChildGroup,
+			userNumChildrenSelection: this.state.userNumChildrenSelection,
+			currentZipCode: this.state.currentZipCode,
+			description: this.state.description
+		};
+		console.log('Send this in a POST request:', formPayload);
+		this.handleClearForm(event);
+	}
     render(){
-        const {age_range, children_num, name, home_zip, email, phone, message} = this.state;
-        const isInvalid = 
-            age_range === '' ||
-            children_num ==='' ||
-            name === '' || 
-            home_zip === '' ||
-            email === '' || 
-            phone === '' || 
-            message === '';
+        //TODO: Make submit button disable when form empty
+        // const isInvalid = 
+        //     this.userName === '' ||
+        //     this.emailInput === '' ||
+        //     this.phoneNumber === '' ||
+        //     this.selectedChildGroup === '' ||
+        //     this.userNumChildrenSelection === '' ||
+        //     this.currentZipCode === '' ||
+        //     this.description === '' ;
+            
         return (
             /*  ============ ACCOUNT SET UP FORM ==============  */
          <section className='body'>
@@ -133,58 +163,74 @@ class AccountSetUpForm extends React.Component{
                  </div>
                  <div className='contact'>
                      <h3>statement</h3>
-                     <this.ageRangeNumChildren />
-                     {/* <this.ageRangeNumChildren />
-                     <this.ageRangeNumChildren /> */}
-                     <form onSubmit={this.onSubmit}>
-                         <p>
-                             <label>Name</label>
-                             <input 
-                             value={name}
-                             type='text' 
-                             onChange={this.onChange}
-                             name='name' 
-                             placeholder='enter name you want displayed' />
-                         </p>
-                         <p>
-                             <label>Home Zip Code</label>
-                             <input  
-                             type='text' 
-                             value={this.home_zip}
-                             onChange={this.onChange}
-                             name='zip_code' 
-                             placeholder=' enter home zipcode'/>
-                         </p>
-                         <p>
-                             <label>Email Address</label>
-                             <input 
-                             value={email}
-                             onChange={this.onChange}
-                             type='text' 
-                             name='email' 
-                             placeholder='test@test.com'/>
-                         </p>
-                         <p>
-                             <label>Phone Number</label>
-                             <input 
-                             value={phone}
-                             onChange={this.onChange}
-                             type='tel' 
-                             name='phone' 
-                             placeholder='5555555555'/>
-                         </p>
-                         <p className='full'>
-                             <label>Message</label>
-                             <textarea 
-                             value={message}
-                             onChange={this.onChange}
-                             type='text'
-                             name='message' 
-                             placeholder='tell other parents about yourself and how you plan to help'></textarea>
-                         </p>
-                         <p className='full'>
-                            <button  type="submit">Submit</button> {/* FIXME:disabled={isInvalid}*/}      
-                         </p>                           
+                     <form onSubmit={this.handleFormSubmit}>
+                        <section>
+                            <CheckboxOrRadioGroup
+                                title={'Which age group do you have at home'}
+                                setName={'children'}
+                                type={'checkbox'}
+                                controlFunc={this.handleChildGroupSelection}
+                                options={this.state.childGroupSelections}
+                                selectedOptions={this.state.selectedChildGroup} /> 
+                         </section>
+                         <section>
+                            <SelectInput
+                                name={'ageRange'}
+                                placeholder={'# Children'}
+                                controlFunc={this.handleNumChildrenSelect}
+                                options={this.state.ageOptions}
+                                selectedOption={this.state.userNumChildrenSelection} />
+                         </section>
+                         <section>
+                            <SingleInput
+                                inputType={'text'}
+                                title={'Name: '}
+                                name={'name'}
+                                controlFunc={this.handleFullNameChange}
+                                content={this.state.userName}
+                                placeholder={'June Johnson'} />
+                         </section>
+                         <section>
+                            <SingleInput
+                                inputType={'text'}
+                                title={'Email: '}
+                                name={'email'}
+                                controlFunc={this.handleEmailChange}
+                                content={this.state.emailInput}
+                                placeholder={'test@test.com'} />
+                        </section>
+                         <section>
+                            <SingleInput
+                                inputType={'number'}
+                                title={'What is your home zip code?'}
+                                name={'currentZipCode'}
+                                controlFunc={this.handlecurrentZipCodeChange}
+                                content={this.state.currentZipCode}
+                                placeholder={'5-Digit Zip Code'} />
+                         </section>
+                         <section>
+                            <SingleInput
+                                inputType={'number'}
+                                title={'Phone Number: '}
+                                name={'phoneNumber'}
+                                controlFunc={this.handlePhoneNumberChange}
+                                content={this.state.phoneNumber}
+                                placeholder={'5555555555'} />
+                         </section>
+                         <section className='full'>
+                            <TextArea
+                                title={'About Me: '}
+                                rows={5}
+                                resize={false}
+                                content={this.state.description}
+                                name={'currentPetInfo'}
+                                controlFunc={this.handleDescriptionChange}
+                                placeholder={'tell other parents about yourself and how you plan to help'} /> 
+                         </section>
+                         <section className='full'>
+                            <button  type="submit" value="Submit">Submit</button> {/*disabled={isInvalid}  */}
+                            <button  type="submit" onClick={this.handleClearForm}>clear form</button> 
+                         </section>                           
                      </form>
                  </div>
              </div>
@@ -192,7 +238,7 @@ class AccountSetUpForm extends React.Component{
      </section>
         )
     }
-   }
+}
 
 
 
