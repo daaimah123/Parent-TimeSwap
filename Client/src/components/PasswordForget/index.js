@@ -4,6 +4,8 @@ import { withFirebase } from '../Firebase';
 import { Link } from 'react-router-dom';
 import {Button,Form,Grid,Header, Segment} from 'semantic-ui-react';
 
+//FIXME: ********* not in public authorization should be accessible to nonauthenticated parties ********
+
 const PasswordForget = () => (
     <div>
         <h1>Password Forget</h1>
