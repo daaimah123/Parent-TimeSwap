@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
   // Initialize Firebase
   var config = {
       //FIXME: ENV variables not transfering over, not imported correctly?
-    apiKey: 'AIzaSyDXvrRc5eu1m-cY5UAJNEXqtf9o1V1sng4', //process.env.REACT_APP_API_KEY,
+    apiKey: process.env.REACT_APP_API_KEY,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
     databaseURL: process.env.REACT_APP_DATABASE_URL,
     projectId: process.env.REACT_APP_PROJECT_ID,
