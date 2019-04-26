@@ -9,6 +9,7 @@ class SearchAvailability extends React.Component {
         return (
             <div>
                 <h1>Search Availability</h1>
+                
                 <GetAllHomeZip />
             </div>
         )

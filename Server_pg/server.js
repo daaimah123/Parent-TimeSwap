@@ -20,14 +20,14 @@ const { Pool } = require('pg')
 const pool = new Pool({
     user: 'codetl',
     host: 'localhost',
-    database: 'techtonica', //database_name
+    database: 'final_project', //database_name
     password: 'password',
     port: 5432,
   })
 
 // const pool = new Pool({
 //     // 'postgres://localhost:5432/database_name'
-//     connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/eventonicaroutes',
+//     connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/final_project ',
 //     // Use SSL but only in production
 //     ssl: process.env.NODE_ENV === 'production'
 //   });
@@ -42,27 +42,30 @@ app.get('/', (request, response) => {
     response.json({ info: "Test Message Testing" })
     })
 
-//apprentices table get all
-app.get('/techtonica/apprentices', async (req, res) => {
+//get all
+app.get('/user', async (req, res) => {
     const client = await pool.connect();
-    const contactsTable = await client.query('SELECT * FROM apprentices');
+    const contactsTable = await client.query('SELECT * FROM user_profile_input');
     res.json(contactsTable.rows);
     client.release();
     console.log('GET QUERY OF APPRENTICES IS WORKING ON BACKEND') ///testing for true connection
 })
-//cohorts table get all
-app.get('/techtonica/cohorts', async (req, res) => {
-  const client = await pool.connect();
-  const contactsTable = await client.query('SELECT * FROM cohorts');
-  res.json(contactsTable.rows);
-  client.release();
-  console.log('GET QUERY OF COHORTS IS WORKING ON BACKEND') ///testing for true connection
-})
 
-//return single arr item
-app.get('/techtonica/apprentices/:id', async (req, res) =>{
+//second get table
+
+// //cohorts table get all
+// app.get('/user, async (req, res) => {
+//   const client = await pool.connect();
+//   const contactsTable = await client.query('SELECT * FROM cohorts');
+//   res.json(contactsTable.rows);
+//   client.release();
+//   console.log('GET QUERY OF COHORTS IS WORKING ON BACKEND') ///testing for true connection
+// })
+
+//return single item by id
+app.get('/user/:id', async (req, res) =>{
   const client = await pool.connect();
-  const eventsTable = await client.query('SELECT * FROM apprentices WHERE id = $1', [req.params.id]); 
+  const eventsTable = await client.query('SELECT * FROM user_profile_input  WHERE id = $1', [req.params.user_zip_code]); 
   res.json(eventsTable.rows[0]); 
   client.release();
   console.log('GET SINGLE APPRENTICE BY ID QUERY IS WORKING ON BACKEND') ///testing for true connection
@@ -77,14 +80,14 @@ app.get('/techtonica/apprentices/:id', async (req, res) =>{
 //   console.log('PUT QUERY IS WORKING ON BACKEND') ///testing for true connection
 // })
 
-// // //add a new item //TODO: posting all at once, only works with 5 given params
-app.post('/techtonica/apprentices', async(req, res) => {
-  const client = await pool.connect();
-  const eventsTable = await client.query("INSERT INTO apprentices (id, first_name, last_name) VALUES ($1, $2, $3) RETURNING *", [req.body.id, req.body.first_name, req.body.last_name]);
-  res.json(eventsTable.rows[0]);
-  client.release();
-  console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
-})
+// // //add a new item //TODO: posting all at once, only works with 5 given params (do I want to return all or everything excluding phone number)
+// app.post('/user', async(req, res) => {
+//   const client = await pool.connect();
+//   const eventsTable = await client.query("INSERT INTO user_profile_input  (id, user_name, email, home_zip_code, phone_number, num_children, child_group, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *", [req.body.id, req.body.user_name, req.body.email, req.body.home_zip_code, req.body.phone_number, req.body.num_children, req.body.child_group, req.body.description]);
+//   res.json(eventsTable.rows[0]);
+//   client.release();
+//   console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
+// })
 
 // //delete an item //TODO: posting all at once
 // app.delete('/techtonica/:id', async(req, res) =>{

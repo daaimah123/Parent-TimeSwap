@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "bootstrap": "^4.3.1",
     "firebase": "^5.9.4",
     "prop-types": "^15.7.2",
@@ -18,7 +19,7 @@
   "scripts": {
     "start": "PORT=3000 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "babel-node spec/run.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -31,8 +32,23 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/register": "^7.4.0",
+    "babel": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react-app": "^8.0.0",
     "dotenv": "^7.0.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "ignore-styles": "^5.0.1",
+    "jasmine": "^3.4.0",
+    "jasmine-enzyme": "^7.0.2",
+    "jsdom": "^15.0.0",
     "react-test-renderer": "^16.8.6"
-  }, 
-  "proxy": "http://localhost:3003"
+  },
+  "proxy": "http://localhost:3003", 
+  "babel": {
+    "presets": [
+     "react-app"
+    ]
+  }
 }
