@@ -4,6 +4,9 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+//Pull in dotenv early - everything beyond here uses it.
+require('dotenv').config();
+
 const port = process.env.PORT || 3003; //back end port assigned to 3001
 
 app.use(bodyParser.json());
@@ -18,11 +21,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // pool manages postgreSQL clients;
 const { Pool } = require('pg')
 const pool = new Pool({
-    user: 'codetl',
-    host: 'localhost',
-    database: 'final_project', //database_name
-    password: 'password',
-    port: 5432,
+    user: process.env.PG_USER,
+    host: process.env.PG_HOST,
+    database: process.env.PG_DB_NAME,
+    password: process.env.PG_DB_PASS,
+    port: process.env.PG_DB_PORT,
   })
 
 // const pool = new Pool({
