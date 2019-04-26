@@ -27,6 +27,9 @@ class AccountSetUp extends React.Component {
     }
 }
 
+
+/*  ========================================== ACCOUNT SET UP FORM ========================================== */
+
 class AccountSetUpForm extends React.Component{
     constructor(props) {
 		super(props);
@@ -103,7 +106,7 @@ class AccountSetUpForm extends React.Component{
 		});
     }
 
-/*  =============== RESULTS OF FORM SUBMITTED TOGETHER =============== */
+/*  =============== INPUT RESULTS OF FORM SUBMITTED TOGETHER =============== */
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		const formPayload = {
@@ -117,56 +120,58 @@ class AccountSetUpForm extends React.Component{
 		};
 		console.log('Send this in a POST request:', formPayload);
         this.handleClearForm(event);
-        this.handlePostToDatabase(event);
+        this.handlePostToDatabase(formPayload);
     }
 
+    /* =================== POST INPUT DATA TO DATABASE ================= */
     handlePostToDatabase = event => {
-        event.preventDefault();
+        console.log("hello from: " + event.userName)
+        // event.preventDefault();
         console.log(
             this.state.userName
             )
         // FIXME: not able to send to db
-        fetch('/users', {
+        fetch('/user', {
             method: 'post',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
               },
             body: JSON.stringify({
-                "user_name": this.state.userName, 
-                "email": this.state.emailInput, 
-                "home_zip_code": this.state.currentZipCode, 
-                "phone_number":this.state.phoneNumber, 
-                "num_children":this.state.userNumChildrenSelection, 
-                "child_group":this.state.selectedChildGroup, 
-                "description":this.state.description
+                user_name: event.userName, 
+                email: event.emailInput, 
+                home_zip_code: event.currentZipCode, 
+                phone_number:event.phoneNumber, 
+                num_children:event.userNumChildrenSelection, 
+                child_group:event.selectedChildGroup, 
+                description:event.description
             })
            })
-        .then((response) => response.json())
+           .then(res => res.json())
+           .then(
+             (result) => {
+               this.setState({
+                 isLoaded: true,
+                 items: result.items
+               });
+             },
+             (error) => {
+               this.setState({
+                 isLoaded: true,
+                 error
+               });
+             }
+           )
         .catch((error) => {
           console.error(error);
         })
         .then(function(body){ 
             console.log(body)
-            });;
+            });
     }
     
     // componentDidMount() {
-	// 	fetch('./fake_db.json')
-	// 		.then(res => res.json()) //FIXME: error at this line
-	// 		.then(data => {
-	// 			this.setState({
-	// 				userName: data.userName,
-	// 				childGroupSelections: data.childGroupSelections,
-	// 				selectedChildGroup: data.selectedChildGroup,
-	// 				ageOptions: data.ageOptions,
-	// 				userNumChildrenSelection: data.userNumChildrenSelection,
-	// 				siblingOptions: data.siblingOptions,
-	// 				siblingSelection: data.siblingSelection,
-	// 				currentZipCode: data.currentZipCode,
-	// 				description: data.description
-	// 			});
-	// 		});
+    //     this.handlePostToDatabase();
 	// }
 
 
