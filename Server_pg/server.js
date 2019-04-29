@@ -51,7 +51,7 @@ app.get('/user', async (req, res) => {
     const contactsTable = await client.query('SELECT * FROM user_profile_input');
     res.json(contactsTable.rows);
     client.release();
-    console.log('GET QUERY OF APPRENTICES IS WORKING ON BACKEND') ///testing for true connection
+    console.log('GET QUERY OF ALL USERS IS WORKING ON BACKEND') ///testing for true connection
 })
 
 //second get table
@@ -66,13 +66,13 @@ app.get('/user', async (req, res) => {
 // })
 
 //return single item by id
-app.get('/user/:id', async (req, res) =>{
-  const client = await pool.connect();
-  const eventsTable = await client.query('SELECT * FROM user_profile_input  WHERE id = $1', [req.params.user_zip_code]); 
-  res.json(eventsTable.rows[0]); 
-  client.release();
-  console.log('GET SINGLE APPRENTICE BY ID QUERY IS WORKING ON BACKEND') ///testing for true connection
-})
+// app.get('/user/:id', async (req, res) =>{
+//   const client = await pool.connect();
+//   const eventsTable = await client.query('SELECT * FROM user_profile_input  WHERE id = $1', [req.params.user_zip_code]); 
+//   res.json(eventsTable.rows[0]); 
+//   client.release();
+//   console.log('GET SINGLE APPRENTICE BY ID QUERY IS WORKING ON BACKEND') ///testing for true connection
+// })
 
 // //update an array item //TODO: posting all at oncee, only works with 5 given params
 // app.put('/techtonica/apprentices/:id', async (req, res) =>{ 
@@ -83,14 +83,16 @@ app.get('/user/:id', async (req, res) =>{
 //   console.log('PUT QUERY IS WORKING ON BACKEND') ///testing for true connection
 // })
 
-// // //add a new item //TODO: posting all at once, only works with 5 given params (do I want to return all or everything excluding phone number)
-// app.post('/user', async(req, res) => {
-//   const client = await pool.connect();
-//   const eventsTable = await client.query("INSERT INTO user_profile_input  (id, user_name, email, home_zip_code, phone_number, num_children, child_group, description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *", [req.body.id, req.body.user_name, req.body.email, req.body.home_zip_code, req.body.phone_number, req.body.num_children, req.body.child_group, req.body.description]);
-//   res.json(eventsTable.rows[0]);
-//   client.release();
-//   console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
-// })
+// add a new item //TODO: posting all at once, only works with 5 given params (do I want to return all or everything excluding phone number)
+app.post('/user', async(req, res) => {
+
+  console.log("============"+req.body.child_group)
+  const client = await pool.connect();
+  const eventsTable = await client.query("INSERT INTO user_profile_input  (user_id, user_name, email, home_zip_code, phone_number, num_children, child_group, description) VALUES (default, $1, $2, $3, $4, $5, $6, $7) RETURNING *", [req.body.user_name, req.body.email, req.body.home_zip_code, req.body.phone_number, req.body.num_children, req.body.child_group, req.body.description]);
+  res.json(eventsTable.rows[0]);
+  client.release();
+  console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
+})
 
 // //delete an item //TODO: posting all at once
 // app.delete('/techtonica/:id', async(req, res) =>{

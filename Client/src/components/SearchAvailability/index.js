@@ -2,7 +2,7 @@ import React from 'react';
 import {  Grid, Icon, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes';
-import GetAllHomeZip from './GetAllHomeZip';
+import GetAllHomeZip from './GetAllButton';
 
 class SearchAvailability extends React.Component {
     render() {

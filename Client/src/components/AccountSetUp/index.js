@@ -27,6 +27,9 @@ class AccountSetUp extends React.Component {
     }
 }
 
+
+/*  ========================================== ACCOUNT SET UP FORM ========================================== */
+
 class AccountSetUpForm extends React.Component{
     constructor(props) {
 		super(props);
@@ -43,24 +46,6 @@ class AccountSetUpForm extends React.Component{
 		};
     }
     
-    // componentDidMount() {
-	// 	fetch('./fake_db.json')
-	// 		.then(res => res.json()) //FIXME: error at this line
-	// 		.then(data => {
-	// 			this.setState({
-	// 				userName: data.userName,
-	// 				childGroupSelections: data.childGroupSelections,
-	// 				selectedChildGroup: data.selectedChildGroup,
-	// 				ageOptions: data.ageOptions,
-	// 				userNumChildrenSelection: data.userNumChildrenSelection,
-	// 				siblingOptions: data.siblingOptions,
-	// 				siblingSelection: data.siblingSelection,
-	// 				currentZipCode: data.currentZipCode,
-	// 				description: data.description
-	// 			});
-	// 		});
-	// }
-
 /*  =============== HANDLE FUNCTIONS FOR INPUT FORM AREAS =============== */
     //checkboxes age group
     handleChildGroupSelection = (event) => {
@@ -121,21 +106,75 @@ class AccountSetUpForm extends React.Component{
 		});
     }
 
-/*  =============== RESULTS OF FORM SUBMITTED TOGETHER =============== */
+/*  =============== INPUT RESULTS OF FORM SUBMITTED TOGETHER =============== */
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		const formPayload = {
             userName: this.state.userName,
             emailInput: this.state.emailInput,
+            currentZipCode: this.state.currentZipCode,
             phoneNumber: this.state.phoneNumber,
+            userNumChildrenSelection: this.state.userNumChildrenSelection,
 			selectedChildGroup: this.state.selectedChildGroup,
-			userNumChildrenSelection: this.state.userNumChildrenSelection,
-			currentZipCode: this.state.currentZipCode,
 			description: this.state.description
 		};
 		console.log('Send this in a POST request:', formPayload);
-		this.handleClearForm(event);
-	}
+        this.handleClearForm(event);
+        this.handlePostToDatabase(formPayload);
+    }
+
+    /* =================== POST INPUT DATA TO DATABASE ================= */
+    handlePostToDatabase = event => {
+        console.log("hello from: " + event.userName)
+        // event.preventDefault();
+        console.log(
+            this.state.userName
+            )
+        // FIXME: not able to send to db
+        fetch('/user', {
+            method: 'post',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+            body: JSON.stringify({
+                user_name: event.userName, 
+                email: event.emailInput, 
+                home_zip_code: event.currentZipCode, 
+                phone_number:event.phoneNumber, 
+                num_children:event.userNumChildrenSelection, 
+                child_group:event.selectedChildGroup, 
+                description:event.description
+            })
+           })
+           .then(res => res.json())
+           .then(
+             (result) => {
+               this.setState({
+                 isLoaded: true,
+                 items: result.items
+               });
+             },
+             (error) => {
+               this.setState({
+                 isLoaded: true,
+                 error
+               });
+             }
+           )
+        .catch((error) => {
+          console.error(error);
+        })
+        .then(function(body){ 
+            console.log(body)
+            });
+    }
+    
+    // componentDidMount() {
+    //     this.handlePostToDatabase();
+	// }
+
+
     render(){
         //TODO: Make submit button disable when form empty
         // const isInvalid = 
