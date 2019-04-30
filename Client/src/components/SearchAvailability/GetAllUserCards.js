@@ -52,7 +52,7 @@ class GetAllUserCards extends Component {
                             <Card.Title>User Zip Code: {item.home_zip_code}</Card.Title>{/* TODO: Would like to hide later */}
                             <Card.Subtitle className="mb-2 text-muted">Number Children: {item.num_children} <br/> Children Age Group: {item.child_group}</Card.Subtitle>
                             <Card.Text>{item.description}</Card.Text>
-                            <Link to={ROUTES.REQUEST_CONTACT}> Send Request</Link> 
+                            <Link to={ROUTES.REQUEST_CONTACT} params={item.user_id}> Send Request</Link> 
                         </Card.Body>
                         </Card>
                     </div>

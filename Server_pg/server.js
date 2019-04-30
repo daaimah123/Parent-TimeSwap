@@ -64,15 +64,6 @@ app.get('/user/:home_zip_code', async (req, res) =>{
   console.log('GET SINGLE PARENT BY ZIP CODE QUERY IS WORKING ON BACKEND') ///testing for true connection
 })
 
-// //update an array item //TODO: posting all at oncee, only works with 5 given params
-// app.put('/techtonica/apprentices/:id', async (req, res) =>{ 
-//   const client = await pool.connect();
-//   const eventsTable = await client.query("UPDATE apprentices SET first_name=$1, last_name=$2, WHERE id=$3 RETURNING *", [req.body.first_name,req.body.last_name,req.body.id,]);
-//   client.release();
-//   res.json(eventsTable.rows[0]) 
-//   console.log('PUT QUERY IS WORKING ON BACKEND') ///testing for true connection
-// })
-
 // add a new item //TODO: posting all at once, only works with 5 given params (do I want to return all or everything excluding phone number)
 app.post('/user', async(req, res) => {
 
@@ -84,16 +75,6 @@ app.post('/user', async(req, res) => {
   console.log('POST QUERY TO DATABASE IS WORKING ON BACKEND') ///testing for true connection
 })
 
-// //delete an item //TODO: posting all at once
-// app.delete('/techtonica/:id', async(req, res) =>{
-//   const client = await pool.connect();
-//   const eventsTable = await client.query('DELETE FROM !!!!TABLE NAME!!!! WHERE id=$1 RETURNING * ', [req.params.id]);
-//   res.json(eventsTable.rows[0]);
-//   client.release();
-//   console.log('DELETE QUERY IS WORKING ON BACKEND') ///testing for true connection
-// });
-
-
 /* =================================== Route for Request Contact  ==============================================
 ================================================================================================================= */
 //https://ethereal.email/
@@ -101,10 +82,8 @@ app.post('/api/form', (req, res) => {
   nodemailer.createTestAccount((err, account) => {
     const htmlEmail = `
     <h3>Contact Details</h3>
-    <ul>
-      <li>Name: ${req.body.name}</li>
-      <li>Email: ${req.body.email}</li>
-    </ul>
+      <p>Name: ${req.body.name}</p>
+      <p>Email: ${req.body.email}</p>
     <h3>Message</h3>
     <p>${req.body.message}</p>
     `
@@ -112,15 +91,15 @@ app.post('/api/form', (req, res) => {
       host: 'smtp.ethereal.email',
       port: 587, 
       auth: {
-        user: 'lupe15@ethereal.email', 
-        pass: 'WXZb1jMtWXMe4CGkz1'
+        user: 'lupe15@ethereal.email', //TODO: how to get the requested user's information here
+        pass: 'WXZb1jMtWXMe4CGkz1' //==========================================================
       }
     })
 
     let mailOptions = {
-      from: 'daaimah123@yahoo.com', //logged in user email
-      to: 'lupe15@ethereal.email',
-      replyTo: 'daaimah123@yahoo.com',
+      from: req.body.email, //logged in user email inputs email they want to be reached back at
+      to: 'lupe15@ethereal.email',  //TODO: how to get the requested user's information here
+      replyTo: req.body.email,
       subject: 'Request for Playdate',
       text: req.body.message,
       html: htmlEmail
@@ -132,12 +111,12 @@ app.post('/api/form', (req, res) => {
       }
       console.log('Message sent: %s', info.message)
       console.log('Message URL: %s', nodemailer.getTestMessageUrl(info))
+      console.log('EMAIL SENT TO DESTINATION')
+      res.json(info)
     })
 
   })
 })
-
-
 
 /* =============================================  Deploying Code  =======================================================
 ================================================================================================================= */

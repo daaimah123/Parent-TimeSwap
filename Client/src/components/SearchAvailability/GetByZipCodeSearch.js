@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import GetByZipCodeCards from './GetByZipCodeCards';
-// import '../App.css';
 import Card from 'react-bootstrap/Card';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
