@@ -11,7 +11,8 @@ const SingleInput = (props) => (
 			type={props.inputType}
 			value={props.content}
 			onChange={props.controlFunc}
-			placeholder={props.placeholder} />
+			placeholder={props.placeholder} 
+			/>
 	</div>
 );
 
@@ -30,7 +31,7 @@ SingleInput.propTypes = {
 // input content
 	content: PropTypes.oneOfType([
 		PropTypes.string,
-		PropTypes.number,
+		PropTypes.number
 	]).isRequired,
 // placeholder text
 	placeholder: PropTypes.string,

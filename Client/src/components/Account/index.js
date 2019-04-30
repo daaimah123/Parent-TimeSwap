@@ -1,7 +1,7 @@
 import React from 'react';
-import {SearchAvailabilityLink} from '../SearchAvailability/index.js';
+import SearchAvailabilityLink from '../SearchAvailability/SeachAvailabilityLink';
 
-import { PasswordForgetForm } from '../PasswordForget';
+import { PasswordForgetForm } from '../PasswordForget/index.js';
 import PasswordChangeForm from '../PasswordChange';
 import {AuthUserContext, withAuthorization} from '../Session';
 

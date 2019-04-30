@@ -1,18 +1,13 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import { compose } from 'recompose';
-
-//router props accessible to component props
-import { withFirebase } from '../Firebase';
+import { withFirebase } from '../Firebase';//router props accessible to component props
 import * as ROUTES from '../../constants/routes';
-
 import { Button, Form, Grid, Header,Icon, Image, Message, Segment } from 'semantic-ui-react';
-import { PasswordForgetLink } from '../PasswordForget';
-
+import PasswordForgetLink from '../PasswordForget/PasswordForgetLink.js';
 
 //reactstrap import
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 const SignUp = () =>(
     <div>
@@ -37,33 +32,33 @@ class SignUpFormBase extends React.Component {
     }
 
     onSubmit = event => {
-        //both passwords will be the same, so only one is needed
-        const {/*username,*/ email, passwordOne } = this.state;
+        const { /*username,*/ email, passwordOne } = this.state;
+    
         this.props.firebase
-            .doCreateUserWithEmailAndPassword(email, passwordOne)
-            .then(authUser => {
-                this.setState({ ...INITIAL_STATE });
-                this.props.history.push(ROUTES.ACCOUNT_SET_UP)
+          .doCreateUserWithEmailAndPassword(email, passwordOne)
+          .then(() => {
+            this.setState({ ...INITIAL_STATE });
+            this.props.history.push(ROUTES.ACCOUNT_SET_UP);
             })
-            .catch(error => {
-                this.setState({ error });
+          .catch(error => {
+            this.setState({ error });
+            })
+          .catch(error => {
+            this.setState({ error });
             });
     
         event.preventDefault();
-    }
+      };
     
-    onChange = event => {
-         /* input name field: input value - onChange handler will take input and change state */
+      onChange = event => {
         this.setState({ [event.target.name]: event.target.value });
-    }
+      };
 
     render() {
         const {username,email,passwordOne,passwordTwo,error} = this.state;
         //states in which the submit button will not be enabled
         const isInvalid = 
-        // FIXME: if password doesnt contain @
         //TODO: make password maximum 10 characters, need to have one symbol char and num char and uppercase char
-        //both passwords must be the same && password, email or username cannot be blank
         passwordOne !== passwordTwo || passwordOne === '' || 
         email === '' || username === '';
         

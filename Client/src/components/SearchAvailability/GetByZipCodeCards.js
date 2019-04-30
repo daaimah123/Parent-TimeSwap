@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 
 
-class CardComponent extends Component {
+class GetByZipCodeCards extends Component {
     constructor(props) { //set up telling component what we need to start
         super(props);
         this.state = { //beginning state
@@ -13,8 +13,11 @@ class CardComponent extends Component {
         };
       }
     
+/* ================================================ GET BY ID ====================================================
+================================================================================================================== */
+
       componentWillMount() { //system in react, auto generates the function inside to go first; will not work when you need to manipulate info or provide info; auto-gets
-        fetch("/user")
+        fetch(`/user/${this.state.value}`)
           .then(res => res.json()) //turn response into json
           .then( 
             (result) => { //use results in setState
@@ -50,7 +53,6 @@ class CardComponent extends Component {
                             <Card.Title>User Zip Code: {item.home_zip_code}</Card.Title>{/* TODO: Would like to hide later */}
                             <Card.Subtitle className="mb-2 text-muted">Number Children: {item.num_children} <br/> Children Age Group: {item.child_group}</Card.Subtitle>
                             <Card.Text>{item.description}</Card.Text>
-                            <Card.Link href="#">User Profile</Card.Link>
                             <Card.Link href="#">Send Request</Card.Link>{/* TODO:  Should send request to phone number */}
                         </Card.Body>
                         </Card>
@@ -62,4 +64,4 @@ class CardComponent extends Component {
     }
 }
 
-export default CardComponent;
+export default GetByZipCodeCards;

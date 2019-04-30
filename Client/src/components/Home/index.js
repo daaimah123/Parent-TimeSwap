@@ -1,5 +1,5 @@
 import React from 'react';
-import {SearchAvailabilityLink} from '../SearchAvailability/index.js';
+import SearchAvailabilityLink from '../SearchAvailability/SeachAvailabilityLink';
 import { withAuthorization } from '../Session';
 
 const Home = () => (

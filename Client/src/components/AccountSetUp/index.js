@@ -1,5 +1,5 @@
 import React from 'react';
-import {SearchAvailabilityLink} from '../SearchAvailability/index.js';
+import SearchAvailabilityLink from '../SearchAvailability/SeachAvailabilityLink';
 import './index.css';
 // import { Container} from 'semantic-ui-react';
 // import { withFirebase } from '../Firebase';
@@ -11,29 +11,29 @@ import TextArea from './form_components/TextArea';
 //TODO: ********* account set up needs to be added to authorization loop *********
 
 //second form with all settings (https://lorenstewart.me/2016/10/31/react-js-forms-controlled-components/)
-// import '../node_modules/spectre.css/dist/spectre.min.css';  
 import './styles.css';  
+import PasswordChange from '../PasswordChange';
 
 class AccountSetUp extends React.Component {
-
     render() {
         return (
             <div>
                 <h1>Account Set Up</h1>
+                <PasswordChange/>
                 <AccountSetUpForm />
                 <SearchAvailabilityLink />
+                
             </div>
         )
     }
 }
 
-
 /*  ========================================== ACCOUNT SET UP FORM ========================================== */
-
 class AccountSetUpForm extends React.Component{
     constructor(props) {
 		super(props);
 		this.state = {
+            formCompleted: false,
             userName: '',
             emailInput: '',
             phoneNumber: '',
@@ -90,22 +90,6 @@ class AccountSetUpForm extends React.Component{
 		this.setState({ description: event.target.value }, () => console.log('Description: ', this.state.description));
     }
 
-/*  =============== CLEAR FORM HANDLER =============== */
-
-    //tell form which inputs to clear after form submit
-	handleClearForm = (event) => {
-		event.preventDefault();
-		this.setState({
-            userName: '',
-            emailInput: '',
-            phoneNumber: '',
-			selectedChildGroup: [],
-			userNumChildrenSelection: '',
-			currentZipCode: '',
-			description: ''
-		});
-    }
-
 /*  =============== INPUT RESULTS OF FORM SUBMITTED TOGETHER =============== */
 	handleFormSubmit = (event) => {
 		event.preventDefault();
@@ -119,18 +103,18 @@ class AccountSetUpForm extends React.Component{
 			description: this.state.description
 		};
 		console.log('Send this in a POST request:', formPayload);
-        this.handleClearForm(event);
         this.handlePostToDatabase(formPayload);
+        this.setState({
+            formCompleted: true
+        });
     }
 
     /* =================== POST INPUT DATA TO DATABASE ================= */
     handlePostToDatabase = event => {
         console.log("hello from: " + event.userName)
-        // event.preventDefault();
         console.log(
             this.state.userName
             )
-        // FIXME: not able to send to db
         fetch('/user', {
             method: 'post',
             headers: {
@@ -169,23 +153,8 @@ class AccountSetUpForm extends React.Component{
             console.log(body)
             });
     }
-    
-    // componentDidMount() {
-    //     this.handlePostToDatabase();
-	// }
-
 
     render(){
-        //TODO: Make submit button disable when form empty
-        // const isInvalid = 
-        //     this.userName === '' ||
-        //     this.emailInput === '' ||
-        //     this.phoneNumber === '' ||
-        //     this.selectedChildGroup === '' ||
-        //     this.userNumChildrenSelection === '' ||
-        //     this.currentZipCode === '' ||
-        //     this.description === '' ;
-            
         return (
             /*  ============ ACCOUNT SET UP FORM ==============  */
          <section className='body'>
@@ -202,6 +171,7 @@ class AccountSetUpForm extends React.Component{
                  </div>
                  <div className='contact'>
                      <h3>statement</h3>
+                     { this.state.formCompleted === false ? 
                      <form onSubmit={this.handleFormSubmit}>
                         <section>
                             <CheckboxOrRadioGroup
@@ -268,9 +238,24 @@ class AccountSetUpForm extends React.Component{
                          </section>
                          <section className='full'>
                             <button  type="submit" value="Submit">Submit</button> {/*disabled={isInvalid}  */}
-                            <button  type="submit" onClick={this.handleClearForm}>clear form</button> 
                          </section>                           
                      </form>
+                     :
+                     <div>
+                        <dl>
+                            <dt>Name</dt>
+                            <dd>{this.state.userName}</dd>
+                            <dt>Number of Children</dt>
+                            <dd>{this.state.userNumChildrenSelection}</dd>
+                            <dt>Child Group</dt>
+                            <dd>{this.state.selectedChildGroup}</dd>
+                            <dt>Home Zip Code</dt>
+                            <dd>{this.state.currentZipCode}</dd>
+                            <dt>About Me</dt>
+                            <dd>{this.state.description}</dd>
+                        </dl>
+                     </div>
+                    }
                  </div>
              </div>
          </div>
@@ -278,12 +263,6 @@ class AccountSetUpForm extends React.Component{
         )
     }
 }
-
-
-
-
-
-
 
 export default AccountSetUp;
 

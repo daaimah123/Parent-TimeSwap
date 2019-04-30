@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Button,Form,Grid,Header,Segment} from 'semantic-ui-react';
 import { withFirebase } from '../Firebase';
 
-//FIXME: ********* not in public authorization should be accessible to nonauthenticated parties ********
+//FIXME: ********* cannot be in public authorization should be accessible to nonauthenticated parties ********
 
 
 const INITIAL_STATE = {

@@ -15,6 +15,7 @@ import Admin from '../Admin';
 import About from '../About';
 import SearchAvailability from '../SearchAvailability';
 import AccountSetUp from '../AccountSetUp';
+import RequestContact from '../RequestContact/index'
 
 //importing all url routes in from routes file
 import * as ROUTES from '../../constants/routes';
@@ -39,6 +40,7 @@ const App = () => (
                     <Route path={ROUTES.ADMIN} component={Admin}/>
                     <Route path={ROUTES.ABOUT} component={About}/>
                     <Route path={ROUTES.SEARCH_AVAILABILITY} component={SearchAvailability}/>
+                    <Route path={ROUTES.REQUEST_CONTACT} component={RequestContact}/>
                 </div>
             </Router>
         )
