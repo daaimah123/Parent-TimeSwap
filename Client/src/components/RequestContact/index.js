@@ -25,7 +25,6 @@ class RequestContact extends Component {
       const form = await axios.post('./api/form', {
         name, email, message
       })
-
     }
 
 

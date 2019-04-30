@@ -4,8 +4,6 @@ import React, { Component } from 'react';
 // import CardComponent from './UserCards';
 import GetAllUserCards from './GetAllUserCards';
 
-//FIXME: ********* currently testing get will work, this is test data from final assessment to make sure things render to page, not data for this project *********
-
 class GetAllButton extends Component {
 
   constructor(props){

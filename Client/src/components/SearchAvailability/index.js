@@ -2,6 +2,7 @@ import React from 'react';
 import GetAllButton from './GetAllButton';
 import GetByZipCodeSearch from './GetByZipCodeSearch';
 
+
 class SearchAvailability extends React.Component {
     render() {
         return (

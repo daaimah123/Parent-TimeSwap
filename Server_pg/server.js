@@ -4,7 +4,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 3003; //back end port assigned to 3001
+
+const port = process.env.PORT || 3003;
+
+const nodemailer = require('nodemailer');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,7 +37,7 @@ const pool = new Pool({
 
 
 
-/* =============================================  Routes  =======================================================
+/* =================================== Routes for User Data  =======================================================
 ================================================================================================================= */
 
 //test route
@@ -51,25 +54,15 @@ app.get('/user', async (req, res) => {
     console.log('GET QUERY OF ALL USERS IS WORKING ON BACKEND') ///testing for true connection
 })
 
-//second get table
-
-// //cohorts table get all
-// app.get('/user, async (req, res) => {
-//   const client = await pool.connect();
-//   const contactsTable = await client.query('SELECT * FROM cohorts');
-//   res.json(contactsTable.rows);
-//   client.release();
-//   console.log('GET QUERY OF COHORTS IS WORKING ON BACKEND') ///testing for true connection
-// })
-
-//return single item by id
-// app.get('/user/:id', async (req, res) =>{
-//   const client = await pool.connect();
-//   const eventsTable = await client.query('SELECT * FROM user_profile_input  WHERE id = $1', [req.params.user_zip_code]); 
-//   res.json(eventsTable.rows[0]); 
-//   client.release();
-//   console.log('GET SINGLE APPRENTICE BY ID QUERY IS WORKING ON BACKEND') ///testing for true connection
-// })
+// return single item by id
+app.get('/user/:home_zip_code', async (req, res) =>{
+  console.log('WWWWWWWWWW'+req.params.home_zip_code)
+  const client = await pool.connect();
+  const eventsTable = await client.query('SELECT * FROM user_profile_input WHERE home_zip_code = $1', [req.params.home_zip_code]); 
+  res.json(eventsTable.rows); 
+  client.release();
+  console.log('GET SINGLE PARENT BY ZIP CODE QUERY IS WORKING ON BACKEND') ///testing for true connection
+})
 
 // //update an array item //TODO: posting all at oncee, only works with 5 given params
 // app.put('/techtonica/apprentices/:id', async (req, res) =>{ 
@@ -88,7 +81,7 @@ app.post('/user', async(req, res) => {
   const eventsTable = await client.query("INSERT INTO user_profile_input  (user_id, user_name, email, home_zip_code, phone_number, num_children, child_group, description) VALUES (default, $1, $2, $3, $4, $5, $6, $7) RETURNING *", [req.body.user_name, req.body.email, req.body.home_zip_code, req.body.phone_number, req.body.num_children, req.body.child_group, req.body.description]);
   res.json(eventsTable.rows[0]);
   client.release();
-  console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
+  console.log('POST QUERY TO DATABASE IS WORKING ON BACKEND') ///testing for true connection
 })
 
 // //delete an item //TODO: posting all at once
@@ -100,6 +93,49 @@ app.post('/user', async(req, res) => {
 //   console.log('DELETE QUERY IS WORKING ON BACKEND') ///testing for true connection
 // });
 
+
+/* =================================== Route for Request Contact  ==============================================
+================================================================================================================= */
+//https://ethereal.email/
+app.post('/api/form', (req, res) => {
+  nodemailer.createTestAccount((err, account) => {
+    const htmlEmail = `
+    <h3>Contact Details</h3>
+    <ul>
+      <li>Name: ${req.body.name}</li>
+      <li>Email: ${req.body.email}</li>
+    </ul>
+    <h3>Message</h3>
+    <p>${req.body.message}</p>
+    `
+    let transporter = nodemailer.createTransport({
+      host: 'smtp.ethereal.email',
+      port: 587, 
+      auth: {
+        user: 'lupe15@ethereal.email', 
+        pass: 'WXZb1jMtWXMe4CGkz1'
+      }
+    })
+
+    let mailOptions = {
+      from: 'daaimah123@yahoo.com', //logged in user email
+      to: 'lupe15@ethereal.email',
+      replyTo: 'daaimah123@yahoo.com',
+      subject: 'Request for Playdate',
+      text: req.body.message,
+      html: htmlEmail
+    }
+
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err){
+        return console.log(err)
+      }
+      console.log('Message sent: %s', info.message)
+      console.log('Message URL: %s', nodemailer.getTestMessageUrl(info))
+    })
+
+  })
+})
 
 
 

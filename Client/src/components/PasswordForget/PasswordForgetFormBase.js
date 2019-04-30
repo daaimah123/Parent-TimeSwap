@@ -24,6 +24,7 @@ class PasswordForgetFormBase extends React.Component{
             this.setState({...INITIAL_STATE})
         )
         .then(
+            alert("Successful!")
             // TODO:if successfully sent, print message and default, if not do nothing
         ) //FIXME: not sure how to get this message printed out once sent, thinking a conditional added to repsective button area
         event.preventDefault();

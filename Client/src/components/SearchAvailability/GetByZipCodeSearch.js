@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 // import GetByZipCodeCards from './GetByZipCodeCards';
 // import '../App.css';
 import Card from 'react-bootstrap/Card';
+import * as ROUTES from '../../constants/routes';
+import { Link } from 'react-router-dom'
 
 
 class GetByZipCodeSearch extends Component {
@@ -11,13 +13,12 @@ class GetByZipCodeSearch extends Component {
         value: '', 
         error: null, 
         isLoaded: false, 
-        items: {},
+        items: []
       };
     }
   
     handleChange = (event) => {
         this.setState({value: event.target.value}, () => console.log("zip code: " + this.state.value)); //id number typed into value box
-        // event.preventDefault();
     }
 
     handleSubmit = (event) => {
@@ -42,11 +43,23 @@ class GetByZipCodeSearch extends Component {
     }
   
     userCard = () =>{
-        // const {items} = this.state;
-        return (
-          <h1>Hello There</h1>
-        
-        
+      const {items} = this.state;
+        return (  
+          <div className="card-group">
+           {items.map(item => (
+                    <div key={item.user_id} className="row"> 
+                    <Card border="dark" style={{ width: '18rem', color: 'teal'}}>
+                        <Card.Header>User Name: {item.user_name} </Card.Header>
+                        <Card.Body>
+                            <Card.Title>User Zip Code: {item.home_zip_code}</Card.Title>{/* TODO: Would like to hide later */}
+                            <Card.Subtitle className="mb-2 text-muted">Number Children: {item.num_children} <br/> Children Age Group: {item.child_group}</Card.Subtitle>
+                            <Card.Text>{item.description}</Card.Text>
+                            <Link to={ROUTES.REQUEST_CONTACT}> Send Request</Link> 
+                        </Card.Body>
+                        </Card>
+                    </div>
+                ))}
+          </div>
         )
     }    
     
