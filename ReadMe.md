@@ -13,11 +13,6 @@ Frameworks:
 frameworks used here
 
 
-
-
-Built up from [Robin Wieruch](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/) tutorial.
-
-
 ````
 npx create-react-app firebase-authentication
 cd firebase-authentication

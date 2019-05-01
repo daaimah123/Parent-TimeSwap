@@ -11,3 +11,4 @@ export const SEARCH_AVAILABILITY = '/search_availability'; //protected route
 export const ABOUT = '/about'; 
 export const ACCOUNT_SET_UP = '/account_set_up'; //protected route
 export const REQUEST_CONTACT = '/request_contact';
+export const CHAT = '/chat';
