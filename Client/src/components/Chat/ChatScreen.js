@@ -9,7 +9,8 @@ class ChatScreen extends React.Component {
       this.state = {
           currentUser: {},
           currentRoom: {},
-          messages: []
+          messages: [], 
+          text: ''
       }
     }
   
@@ -24,7 +25,7 @@ class ChatScreen extends React.Component {
     .then(currentUser => {
         this.setState({ currentUser })
         console.log('Successful! Current user: ', currentUser)
-        currentUser.subscribeToRoom({
+        return currentUser.subscribeToRoom({
             roomId: "19401683", 
             messageLimit: 100, 
             hooks: {
@@ -50,8 +51,8 @@ class ChatScreen extends React.Component {
   
     sendMessage = (text) => {
         this.state.currentUser.sendMessage({
-            text,
-            roomId:this.state.currentRoom.id
+        text,
+        roomId: this.state.currentRoom.id,
         })
     }
 
@@ -60,7 +61,7 @@ class ChatScreen extends React.Component {
       return (
         <div>
           <h1>Chat Screen</h1>
-          <h3>Hello, {this.props.currentUsername}</h3>
+          <h3>Hello, {this.pro}</h3>
           <MessagesList messages={this.state.messages}/>
           <SendMessageForm onSubmit={this.sendMessage}/>
         </div>

@@ -10,11 +10,16 @@ class SendMessageForm extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        this.props.onSubmit(this.state.username)
+        console.log('this.state.text',this.state.text)
+        this.props.onSubmit(this.state.text)
+        this.setState({ text: '' })
     }
 
     onChange = (event) => {
         this.setState({text: event.target.value})
+        if (this.props.onChange) {
+        this.props.onChange()
+      }
     }
 
     render(){
@@ -25,6 +30,7 @@ class SendMessageForm extends React.Component {
                         type="text"
                         placeholder="What is your text"
                         onChange={this.onChange}
+                        value={this.state.text}
                     />
                     <input type="submit"/>
                 </form>
