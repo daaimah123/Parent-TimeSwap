@@ -1,10 +1,10 @@
 import React from 'react';
 
-class SendMessageForm extends React.Component {
+class UsernameForm extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            text: ''
+            username: ''
         }
     }
 
@@ -14,7 +14,7 @@ class SendMessageForm extends React.Component {
     }
 
     onChange = (event) => {
-        this.setState({text: event.target.value})
+        this.setState({username: event.target.value})
     }
 
     render(){
@@ -23,7 +23,7 @@ class SendMessageForm extends React.Component {
                 <form onSubmit={this.onSubmit}>
                     <input
                         type="text"
-                        placeholder="What is your text"
+                        placeholder="What is your full name?"
                         onChange={this.onChange}
                     />
                     <input type="submit"/>
@@ -35,4 +35,4 @@ class SendMessageForm extends React.Component {
 
 }
 
-export default SendMessageForm;
+export default UsernameForm;

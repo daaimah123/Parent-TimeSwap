@@ -157,7 +157,9 @@ EXPLAIN history object
 Session Handling: 
 This will tell the other components the logic of which users have been authenticated.
 
+AUTHENTICATION LOOP
 ![](Authentication_Loop.gif)
 
 FORM 
 ![](FormInput.gif)
+

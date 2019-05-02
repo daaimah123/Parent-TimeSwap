@@ -1,28 +1,21 @@
-import React from 'react';
-// import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
-import './style.css';
+import React, { Component } from 'react'
 
-
-class MessageList extends React.Component {
-  render() {
-    return (
-      <ul className="message-list">                 
-        {this.props.messages.map(message => {
-          return (
-           <li key={message.id}> 
-             <div>Username: 
-               {message.senderId}
-             </div>
-             <div> Message: 
-               {message.text}
-             </div>
-           </li>
-         )
-       })}
-     </ul>
-    )
-  }
+class MessagesList extends Component {
+   render() {
+       return (
+           <ul>
+               {this.props.messages.map((message, index) => (
+                   <li key={index}>
+                        <div>
+                            <span>{message.senderId}</span>
+                            <p>{message.text}</p>
+                        </div>
+                   </li>
+               ))}
+           </ul>
+       )
+   }
 }
 
 
-export default  MessageList;
+export default MessagesList;

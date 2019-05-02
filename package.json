@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/daaimah123/React_Firebase_Profile_Management#readme",
   "dependencies": {
+    "@pusher/chatkit-client": "^1.5.0",
+    "@pusher/chatkit-server": "^1.1.0",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "create-react-app": "^2.1.8",
     "express-generator": "^4.16.0",
     "express-pino-logger": "^4.0.0",

@@ -4,14 +4,17 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const Chatkit = require('@pusher/chatkit-server'); 
+
 
 const port = process.env.PORT || 3003;
 
 const nodemailer = require('nodemailer');
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json());
+app.use(cors())
 
 //TODO: hook up react part; currently only express and postgress are connected && add set up notes to MD
 
@@ -117,6 +120,39 @@ app.post('/api/form', (req, res) => {
 
   })
 })
+
+/* ================================================  Pusher Chatkit  ============================================
+================================================================================================================= */
+
+const chatkit = new Chatkit.default({
+  instanceLocator: 'v1:us1:de6dff03-0811-41fc-b06a-878538c7b5dd',
+  key: '44e927a9-421a-47ee-a8f1-9b6668ad648f:WwwEtrarl1prXwvQ1Ggyd2FEpqUFCdPid7/F7Dunscs='
+})
+
+app.post('/users', (req, res) => {
+  const {username} = req.body
+
+  chatkit.createUser({
+    name: username, 
+    id: username
+  })
+  .then(() => res.sendStatus(201))
+  .catch(error => {
+    if (error.error === 'services/chatkit/user_already_exists'){
+      res.sendStatus(200)
+    } else {
+      res.status(error.status).json(error)
+    }
+  })
+})
+
+app.post('/authenticate', (req, res) => {
+  const authData = chatkit.authenticate({ userId: req.query.user_id })
+  res.status(authData.status).send(authData.body)
+})
+
+
+
 
 /* =============================================  Deploying Code  =======================================================
 ================================================================================================================= */

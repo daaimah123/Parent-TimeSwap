@@ -53,7 +53,7 @@ class GetAllUserCards extends Component {
                             <Card.Subtitle className="mb-2 text-muted">Number Children: {item.num_children} <br/> Children Age Group: {item.child_group}</Card.Subtitle>
                             <Card.Text>{item.description}</Card.Text>
                             <Link to={ROUTES.REQUEST_CONTACT} params={item.user_id}> Send Request</Link> 
-                            <Link to={ROUTES.CHAT} id={item.user_id}> Chat</Link> //FIXME: is this passing param user_id to the link?
+                            <Link to={ROUTES.CHAT} id={item.user_id}> Chat</Link> {/* //FIXME: is this passing param user_id to the link?*/}
                         </Card.Body>
                         </Card>
                     </div>
