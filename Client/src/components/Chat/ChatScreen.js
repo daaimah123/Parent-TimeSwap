@@ -2,6 +2,8 @@ import React from 'react';
 import Chatkit from '@pusher/chatkit-client';
 import MessagesList from './MessageList';
 import SendMessageForm from './SendMessageForm';
+import TypingIndicator from './TypingIndicator';
+import WhosOnlineList from './WhosOnlineList';
 
 class ChatScreen extends React.Component {
     constructor(){
@@ -48,12 +50,14 @@ class ChatScreen extends React.Component {
                 onUserStoppedTyping: user => {
                     this.setState({
                         usersWhoAreTyping: this.state.usersWhoAreTyping.filter(
-                            username => username != user.name
+                            username => username !== user.name
                         )
                     })
                     console.log(user.name, "...stopped typing...")
-                }
-
+                },
+                onUserCameOnline: () => this.forceUpdate(), 
+                onUserWentOffline: () => this.forceUpdate(), 
+                onUserJoined: () => this.forceUpdate(),
             }
         })
     })
@@ -78,13 +82,48 @@ class ChatScreen extends React.Component {
     }
 
     render() {
+        const styles = {
+          container: {
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+          },
+          chatContainer: {
+            display: 'flex',
+            flex: 1,
+          },
+          whosOnlineListContainer: {
+            width: '300px',
+            flex: 'none',
+            padding: 20,
+            backgroundColor: '#2c303b',
+            color: 'white',
+          },
+          chatListContainer: {
+            padding: 20,
+            width: '85%',
+            display: 'flex',
+            flexDirection: 'column',
+          },
+       }
       return (
         <div>
-          <h1>Chat Screen</h1>
-          <h3>Hello, {this.props.currentUsername}</h3>
-          <MessagesList messages={this.state.messages}/>
-          <p>{JSON.stringify(this.state.usersWhoAreTyping)}</p>
-          <SendMessageForm onSubmit={this.sendMessage} onChange={this.sendTypingEvent}/>
+            <h1>Chat Screen</h1>
+            <h3>Hello, {this.props.currentUsername}</h3>
+            <div style={styles.container}>
+                <div style={styles.chatContainer}>
+                    <aside style={styles.whosOnlineListContainer}>
+                        <h2>Who's Online?</h2>
+                        <WhosOnlineList users={this.state.currentRoom.users}/>
+                    </aside>
+                    <section style={styles.chatListContainer}>
+                        <MessagesList messages={this.state.messages} style={styles.chatList}/>
+                        {/* <p>{JSON.stringify(this.state.usersWhoAreTyping)}</p> */}
+                        <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping}/>
+                        <SendMessageForm onSubmit={this.sendMessage} onChange={this.sendTypingEvent}/>
+                    </section>
+                </div>
+            </div>
         </div>
       )
     }

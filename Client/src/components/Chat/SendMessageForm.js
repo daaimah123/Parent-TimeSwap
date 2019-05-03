@@ -23,17 +23,38 @@ class SendMessageForm extends React.Component {
     }
 
     render(){
+        const styles = {
+           container: {
+             padding: 20,
+             borderTop: '1px #4C758F solid',
+             marginBottom: 20,
+           },
+           form: {
+             display: 'flex',
+           },
+           input: {
+             color: 'inherit',
+             background: 'none',
+             outline: 'none',
+             border: 'none',
+             flex: 1,
+             fontSize: 16,
+           },
+         }
         return (
-            <div>
-                <form onSubmit={this.onSubmit}>
+            <div style={styles.container}>
+                <div>
+                <form onSubmit={this.onSubmit} style={styles.form}>
                     <input
                         type="text"
                         placeholder="What is your text"
                         onChange={this.onChange}
                         value={this.state.text}
+                        style={styles.input}
                     />
                     <input type="submit"/>
                 </form>
+                </div>
             </div>
         )
     }
