@@ -37,21 +37,6 @@ class WhosOnlineList extends React.Component {
       }
     }
 
-//     render(){
-//       if(this.props.users){
-//           return (
-//               <ul>
-//               {this.props.users.map((user, index) => {
-//                   {/* Currently printing online and unknown */}
-//                   return <li>{user.name}({user.presence.state})</li>
-//               })}
-//               </ul>
-//           )
-//       }else {
-//           return <p>Loading...</p>
-//       }
-//     }
-// }
 
 class WhosOnlineListItem extends React.Component {
   render() {
