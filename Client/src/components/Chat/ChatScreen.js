@@ -57,8 +57,8 @@ class ChatScreen extends React.Component {
                 },
                 onUserCameOnline: () => this.forceUpdate(), 
                 onUserWentOffline: () => this.forceUpdate(), 
-                onUserJoined: () => this.forceUpdate(),
-            }
+                onUserJoined: () => this.forceUpdate()
+            },
         })
     })
     .then(currentRoom => {

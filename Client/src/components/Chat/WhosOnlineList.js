@@ -1,4 +1,5 @@
 import React from 'react';
+import Chatkit from '@pusher/chatkit-client';
 
 class WhosOnlineList extends React.Component {
     constructor(props){
@@ -9,6 +10,8 @@ class WhosOnlineList extends React.Component {
         return (
             <ul>
                 {this.props.users.map((user, index) => {
+                    console.log('user',user);
+                    console.log('currentUser',this.props.currentUser); //FIXME: undefined!
                   if (user.id === this.props.currentUser.id) {
                     return (
                       <WhosOnlineListItem key={index} presenceState="online">
@@ -25,18 +28,32 @@ class WhosOnlineList extends React.Component {
             </ul>
         )
     }
-
-
-    render(){
-      if(this.props.users){
+      render() {
+        if (this.props.users) {
           return this.renderUsers()
-      }else {
+        } else {
           return <p>Loading...</p>
+        }
       }
     }
-}
 
-class WhosOnlineListItem extends Component {
+//     render(){
+//       if(this.props.users){
+//           return (
+//               <ul>
+//               {this.props.users.map((user, index) => {
+//                   {/* Currently printing online and unknown */}
+//                   return <li>{user.name}({user.presence.state})</li>
+//               })}
+//               </ul>
+//           )
+//       }else {
+//           return <p>Loading...</p>
+//       }
+//     }
+// }
+
+class WhosOnlineListItem extends React.Component {
   render() {
     const styles = {
       li: {
