@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import {Button,Form,Grid,Header,Segment} from 'semantic-ui-react';
 import { withFirebase } from '../Firebase';
 
-//FIXME: ********* cannot be in public authorization should be accessible to nonauthenticated parties ********
-
-
 const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
@@ -86,5 +83,6 @@ class PasswordChangeForm extends Component {
     );
   }
 }
+
 
 export default withFirebase(PasswordChangeForm);

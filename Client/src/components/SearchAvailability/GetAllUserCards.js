@@ -52,8 +52,9 @@ class GetAllUserCards extends Component {
                             <Card.Title>User Zip Code: {item.home_zip_code}</Card.Title>{/* TODO: Would like to hide later */}
                             <Card.Subtitle className="mb-2 text-muted">Number Children: {item.num_children} <br/> Children Age Group: {item.child_group}</Card.Subtitle>
                             <Card.Text>{item.description}</Card.Text>
-                            <Link to={ROUTES.REQUEST_CONTACT} params={item.user_id}> Send Request</Link> 
-                            <Link to={ROUTES.CHAT} id={item.user_id}> Chat</Link> {/* //FIXME: is this passing param user_id to the link?*/}
+                            <Card.Header><strong>Monday: </strong>{item.monday}<br/> <strong>Tuesday: </strong>{item.tuesday} <br/> <strong>Wednesday: </strong>{item.wednesday} <br/> <strong>Thursday:</strong> {item.thursday} <br/> <strong>Friday: </strong>{item.friday} <br/><strong> Saturday: </strong>{item.saturday} <br/><strong>Sunday: </strong>{item.sunday} </Card.Header>
+                            {/* <Link to={ROUTES.CHAT} params={item.user_id}> Send Request</Link>  */}
+                            <Link to={ROUTES.CHAT} id={item.user_id}><h1>Click to Chat</h1></Link> {/* //FIXME: is this passing param user_id to the link?*/}
                         </Card.Body>
                         </Card>
                     </div>

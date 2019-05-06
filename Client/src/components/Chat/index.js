@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { withAuthorization } from '../Session';
 import './style.css';
 import UsernameForm from './UsernameForm';
 import ChatScreen from './ChatScreen';
@@ -41,4 +41,6 @@ class Chat extends React.Component {
   }
 }
 
-export default Chat;
+const condition = authUser => authUser != null;
+
+export default withAuthorization(condition)(Chat);

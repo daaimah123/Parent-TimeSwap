@@ -1,6 +1,7 @@
 import React from 'react';
 import GetAllButton from './GetAllButton';
 import GetByZipCodeSearch from './GetByZipCodeSearch';
+import { withAuthorization } from '../Session';
 
 
 class SearchAvailability extends React.Component {
@@ -18,5 +19,6 @@ class SearchAvailability extends React.Component {
 }
 
 
+const condition = authUser => authUser != null;
 
-export default SearchAvailability;
+export default withAuthorization(condition)(SearchAvailability);

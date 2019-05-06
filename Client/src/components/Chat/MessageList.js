@@ -17,7 +17,20 @@ class MessagesList extends Component {
        senderUsername: {
          fontWeight: 'bold',
        },
-       message: { fontSize: 15 },
+       message: { 
+         fontSize: 15,
+         background: 'gold',
+        color: 'black',
+        display: 'inline',
+        padding: '4px 8px',
+        borderRadius: '8px',
+         // //  margin: '40px',
+        //  display: 'inline-block',
+        //  position: 'relative',
+        // //  width: '200px',
+        //  height: 'auto',
+        //  backgroundColor: 'gold'
+      },
      }
        return (
            <div

@@ -1,17 +1,16 @@
 import React from 'react';
-import Chatkit from '@pusher/chatkit-client';
 
 class WhosOnlineList extends React.Component {
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     renderUsers = () => {
         return (
             <ul>
                 {this.props.users.map((user, index) => {
                     console.log('user',user);
-                    console.log('currentUser',this.props.currentUser); //FIXME: undefined!
+                    console.log('currentUser',this.props.currentUser);
                   if (user.id === this.props.currentUser.id) {
                     return (
                       <WhosOnlineListItem key={index} presenceState="online">
@@ -20,8 +19,9 @@ class WhosOnlineList extends React.Component {
                     )
                   }
                   return (
+
                     <WhosOnlineListItem key={index} presenceState={user.presence.state}>
-                      {user.name}
+                      {user.name} ({user.presence.state})
                     </WhosOnlineListItem>
                   )
                 })}
@@ -62,7 +62,7 @@ class WhosOnlineListItem extends React.Component {
           style={{
             ...styles.div,
             backgroundColor:
-              this.props.presenceState === 'online' ? '#539eff' : '#414756',
+              this.props.presenceState === 'online' ? 'green' : 'grey',
           }}
         />
         {this.props.children}

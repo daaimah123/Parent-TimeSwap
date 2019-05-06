@@ -7,8 +7,8 @@ import CheckboxOrRadioGroup from './form_components/CheckboxOrRadioGroup';
 import SingleInput from './form_components/SingleInput';
 import SelectInput from './form_components/SelectInput';
 import TextArea from './form_components/TextArea';
+import { withAuthorization } from '../Session';
 
-//TODO: ********* account set up needs to be added to authorization loop *********
 
 //second form with all settings (https://lorenstewart.me/2016/10/31/react-js-forms-controlled-components/)
 import './styles.css';  
@@ -19,7 +19,6 @@ class AccountSetUp extends React.Component {
         return (
             <div>
                 <h1>Account Set Up</h1>
-                <PasswordChange/>
                 <AccountSetUpForm />
                 <SearchAvailabilityLink />
                 
@@ -39,8 +38,36 @@ class AccountSetUpForm extends React.Component{
             phoneNumber: '',
 			childGroupSelections: ["infant", "toddler", "youth", "teen"],
 			selectedChildGroup: [],
-			ageOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-			userNumChildrenSelection: '',
+            numChildrenOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            mondayOptions: [ 'not available',
+                '12:00AM - 1:00AM', '1:00AM - 2:00AM', '2:00AM - 3:00AM','3:00AM - 4:00AM','4:00AM - 5:00AM', '5:00AM - 6:00AM','6:00AM - 7:00AM','7:00AM - 8:00AM','8:00AM - 9:00AM','9:00AM - 10:00AM','11:00AM - 12:00PM','1:00PM - 2:00PM','3:00PM - 4:00PM','4:00PM - 5:00PM','5:00PM - 6:00PM','6:00PM - 7:00PM','7:00PM - 8:00PM','8:00PM - 9:00PM','9:00PM - 10:00PM','10:00PM - 11:00PM', '11:00PM - 12:00AM',
+            ], 
+            tuesdayOptions: ['not available',
+                '12:00AM - 1:00AM', '1:00AM - 2:00AM', '2:00AM - 3:00AM','3:00AM - 4:00AM','4:00AM - 5:00AM', '5:00AM - 6:00AM','6:00AM - 7:00AM','7:00AM - 8:00AM','8:00AM - 9:00AM','9:00AM - 10:00AM','11:00AM - 12:00PM','1:00PM - 2:00PM','3:00PM - 4:00PM','4:00PM - 5:00PM','5:00PM - 6:00PM','6:00PM - 7:00PM','7:00PM - 8:00PM','8:00PM - 9:00PM','9:00PM - 10:00PM','10:00PM - 11:00PM', '11:00PM - 12:00AM',
+            ],
+            wednesdayOptions: ['not available',
+                '12:00AM - 1:00AM', '1:00AM - 2:00AM', '2:00AM - 3:00AM','3:00AM - 4:00AM','4:00AM - 5:00AM', '5:00AM - 6:00AM','6:00AM - 7:00AM','7:00AM - 8:00AM','8:00AM - 9:00AM','9:00AM - 10:00AM','11:00AM - 12:00PM','1:00PM - 2:00PM','3:00PM - 4:00PM','4:00PM - 5:00PM','5:00PM - 6:00PM','6:00PM - 7:00PM','7:00PM - 8:00PM','8:00PM - 9:00PM','9:00PM - 10:00PM','10:00PM - 11:00PM', '11:00PM - 12:00AM',
+            ],
+            thursdayOptions: ['not available',
+                '12:00AM - 1:00AM', '1:00AM - 2:00AM', '2:00AM - 3:00AM','3:00AM - 4:00AM','4:00AM - 5:00AM', '5:00AM - 6:00AM','6:00AM - 7:00AM','7:00AM - 8:00AM','8:00AM - 9:00AM','9:00AM - 10:00AM','11:00AM - 12:00PM','1:00PM - 2:00PM','3:00PM - 4:00PM','4:00PM - 5:00PM','5:00PM - 6:00PM','6:00PM - 7:00PM','7:00PM - 8:00PM','8:00PM - 9:00PM','9:00PM - 10:00PM','10:00PM - 11:00PM', '11:00PM - 12:00AM',
+            ],
+            fridayOptions: ['not available',
+                '12:00AM - 1:00AM', '1:00AM - 2:00AM', '2:00AM - 3:00AM','3:00AM - 4:00AM','4:00AM - 5:00AM', '5:00AM - 6:00AM','6:00AM - 7:00AM','7:00AM - 8:00AM','8:00AM - 9:00AM','9:00AM - 10:00AM','11:00AM - 12:00PM','1:00PM - 2:00PM','3:00PM - 4:00PM','4:00PM - 5:00PM','5:00PM - 6:00PM','6:00PM - 7:00PM','7:00PM - 8:00PM','8:00PM - 9:00PM','9:00PM - 10:00PM','10:00PM - 11:00PM', '11:00PM - 12:00AM',
+            ],
+            saturdayOptions: ['not available',
+                '12:00AM - 1:00AM', '1:00AM - 2:00AM', '2:00AM - 3:00AM','3:00AM - 4:00AM','4:00AM - 5:00AM', '5:00AM - 6:00AM','6:00AM - 7:00AM','7:00AM - 8:00AM','8:00AM - 9:00AM','9:00AM - 10:00AM','11:00AM - 12:00PM','1:00PM - 2:00PM','3:00PM - 4:00PM','4:00PM - 5:00PM','5:00PM - 6:00PM','6:00PM - 7:00PM','7:00PM - 8:00PM','8:00PM - 9:00PM','9:00PM - 10:00PM','10:00PM - 11:00PM', '11:00PM - 12:00AM',
+            ],
+            sundayOptions: ['not available',
+                '12:00AM - 1:00AM', '1:00AM - 2:00AM', '2:00AM - 3:00AM','3:00AM - 4:00AM','4:00AM - 5:00AM', '5:00AM - 6:00AM','6:00AM - 7:00AM','7:00AM - 8:00AM','8:00AM - 9:00AM','9:00AM - 10:00AM','11:00AM - 12:00PM','1:00PM - 2:00PM','3:00PM - 4:00PM','4:00PM - 5:00PM','5:00PM - 6:00PM','6:00PM - 7:00PM','7:00PM - 8:00PM','8:00PM - 9:00PM','9:00PM - 10:00PM','10:00PM - 11:00PM', '11:00PM - 12:00AM',
+            ],
+            userNumChildrenSelection: '',
+            Monday: '', 
+            Tuesday:'', 
+            Wednesday: '',
+            Thursday: '',
+            Friday: '',
+            Saturday: '', 
+            Sunday: '',
 			currentZipCode: '',
 			description: ''
 		};
@@ -66,6 +93,38 @@ class AccountSetUpForm extends React.Component{
     //Select Num Children
     handleNumChildrenSelect = (event) => {
 		this.setState({ userNumChildrenSelection: event.target.value }, () => console.log('Number of Children: ', this.state.userNumChildrenSelection));
+    }
+     //Select Monday Availability
+     handleMondayAvailabilitySelect = (event) => {
+		this.setState({ Monday: event.target.value }, () => console.log('Monday Availability: ', this.state.Monday));
+    }
+     //Select Tuesday Availability
+     handleTuesdayAvailabilitySelect = (event) => {
+		this.setState({ Tuesday: event.target.value }, () => console.log('Tuesday Availability: ', this.state.Monday));
+    }
+     //Select Wednesday Availability
+     handleWednesdayAvailabilitySelect = (event) => {
+		this.setState({ Wednesday: event.target.value }, () => console.log('Wednesday Availability: ', this.state.Monday));
+    }
+     //Select Thursday Availability
+     handleThursdayAvailabilitySelect = (event) => {
+		this.setState({ Thursday: event.target.value }, () => console.log('Thursday Availability: ', this.state.Monday));
+    }
+     //Select Friday Availability
+     handleFridayAvailabilitySelect = (event) => {
+		this.setState({ Friday: event.target.value }, () => console.log('Friday Availability: ', this.state.Monday));
+    }
+     //Select Monday Availability
+     handleMondayAvailabilitySelect = (event) => {
+		this.setState({ Monday: event.target.value }, () => console.log('Monday Availability: ', this.state.Monday));
+    }
+     //Select Saturday Availability
+     handleSaturdayAvailabilitySelect = (event) => {
+		this.setState({ Saturday: event.target.value }, () => console.log('Saturday Availability: ', this.state.Monday));
+    }
+     //Select Sunday Availability
+     handleSundayAvailabilitySelect = (event) => {
+		this.setState({ Sunday: event.target.value }, () => console.log('Sunday Availability: ', this.state.Monday));
     }
     //email single input
     handleEmailChange = (event) => {
@@ -100,7 +159,14 @@ class AccountSetUpForm extends React.Component{
             phoneNumber: this.state.phoneNumber,
             userNumChildrenSelection: this.state.userNumChildrenSelection,
 			selectedChildGroup: this.state.selectedChildGroup,
-			description: this.state.description
+            description: this.state.description,
+            Monday: this.state.Monday, 
+            Tuesday:this.state.Tuesday, 
+            Wednesday: this.state.Wednesday,
+            Thursday: this.state.Thursday,
+            Friday: this.state.Friday,
+            Saturday: this.state.Saturday, 
+            Sunday: this.state.Sunday,
 		};
 		console.log('Send this in a POST request:', formPayload);
         this.handlePostToDatabase(formPayload);
@@ -128,7 +194,14 @@ class AccountSetUpForm extends React.Component{
                 phone_number:event.phoneNumber, 
                 num_children:event.userNumChildrenSelection, 
                 child_group:event.selectedChildGroup, 
-                description:event.description
+                description:event.description,
+                Monday: event.Monday, 
+                Tuesday:event.Tuesday, 
+                Wednesday: event.Wednesday,
+                Thursday: event.Thursday,
+                Friday: event.Friday,
+                Saturday: event.Saturday, 
+                Sunday: event.Sunday,
             })
            })
            .then(res => res.json())
@@ -184,11 +257,53 @@ class AccountSetUpForm extends React.Component{
                          </section>
                          <section>
                             <SelectInput
-                                name={'ageRange'}
+                                name={'numChildren'}
                                 placeholder={'# Children'}
                                 controlFunc={this.handleNumChildrenSelect}
-                                options={this.state.ageOptions}
+                                options={this.state.numChildrenOptions}
                                 selectedOption={this.state.userNumChildrenSelection} />
+                            <SelectInput
+                                name={'Monday'}
+                                placeholder={'Monday Availability'}
+                                controlFunc={this.handleMondayAvailabilitySelect}
+                                options={this.state.mondayOptions}
+                                selectedOption={this.state.Monday} />
+                            <SelectInput
+                                name={'Tuesday'}
+                                placeholder={'Tuesday Availability'}
+                                controlFunc={this.handleTuesdayAvailabilitySelect}
+                                options={this.state.tuesdayOptions}
+                                selectedOption={this.state.Tuesday} />
+                            <SelectInput
+                                name={'Wednesday'}
+                                placeholder={'Wednesday Availability'}
+                                controlFunc={this.handleWednesdayAvailabilitySelect}
+                                options={this.state.wednesdayOptions}
+                                selectedOption={this.state.Wednesday} />
+                            <SelectInput
+                                name={'Thursday'}
+                                placeholder={'Thursday Availability'}
+                                controlFunc={this.handleThursdayAvailabilitySelect}
+                                options={this.state.thursdayOptions}
+                                selectedOption={this.state.Thursday} />
+                            <SelectInput
+                                name={'Friday'}
+                                placeholder={'Friday Availability'}
+                                controlFunc={this.handleFridayAvailabilitySelect}
+                                options={this.state.fridayOptions}
+                                selectedOption={this.state.Friday} />
+                            <SelectInput
+                                name={'Saturday'}
+                                placeholder={'Saturday Availability'}
+                                controlFunc={this.handleSaturdayAvailabilitySelect}
+                                options={this.state.saturdayOptions}
+                                selectedOption={this.state.Saturday} />
+                            <SelectInput
+                                name={'Sunday'}
+                                placeholder={'Sunday Availability'}
+                                controlFunc={this.handleSundayAvailabilitySelect}
+                                options={this.state.sundayOptions}
+                                selectedOption={this.state.Sunday} />
                          </section>
                          <section>
                             <SingleInput
@@ -264,5 +379,6 @@ class AccountSetUpForm extends React.Component{
     }
 }
 
-export default AccountSetUp;
+const condition = authUser => authUser != null;
 
+export default withAuthorization(condition)(AccountSetUp);

@@ -75,7 +75,6 @@ class SignUpFormBase extends React.Component {
             <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='teal' textAlign='center'>
-                    {/* FIXME: image not showing */}
                     <Image src='https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/57775029_10155892215401191_8643864400391831552_n.jpg?_nc_cat=107&_nc_ht=scontent-lax3-1.xx&oh=fbb00cbdc8f01fb0e9758bb1c91a5dd7&oe=5D6CB372' height="20%" width="20%" size='small' /> Log-in to your account
                 </Header>
                     <Form size='large' onSubmit={this.onSubmit}>
