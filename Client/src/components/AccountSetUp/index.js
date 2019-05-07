@@ -12,7 +12,7 @@ import { withAuthorization } from '../Session';
 
 //second form with all settings (https://lorenstewart.me/2016/10/31/react-js-forms-controlled-components/)
 import './styles.css';  
-import PasswordChange from '../PasswordChange';
+// import PasswordChange from '../PasswordChange';
 
 class AccountSetUp extends React.Component {
     render() {

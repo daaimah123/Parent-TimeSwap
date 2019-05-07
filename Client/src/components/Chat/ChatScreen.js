@@ -16,8 +16,9 @@ class ChatScreen extends React.Component {
           messages: [], 
           text: '', 
           usersWhoAreTyping: [], 
-        //   joinableRooms: [],
-        //   joinedRooms: []
+          joinableRooms: [],
+          joinedRooms: [],
+          roomId: null,
       }
     }
   
@@ -31,19 +32,8 @@ class ChatScreen extends React.Component {
     chatManager.connect()
     .then(currentUser => {
         this.setState({ currentUser })
-        // this.currentUser.getJoinableRooms()
-             // .then(joinableRooms => {
-            //     this.setState({
-            //         joinableRooms,
-            //         joinedRooms: this.state.currentUser.rooms
-            //     })
-            //     console.log('joinableRooms',joinableRooms)
-            //     console.log('joinedRooms',this.currentUser.rooms)
-            // })
-            // .catch(err => console.log('Error on joinableRooms: ', err))
-            // }
-
         console.log('Successful! Current user: ', currentUser)
+
         return currentUser.subscribeToRoom({
             roomId: "19407429", 
             // messageLimit: 100, 
@@ -82,36 +72,74 @@ class ChatScreen extends React.Component {
         console.log('current room', currentRoom)
     })
     .catch(error => console.error('Error: ', error))
+
+
+//get other rooms that are already created
+    chatManager.connect()
+    .then(currentUser => {
+        this.currentUser = currentUser
+        this.getRooms()
+        this.createRoom()
+        // this.subscribeToRoom()
+    })
+    .catch(err => console.log('Error on connecting: ', err))    
     }
 
-    // .then(joinableRooms => {
-    //     this.setState({
-    //         joinableRooms,
-    //         joinedRooms: this.state.currentUser.rooms
-    //     })
-    //     console.log('joinableRooms',joinableRooms)
-    //     console.log('joinedRooms',this.currentUser.rooms)
-    // })
-    // .catch(err => console.log('Error on joinableRooms: ', err))
-    // }
+//create a room
 
-    // currentUser.createRoom({
-    //     name: 'general',
-    //     private: true,
-    //     addUserIds: ['craig', 'kate'],
-    //     customData: { foo: 42 },
-    //   }).then(room => {
-    //     console.log(`Created room called ${room.name}`)
-    //   })
-    //   .catch(err => {
-    //     console.log(`Error creating room ${err}`)
-    //   }),
+    createRoom = () => {
+        this.currentUser.createRoom({
+            name: 'general',
+            private: false,
+            addUserIds: ['paul', 'kate'], //FIXME: kate needs to be user id that was clicked on, can this be a passed property?
+            customData: { foo: 42 },
+        }).then(room => {
+            console.log(`Created room called ${room.name}`)
+        })
+        .catch(err => {
+            console.log(`Error creating room ${err}`)
+        })
+    }
   
+  
+
+    getRooms = () => {
+        this.currentUser.getJoinableRooms()
+        .then(joinableRooms => {
+            this.setState({
+                joinableRooms, 
+                joinedRooms: this.currentUser.rooms
+            })
+        })
+        .catch(err => console.log('Error on joinableRooms: ', err))    
+    }
+
+
+    subscribeToRoom = (roomId) => {
+        this.setState({messages: []})
+        this.currentUser.subscribeToRoom({
+            roomId: roomId, 
+            hooks: {
+                onMessage: message => {
+                    this.setState({
+                        messages: [...this.state.messages, message]
+                    })
+                }
+            }
+        })
+        .then(room => {
+            this.setState({
+                roomId: room.id
+            })
+            this.getRooms()
+        })
+        .catch(err => console.log('error on subscribing to room:', err))
+    }
     
     sendMessage = (text) => {
         this.state.currentUser.sendMessage({
         text,
-        roomId: this.state.currentRoom.id,
+        roomId: this.state.roomId,
         })
     }
 
@@ -155,8 +183,9 @@ class ChatScreen extends React.Component {
                     <aside style={styles.whosOnlineListContainer}>
                         <h2>Who's Online?</h2>
                         <WhosOnlineList users={this.state.currentRoom.users} currentUser={this.state.currentUser}/>
-                        <h2>Room List</h2>
-                        <RoomList/>
+                        <RoomList 
+                        subscribeToRoom={this.subscribeToRoom}
+                        rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}/>
                     </aside>
                     <section style={styles.chatListContainer}>
                         <MessagesList messages={this.state.messages} style={styles.chatList}/>
