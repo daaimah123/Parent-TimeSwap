@@ -167,6 +167,7 @@ class ChatScreen extends React.Component {
             flexDirection: 'column',
           },
        }
+       console.log('blah blah blah ', this.state.currentRoom.users)
       return (
         <div>
             <h1>Chat Screen</h1>
@@ -175,6 +176,7 @@ class ChatScreen extends React.Component {
                 <div style={styles.chatContainer}>
                     <aside style={styles.whosOnlineListContainer}>
                         <h2>Who's Online?</h2>
+                        
                         <WhosOnlineList users={this.state.currentRoom.users} currentUser={this.state.currentUser}/>
                         <RoomList 
                         roomId={this.state.roomId}

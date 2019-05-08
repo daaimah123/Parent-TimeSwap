@@ -23,20 +23,20 @@ app.use(cors())
 ================================================================================================================= */
 // pool manages postgreSQL clients;
 const { Pool } = require('pg')
-// const pool = new Pool({
-//     user: 'codetl',
-//     host: 'localhost',
-//     database: 'final_project', //database_name
-//     password: 'password',
-//     port: 5432,
-//   })
-
 const pool = new Pool({
-    // 'postgres://localhost:5432/database_name'
-    connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/final_project ',
-    // Use SSL but only in production
-    ssl: process.env.NODE_ENV === 'production'
-  });
+    user: 'codetl',
+    host: 'localhost',
+    database: 'final_project', //database_name
+    password: 'password',
+    port: 5432,
+  })
+
+// const pool = new Pool({
+//     // 'postgres://localhost:5432/database_name'
+//     connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/final_project ',
+//     // Use SSL but only in production
+//     ssl: process.env.NODE_ENV === 'production'
+//   });
 
 
 
@@ -158,14 +158,14 @@ app.post('/authenticate', (req, res) => {
 ================================================================================================================= */
 
 
-if (process.env.NODE_ENV === "production") {  //production means live instead of local
-    // Serve any static files
-    app.use(express.static(path.join(__dirname, "../client/build"))); //build dir will be populated
-    // Handle React routing, return all requests to React app
-    app.get("*", function(req, res) {
-      res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-    });
-  }
+// if (process.env.NODE_ENV === "production") {  //production means live instead of local
+//     // Serve any static files
+//     app.use(express.static(path.join(__dirname, "../client/build"))); //build dir will be populated
+//     // Handle React routing, return all requests to React app
+//     app.get("*", function(req, res) {
+//       res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+//     });
+//   }
   
   /* =============================================  Listening Message  =======================================================
 ================================================================================================================= */

@@ -1,5 +1,5 @@
 
-import app from 'firebase/app'
+import app from 'firebase/app';
 //importing package responsible for all authentication
 import 'firebase/auth';
 
