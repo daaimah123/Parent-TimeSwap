@@ -1,6 +1,22 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom';
 
 class MessagesList extends Component {
+
+  //prevents jump down if further up screen, jumps down if close to bottom
+  componentWillUpdate(){
+    const node = ReactDOM.findDOMNode(this)
+    this.shouldScrollToBottom = node.scrollTop + node.clientHeight + 100 >= node.scrollHeight 
+  }
+
+  //scroll window to bottom when new text added
+  componentDidUpdate(){
+    if (this.shouldScrollToBottom){
+      const node = ReactDOM.findDOMNode(this)
+      node.scrollTop = node.scrollHeight 
+    }
+  }
+
    render() {
        const styles = {
        container: {
@@ -24,14 +40,19 @@ class MessagesList extends Component {
         display: 'inline',
         padding: '4px 8px',
         borderRadius: '8px',
-         // //  margin: '40px',
-        //  display: 'inline-block',
-        //  position: 'relative',
-        // //  width: '200px',
-        //  height: 'auto',
-        //  backgroundColor: 'gold'
       },
      }
+
+     if (!this.props.roomId){
+       return (
+         <div>
+          <div>
+            &larr; Join A Room!
+           </div>
+         </div>
+       )
+     }
+
        return (
            <div
               style={{

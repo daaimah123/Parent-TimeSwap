@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
-
+import { Row, Col, CardTitle, CardPanel } from 'react-materialize';
 
 class GetByZipCodeSearch extends Component {
     constructor(props) {
@@ -40,6 +40,8 @@ class GetByZipCodeSearch extends Component {
         event.preventDefault();
     }
   
+// ================== SEARCH CARDS ===================
+
     userCard = () =>{
       const {items} = this.state;
         return (  
@@ -61,7 +63,6 @@ class GetByZipCodeSearch extends Component {
           </div>
         )
     }    
-    
 
     render() {
       const { value, /*items*/ } = this.state; //allows this.state to be assumed
@@ -85,6 +86,7 @@ class GetByZipCodeSearch extends Component {
       
           : null
           }
+          
         </section>
       );
     }

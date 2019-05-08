@@ -33,7 +33,7 @@ class About extends React.Component {
                   </Row>
               </Container>
               <Container>
-                  <Row>
+                  <Row >
                   {
                     userStories.map((story) => {
                       return (

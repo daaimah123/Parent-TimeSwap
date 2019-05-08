@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-
+import SignInGoogleBase  from './SignInGoogleBase';
 import { SignUpLink } from '../SignUp';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
@@ -81,6 +81,7 @@ class SignInFormBase extends React.Component {
                         type="password"
                         placeholder="Enter Password"
                     />
+                    {/* <SignInGoogle/> */}
                     <Button color='teal' fluid size='large' disabled={isInvalid} type='submit'>Sign In</Button>
                     {error && <p>{error.message}</p>}
                     </Segment>
@@ -96,5 +97,9 @@ const SignInForm = compose(
     withRouter, withFirebase
     )(SignInFormBase);
 
+const SignInGoogle = compose(
+    withRouter,withFirebase
+    )(SignInGoogleBase);
+
 export default SignIn;
-export {SignInForm};
+export {SignInForm, SignInGoogle};

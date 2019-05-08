@@ -256,12 +256,14 @@ class AccountSetUpForm extends React.Component{
                                 selectedOptions={this.state.selectedChildGroup} /> 
                          </section>
                          <section>
+                            Number of Children at Home
                             <SelectInput
                                 name={'numChildren'}
                                 placeholder={'# Children'}
                                 controlFunc={this.handleNumChildrenSelect}
                                 options={this.state.numChildrenOptions}
                                 selectedOption={this.state.userNumChildrenSelection} />
+                            Week Availability
                             <SelectInput
                                 name={'Monday'}
                                 placeholder={'Monday Availability'}
