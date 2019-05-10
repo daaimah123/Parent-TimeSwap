@@ -35,6 +35,37 @@ class GetAllUserCards extends Component {
           )
       }
 
+      renderTrails = () => {
+        
+          const trail= this.state.items.map(item  => {
+            return(
+                <div className="card" style={{width: 30 + 'rem' }}>
+                  <img className="card-img-top" src={item.id ? ( item.name) : ("http://appalachiantrail.org/images/default-source/default-album/trailfocus.jpg?sfvrsn=2")} />
+                    <div className="card-body">
+                      <h1 className="card-title">Name</h1>
+                        <h2 className="card-text">Location </h2>
+                          <h4 className="card-text">Summary </h4>
+      <ul className="list-group list-group-flush">
+                  <li className="list-group-item">Difficulty: </li>
+                  <li className="list-group-item">Length:  miles</li>
+                  <li className="list-group-item">Ascent:  ft, Descent:  ft</li>
+                  <li className="list-group-item">Conditions: </li>
+                  <li className="list-group-item">High: </li>
+                  <li className="list-group-item">Stars: </li>
+                  <li className="list-group-item"><a href='#' rel="noopener noreferrer" className="card-link">Trail Information</a></li>
+                  </ul>
+                  </div>
+              </div>
+            )
+          })
+          return(
+            <div className = "row">
+              {trail}
+            </div>
+          )
+        }
+      
+
     render(){
         const { error, isLoaded, items} = this.state; //allows this.state to be assumed
         if (error) {
@@ -65,10 +96,12 @@ class GetAllUserCards extends Component {
                           <strong>Friday: </strong>{item.friday} <br/>
                           <strong> Saturday: </strong>{item.saturday} <br/>
                           <strong>Sunday: </strong>{item.sunday} 
+
                         </Card.Footer>
                       </Card>;
                     </div>
                 ))}
+                <div>{this.renderTrails()}</div>
             </div> 
             )
         }
@@ -76,3 +109,5 @@ class GetAllUserCards extends Component {
 }
 
 export default GetAllUserCards;
+
+

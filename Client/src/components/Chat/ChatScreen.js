@@ -38,15 +38,16 @@ class ChatScreen extends React.Component {
             roomId: "19407429", 
             // messageLimit: 100, 
             hooks: {
+                // onPresenceChanged: (state, user) => {
+                //     //pass state.current to presence rendering in whosonlinelist
+                //     console.log(`User ${user.name} is ${state.current}`)
+                // },
                 // onMessage: message => {console.log("received message", message)},
                 onMessage: message => {
                     this.setState({
                         messages: [...this.state.messages, message]
                     })
                 }, 
-                onAddedToRoom: room => {
-                    // console.log(`Added to room ${room.name}`)
-                },
                 onUserStartedTyping: user => {
                     this.setState({
                         usersWhoAreTyping: [...this.state.usersWhoAreTyping, user.name]
@@ -59,9 +60,9 @@ class ChatScreen extends React.Component {
                         )
                     })
                 },
-                onUserCameOnline: () => this.forceUpdate(), 
-                onUserWentOffline: () => this.forceUpdate(), 
-                onUserJoined: () => this.forceUpdate()
+                // onUserCameOnline: () => this.forceUpdate(), 
+                // onUserWentOffline: () => this.forceUpdate(), 
+                // onUserJoined: () => this.forceUpdate()
             },
         })
     })
@@ -97,21 +98,10 @@ class ChatScreen extends React.Component {
                 name: "User Private4",
                 private: true,
                 addUserIds: [this.currentUser.id, userToChatWith]
-                //[this.currentUser.id,  this.getEveryoneOnline()]//FIXME:second element should be clicked on username, do i need to pass a method that selects otherUser when clicked
               }) 
               .then(room => this.subscribeToRoom(room.id))
               .catch(err => console.log('Error with createRoom: ', err)) 
-            //   console.log(this.getEveryoneOnline())
-                //  console.log('HERE ====> ', this.state.currentRoom.users)
     }
-  
-    //loop through everyone online TODO: (want to use this as the second addUserId element so that it will add clicked on user to room with it)
-    // getEveryoneOnline = () => {
-    //     for (let i in this.state.currentRoom.users){
-    //         // return this.state.currentRoom.users[i].id
-    //         return this.state.currentRoom.users[i].id
-    //     }
-    // }
 
     //get joinable rooms
     getRooms = () => {
@@ -200,6 +190,7 @@ class ChatScreen extends React.Component {
                         <h2>Who's Online?</h2>
                         <WhosOnlineList 
                             handleUserChat={this.createPrivateRoom}
+                            // TODO: want to pass all users, not just users in room
                             users={this.state.currentRoom.users} 
                             currentUser={this.state.currentUser}/>
                         <RoomList 
