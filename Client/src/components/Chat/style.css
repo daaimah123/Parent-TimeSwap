@@ -11,3 +11,65 @@
 .rooms-list .room.active a {
     color: white;
 }
+.holder{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.input-holder {
+  position: relative;
+}
+
+.input {
+  height: 50px;
+  font-size: 16px;
+  padding: 13px 15px;
+  border-radius: 4px;
+  border: 1px solid grey;
+  width: 300px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: turquoise;
+} 
+
+/* .input:focus {
+  transform: scale(.75) translateY(-39px) translateX(-5px);
+  color: turquoise;
+}  */
+
+.submitButton {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: turquoise;
+    color:  black;
+    font-size: 17px;
+    border: 1px solid black;
+    border-left: none;
+    cursor: pointer;
+  }
+
+  /* .userNameForm {
+    height: 28px;
+    font-size: 16px;
+    padding: 13px 15px;
+    border-radius: 4px;
+    outline: none;
+    margin:auto;
+    max-width:300px;
+    background-color: yellow;
+  } */
+
+  .body {
+    background: #00b5ad!important;
+    color: black;
+    line-height: 1.6;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}

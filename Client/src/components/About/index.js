@@ -3,7 +3,7 @@ import { LandingLink } from '../Landing/index';
 import { Row, Col, Container, Jumbotron} from 'react-bootstrap/';
 import { Card, /*Icon, Item */ Image} from 'semantic-ui-react';
 import SearchAvailabilityLink from '../SearchAvailability/SeachAvailabilityLink';
-// import('images/Peter.png');
+import './style.css';
 
 /* ============= ABOUT PAGE CONTENT ============== */
 

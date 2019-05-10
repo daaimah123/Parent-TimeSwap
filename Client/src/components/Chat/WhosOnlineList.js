@@ -4,23 +4,28 @@ class WhosOnlineList extends React.Component {
     // constructor(props){
     //     super(props);
     // }
-
     renderUsers = () => {
         return (
             <ul>
                 {this.props.users.map((user, index) => {
-                    console.log('user',user);
-                    console.log('currentUser',this.props.currentUser);
                   if (user.id === this.props.currentUser.id) {
                     return (
-                      <WhosOnlineListItem key={index} presenceState="online">
+                      <WhosOnlineListItem 
+                      key={index} 
+                      presenceState="online"
+                      handleUserChat={this.props.handleUserChat}
+                      userId={user.name}>
                         {user.name} (You)
                       </WhosOnlineListItem>
                     )
                   }
                   return (
-
-                    <WhosOnlineListItem key={index} presenceState={user.presence.state}>
+                    <WhosOnlineListItem 
+                    handleUserChat={this.props.handleUserChat} 
+                    key={index} 
+                    presenceState={user.presence.state}
+                    userId={user.id}
+                    >
                       {user.name} ({user.presence.state})
                     </WhosOnlineListItem>
                   )
@@ -56,8 +61,10 @@ class WhosOnlineListItem extends React.Component {
         marginRight: 10,
       },
     }
+    // console.log(this.props)
     return (
       <li style={styles.li}>
+      <button onClick={() => this.props.handleUserChat(this.props.userId)} >Start Chat</button>
         <div
           style={{
             ...styles.div,

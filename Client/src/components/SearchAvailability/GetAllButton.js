@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-// import '../App.css';
-// import Card from 'react-bootstrap/Card';
-// import CardComponent from './UserCards';
+import './style.css';
 import GetAllUserCards from './GetAllUserCards';
 
 class GetAllButton extends Component {
@@ -23,13 +21,15 @@ class GetAllButton extends Component {
 
   render() {
       return (
-        <section>
-          <div>
-            <button onClick={this.handleClick}>
+        <section className={'userNameForm'}>
+          <div className={'buttonLocation'}>
+            <button className={'getAllButton'} onClick={this.handleClick}>
             Get All Users
             {/* this will toggle, wont populate input given */}
             </button>
-            {this.state.allEvents ? <GetAllUserCards /> : null} 
+            </div>
+            <div>
+              {this.state.allEvents ? <GetAllUserCards /> : null} 
           </div>
         </section>
       );

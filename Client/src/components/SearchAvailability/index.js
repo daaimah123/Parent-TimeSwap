@@ -12,6 +12,9 @@ class SearchAvailability extends React.Component {
                 <h1>Search Availability</h1>
             </div>
             <GetAllButton />
+            <br/>
+            <br/>
+            <br/>
             <GetByZipCodeSearch />
             </section>
         )

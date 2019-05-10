@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchAvailabilityLink from '../SearchAvailability/SeachAvailabilityLink';
-import './index.css';
+import './styles.css';
 // import { Container} from 'semantic-ui-react';
 // import { withFirebase } from '../Firebase';
 import CheckboxOrRadioGroup from './form_components/CheckboxOrRadioGroup';
@@ -21,7 +21,6 @@ class AccountSetUp extends React.Component {
                 <h1>Account Set Up</h1>
                 <AccountSetUpForm />
                 <SearchAvailabilityLink />
-                
             </div>
         )
     }
@@ -235,12 +234,7 @@ class AccountSetUpForm extends React.Component{
              <h1 className='brand'><span> Set Up Your Account</span></h1>
              <div className='wrapper'>
                  <div className="info">
-                     <h3>Some Words</h3>
-                     <ul>
-                         <li>test line 1</li>
-                         <li>test line 2</li>
-                         <li>test line 3</li>
-                     </ul>
+                     <h3>Complete the following fields to be added!</h3>
                  </div>
                  <div className='contact'>
                      <h3>statement</h3>

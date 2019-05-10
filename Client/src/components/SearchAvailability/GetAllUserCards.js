@@ -45,18 +45,28 @@ class GetAllUserCards extends Component {
         return (
             <div className="card-group">
                 {items.map(item => (
-                    <div key={item.user_id} className="row"> 
-                    <Card border="dark" style={{ width: '18rem', color: 'teal'}}>
-                        <Card.Header>User Name: {item.user_name} </Card.Header>
+                    <div key={item.user_id} className="row">
+                      <Card className="text-center">
+                        <Card.Header>User Name: {item.user_name}
+                          <Link to={ROUTES.CHAT} id={item.user_id}><h3>Click to Chat</h3></Link>
+                        </Card.Header>
                         <Card.Body>
-                            <Card.Title>User Zip Code: {item.home_zip_code}</Card.Title>{/* TODO: Would like to hide later */}
-                            <Card.Subtitle className="mb-2 text-muted">Number Children: {item.num_children} <br/> Children Age Group: {item.child_group}</Card.Subtitle>
-                            <Card.Text>{item.description}</Card.Text>
-                            <Card.Header><strong>Monday: </strong>{item.monday}<br/> <strong>Tuesday: </strong>{item.tuesday} <br/> <strong>Wednesday: </strong>{item.wednesday} <br/> <strong>Thursday:</strong> {item.thursday} <br/> <strong>Friday: </strong>{item.friday} <br/><strong> Saturday: </strong>{item.saturday} <br/><strong>Sunday: </strong>{item.sunday} </Card.Header>
-                            {/* <Link to={ROUTES.CHAT} params={item.user_id}> Send Request</Link>  */}
-                            <Link to={ROUTES.CHAT} id={item.user_id}><h1>Click to Chat</h1></Link> {/* //FIXME: is this passing param user_id to the link?*/}
+                          <Card.Title>User Zip Code: {item.home_zip_code}</Card.Title>
+                          <Card.Text>
+                          {item.description} <br/> 
+                          Number Children: {item.num_children}   |   Children Age Group: {item.child_group}
+                          </Card.Text>
                         </Card.Body>
-                        </Card>
+                        <Card.Footer className="text-muted">
+                          <strong>Monday: </strong>{item.monday}<br/> 
+                          <strong>Tuesday: </strong>{item.tuesday} <br/> 
+                          <strong>Wednesday: </strong>{item.wednesday} <br/> 
+                          <strong>Thursday:</strong> {item.thursday} <br/> 
+                          <strong>Friday: </strong>{item.friday} <br/>
+                          <strong> Saturday: </strong>{item.saturday} <br/>
+                          <strong>Sunday: </strong>{item.sunday} 
+                        </Card.Footer>
+                      </Card>;
                     </div>
                 ))}
             </div> 

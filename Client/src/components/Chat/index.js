@@ -36,7 +36,7 @@ class Chat extends React.Component {
     if (this.state.currentScreen === 'WhatIsYourUserNameScreen'){
       return <UsernameForm onSubmit={this.handleUsernameSubmitted}/>
     } else if (this.state.currentScreen === 'ChatScreen'){
-      return <ChatScreen currentUsername={this.state.currentUsername}/>
+      return (<ChatScreen currentUsername={this.state.currentUsername}/>)
     }
   }
 }

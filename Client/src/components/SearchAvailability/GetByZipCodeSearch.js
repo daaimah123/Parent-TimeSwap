@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
-import { Row, Col, CardTitle, CardPanel } from 'react-materialize';
+import './style.css';
+// import { FaSearch } from "@fortawesome/react-fontawesome";
+import { FaSearch } from 'react-icons/fa';
 
 class GetByZipCodeSearch extends Component {
     constructor(props) {
@@ -47,17 +49,28 @@ class GetByZipCodeSearch extends Component {
         return (  
           <div className="card-group">
            {items.map(item => (
-                    <div key={item.user_id} className="row"> 
-                    <Card border="dark" style={{ width: '18rem', color: 'teal'}}>
-                        <Card.Header>User Name: {item.user_name} </Card.Header>
+            <div key={item.user_id} className="row">
+                      <Card className="text-center">
+                        <Card.Header>User Name: {item.user_name}
+                          <Link to={ROUTES.CHAT} id={item.user_id}><h3>Click to Chat</h3></Link>
+                        </Card.Header>
                         <Card.Body>
-                            <Card.Title>User Zip Code: {item.home_zip_code}</Card.Title>{/* TODO: Would like to hide later */}
-                            <Card.Subtitle className="mb-2 text-muted">Number Children: {item.num_children} <br/> Children Age Group: {item.child_group}</Card.Subtitle>
-                            <Card.Text>{item.description}</Card.Text>
-                            <Card.Header><strong>Monday: </strong>{item.monday}<br/> <strong>Tuesday: </strong>{item.tuesday} <br/> <strong>Wednesday: </strong>{item.wednesday} <br/> <strong>Thursday:</strong> {item.thursday} <br/> <strong>Friday: </strong>{item.friday} <br/><strong> Saturday: </strong>{item.saturday} <br/><strong>Sunday: </strong>{item.sunday} </Card.Header>
-                            <Link to={ROUTES.CHAT} id={item.user_id}><h1>Click to Chat</h1></Link> {/* //FIXME: is this passing param user_id to the link?*/}
+                          <Card.Title>User Zip Code: {item.home_zip_code}</Card.Title>
+                          <Card.Text>
+                          {item.description} <br/> 
+                          Number Children: {item.num_children}   |   Children Age Group: {item.child_group}
+                          </Card.Text>
                         </Card.Body>
-                        </Card>
+                        <Card.Footer className="text-muted">
+                          <strong>Monday: </strong>{item.monday}<br/> 
+                          <strong>Tuesday: </strong>{item.tuesday} <br/> 
+                          <strong>Wednesday: </strong>{item.wednesday} <br/> 
+                          <strong>Thursday:</strong> {item.thursday} <br/> 
+                          <strong>Friday: </strong>{item.friday} <br/>
+                          <strong> Saturday: </strong>{item.saturday} <br/>
+                          <strong>Sunday: </strong>{item.sunday} 
+                        </Card.Footer>
+                      </Card>;
                     </div>
                 ))}
           </div>
@@ -68,26 +81,36 @@ class GetByZipCodeSearch extends Component {
       const { value, /*items*/ } = this.state; //allows this.state to be assumed
       const { handleSubmit, handleChange } = this; 
       return (
-        <section>
-          <form onSubmit={handleSubmit}>
-            <label>
-              Submit Zip Code Here
-              <input 
-              type="text" 
-              placeholder="i.e. 94545" 
-              value={value} 
-              onChange={handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-          {this.state.isLoaded ? 
-    
-          <this.userCard/>
-      
-          : null
-          }
+        <div>
+          <section>
+            <form className={'searchForm'} onSubmit={handleSubmit}>
+              <label>
+                Submit Zip Code Here
+              </label>
+                <input className={'searchInput'}
+                type="text" 
+                placeholder="i.e. 94545" 
+                value={value} 
+                onChange={handleChange} />
+              
+              <button className={'submitButton'}>
+                <FaSearch/>
+              </button> 
+                {/* type="submit" value="Submit" /> */}
+              
+            </form>
+          </section>
+          <div>
+            {this.state.isLoaded ? 
+            <div >
+              <this.userCard/>
+            </div>
+            : null
+            }
+          </div>
+        </div>
           
-        </section>
+       
       );
     }
 }

@@ -33,8 +33,7 @@ class ChatScreen extends React.Component {
     chatManager.connect()
     .then(currentUser => {
         this.setState({ currentUser })
-        console.log('Successful! Current user: ', currentUser)
-
+        // console.log('Successful! Current user: ', currentUser)
         return currentUser.subscribeToRoom({
             roomId: "19407429", 
             // messageLimit: 100, 
@@ -46,7 +45,7 @@ class ChatScreen extends React.Component {
                     })
                 }, 
                 onAddedToRoom: room => {
-                    console.log(`Added to room ${room.name}`)
+                    // console.log(`Added to room ${room.name}`)
                 },
                 onUserStartedTyping: user => {
                     this.setState({
@@ -68,31 +67,52 @@ class ChatScreen extends React.Component {
     })
     .then(currentRoom => {
         this.setState({currentRoom})
-        console.log('current room', currentRoom)
+        // console.log('current room', currentRoom)
     })
     .catch(error => console.error('Error: ', error))
-
 
     //get other rooms that are already created
     chatManager.connect()
     .then(currentUser => {
         this.currentUser = currentUser
         this.getRooms()
-        this.createRoom()
+        // this.createRoom()
         // this.subscribeToRoom()
     })
     .catch(err => console.log('Error on connecting: ', err))    
     }
 
-    //create a room
+    //create a public room
     createRoom = (name) => {
-        this.currentUser.createRoom({
-            name,
-        })
-        .then(room => this.subscribeToRoom(room.id))
-        .catch(err => console.log('Error with createRoom: ', err))    
+             this.currentUser.createRoom({
+                name,
+            })
+            .then(room => this.subscribeToRoom(room.id))
+            .catch(err => console.log('Error with createRoom: ', err)) 
+    }
+
+    //create a private room
+    createPrivateRoom = (userToChatWith) => {
+            this.currentUser.createRoom({
+                name: "User Private4",
+                private: true,
+                addUserIds: [this.currentUser.id, userToChatWith]
+                //[this.currentUser.id,  this.getEveryoneOnline()]//FIXME:second element should be clicked on username, do i need to pass a method that selects otherUser when clicked
+              }) 
+              .then(room => this.subscribeToRoom(room.id))
+              .catch(err => console.log('Error with createRoom: ', err)) 
+            //   console.log(this.getEveryoneOnline())
+                //  console.log('HERE ====> ', this.state.currentRoom.users)
     }
   
+    //loop through everyone online TODO: (want to use this as the second addUserId element so that it will add clicked on user to room with it)
+    // getEveryoneOnline = () => {
+    //     for (let i in this.state.currentRoom.users){
+    //         // return this.state.currentRoom.users[i].id
+    //         return this.state.currentRoom.users[i].id
+    //     }
+    // }
+
     //get joinable rooms
     getRooms = () => {
         this.currentUser.getJoinableRooms()
@@ -143,6 +163,7 @@ class ChatScreen extends React.Component {
     }
 
     render() {
+        // console.log(this.props.userId)
         const styles = {
           container: {
             height: '100vh',
@@ -167,7 +188,8 @@ class ChatScreen extends React.Component {
             flexDirection: 'column',
           },
        }
-       console.log('blah blah blah ', this.state.currentRoom.users)
+    //    console.log('hello', this.state.currentRoom.users)
+    //    console.log('blah blah blah ', this.state.currentRoom.users)
       return (
         <div>
             <h1>Chat Screen</h1>
@@ -176,24 +198,26 @@ class ChatScreen extends React.Component {
                 <div style={styles.chatContainer}>
                     <aside style={styles.whosOnlineListContainer}>
                         <h2>Who's Online?</h2>
-                        
-                        <WhosOnlineList users={this.state.currentRoom.users} currentUser={this.state.currentUser}/>
+                        <WhosOnlineList 
+                            handleUserChat={this.createPrivateRoom}
+                            users={this.state.currentRoom.users} 
+                            currentUser={this.state.currentUser}/>
                         <RoomList 
-                        roomId={this.state.roomId}
-                        subscribeToRoom={this.subscribeToRoom}
-                        rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}/>
+                            roomId={this.state.roomId}
+                            subscribeToRoom={this.subscribeToRoom}
+                            rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}/>
                         <NewRoomForm createRoom={this.createRoom}/>
                     </aside>
                     <section style={styles.chatListContainer}>
                         <MessagesList 
-                        roomId={this.state.roomId}
-                        messages={this.state.messages} 
-                        style={styles.chatList}/>
+                            roomId={this.state.roomId}
+                            messages={this.state.messages} 
+                            style={styles.chatList}/>
                         <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping}/>
                         <SendMessageForm 
-                        disabled={!this.state.roomId}
-                        onSubmit={this.sendMessage} 
-                        onChange={this.sendTypingEvent}/>
+                            disabled={!this.state.roomId}
+                            onSubmit={this.sendMessage} 
+                            onChange={this.sendTypingEvent}/>
                     </section>
                 </div>
             </div>
