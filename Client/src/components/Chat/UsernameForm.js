@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './chat.css';
 import { FaCommentDots } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -24,6 +24,12 @@ class UsernameForm extends React.Component {
         return (
             <div className={'holder'}>
                 <form onSubmit={this.onSubmit} className={'input-holder'}>
+                    <div>
+                        <label>
+                            <h1>Enter a Username </h1>
+                        </label>
+                    </div>
+                    
                     <input 
                     // className={"placeholder"}
                         className={'input'}
@@ -33,8 +39,8 @@ class UsernameForm extends React.Component {
                     />
                     {/* <div >placeholder=""</div> */}
                     {/* <input className={'submitButton'} type="submit"/> */}
-                    <button className="btn btn-outline-info my-2 my-sm-0" type="submit">
-                        <FaCommentDots/>
+                    <button className="btn btn-info my-2 my-sm-0" type="submit">
+                        <FaCommentDots style={{color: 'black'}}/>
                     </button> 
                 </form>
             </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
-import './style.css';
+// import './searchAvailability.css';
 // import { FaSearch } from "@fortawesome/react-fontawesome";
 import { FaSearch } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -49,7 +49,7 @@ userCard = () => {
   const {items} = this.state;
     const mappedCard = items.map(item  => {
       return(
-          <div key={item.user_id} className="card m-5" style={{width: '20rem', display: 'flex', flexDirection: 'row', justifyContent: "center"}}>
+          <div key={item.user_id} className="card m-5 user-card" style={{width: '20rem', display: 'flex', flexDirection: 'row', justifyContent: "center"}}>
               <div className="card-body">
                 <h1 className="card-title">{item.user_name}</h1>
                     <h4 className="card-text">{item.description}</h4>

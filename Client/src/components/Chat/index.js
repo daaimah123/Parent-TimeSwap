@@ -1,6 +1,6 @@
 import React from 'react';
 import { withAuthorization } from '../Session';
-import './style.css';
+import './chat.css';
 import UsernameForm from './UsernameForm';
 import ChatScreen from './ChatScreen';
 

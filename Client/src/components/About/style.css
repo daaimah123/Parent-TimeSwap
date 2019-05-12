@@ -1,9 +1,9 @@
-.body {
+/* .body {
     background: #17a2b8!important;
     color: black;
     line-height: 1.6;
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-}
+} */
 
 .pageBackground {
     min-height: 100vh;
@@ -17,7 +17,7 @@
     padding: 15px;
 }
 
-.imageBackground {
+/* .imageBackground {
     min-height: 10vh;
     display: block;
     justify-content: center; 
@@ -27,6 +27,6 @@
     background-size: cover;
     background-position: center center;
     padding: 15px;
-}
+} */
 
 

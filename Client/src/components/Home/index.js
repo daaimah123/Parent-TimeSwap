@@ -2,7 +2,7 @@ import React from 'react';
 import SearchAvailabilityLink from '../SearchAvailability/SeachAvailabilityLink';
 import { withAuthorization } from '../Session';
 import 'bootstrap/dist/css/bootstrap.css';
-import './style.css'
+import './home.css'
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
@@ -15,7 +15,7 @@ class Home extends React.Component {
           <Link to={ROUTES.SEARCH_AVAILABILITY}>
             <div className="row  mb-3">
               <div className="col-12 mt-3 ">
-                <div class="card">
+                <div class="card home-card">
                   <div class="card-horizontal">
                     <div class="img-square-wrapper">
                       <img className='card-img' alt='animated children playing on colorful bounce house together' src="http://clipartmag.com/images/playdate-clipart-23.png" height='100%' width='100%'/>
@@ -35,7 +35,7 @@ class Home extends React.Component {
           <Link to={ROUTES.SEARCH_AVAILABILITY}>
             <div className="row mb-3">
               <div className="col-12 mt-3">
-                <div class="card">
+                <div class="card home-card">
                   <div class="card-horizontal">
                     <div className="col-md-8 text-center">
                         <div class="card-body">
@@ -54,7 +54,7 @@ class Home extends React.Component {
 
           <Link to={ROUTES.SEARCH_AVAILABILITY}>
             <div className="row mb-3">
-              <div className="col-12 mt-3">
+              <div className="col-12 mt-3 home-card">
                 <div class="card">
                   <div class="card-horizontal">
                     <div class="img-square-wrapper">

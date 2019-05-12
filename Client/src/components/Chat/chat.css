@@ -1,8 +1,19 @@
 
+.body {
+  background: #17a2b8!important;
+  color: black;
+  line-height: 1.6;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
 .rooms-list .room.active a {
     color: white;
 }
+
+/* ========== USERNAME FORM COMPONENT STYLING ========== */
+
 .holder{
+  background-color: goldenrod;
   position: fixed;
   height: 100%;
   width: 100%;
@@ -28,11 +39,10 @@
 
 .input:focus {
   border-color: #17a2b8;
+  /* border-radius: 4px; */
+  border: 2px solid  #17a2b8;
 } 
 
-  .body {
-    background: #17a2b8!important;
-    color: black;
-    line-height: 1.6;
-    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+.btn {
+  height: 50px;
 }

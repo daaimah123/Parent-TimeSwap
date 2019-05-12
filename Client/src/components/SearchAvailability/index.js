@@ -2,7 +2,6 @@ import React from 'react';
 import GetAllButton from './GetAllButton';
 import GetByZipCodeSearch from './GetByZipCodeSearch';
 import { withAuthorization } from '../Session';
-import './style.css'
 
 class SearchAvailability extends React.Component {
     render() {

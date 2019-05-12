@@ -47,7 +47,7 @@ class MessagesList extends Component {
        return (
          <div>
           <h3>
-          &larr; Start a Private Chat with Another Member! <br/> &larr; See "Your Rooms" to Join A Chat!<br/>&larr;  Create a New Public Room for Others to Join!
+          <br/><br/><br/><br/><br/><br/>&larr; Start a Private Chat with Another Member! <br/><br/><br/> &larr; See "Your Rooms" to Join A Chat!<br/><br/><br/> &larr;  Create a New Public Room for Others to Join!
            </h3>
          </div>
        )

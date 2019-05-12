@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import '../App.css';
+import './searchAvailibility.css';
 // import Card from 'react-bootstrap/Card';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
@@ -38,7 +38,7 @@ class GetAllUserCards extends Component {
         const {items} = this.state;
           const mappedCard = items.map(item  => {
             return(
-                <div key={item.user_id} className="card m-5" style={{width: '20rem', display: 'flex', flexDirection: 'row', justifyContent: "center"}}>
+                <div key={item.user_id} className="card m-5 user-card" style={{width: '20rem', display: 'flex', flexDirection: 'row', justifyContent: "center"}}>
                     <div className="card-body">
                       <h1 className="card-title">{item.user_name}</h1>
                           <h4 className="card-text">{item.description}</h4>
@@ -64,7 +64,7 @@ class GetAllUserCards extends Component {
             )
           })
           return(
-            <div className = "row">
+            <div className = "row"  id="user-card">
               {mappedCard}
             </div>
           )
@@ -79,7 +79,7 @@ class GetAllUserCards extends Component {
             return <div>Loading...</div>;
           } else {
         return (
-                <div>{this.userCard()}}</div>
+                <div>{this.userCard()}</div>
             )
         }
     }
