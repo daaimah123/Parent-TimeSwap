@@ -35,7 +35,7 @@ class MessagesList extends Component {
        },
        message: { 
          fontSize: 15,
-         background: 'gold',
+         background: '#17a2b8',
         color: 'black',
         display: 'inline',
         padding: '4px 8px',
@@ -46,9 +46,9 @@ class MessagesList extends Component {
      if (!this.props.roomId){
        return (
          <div>
-          <div>
-            &larr; Join A Room!
-           </div>
+          <h3>
+          &larr; Start a Private Chat with Another Member! <br/> &larr; See "Your Rooms" to Join A Chat!<br/>&larr;  Create a New Public Room for Others to Join!
+           </h3>
          </div>
        )
      }

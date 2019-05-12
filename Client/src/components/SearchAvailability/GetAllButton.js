@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './style.css';
 import GetAllUserCards from './GetAllUserCards';
+// import Button from 'react-bootstrap/Button'
+import 'bootstrap/dist/css/bootstrap.css';
 
 class GetAllButton extends Component {
 
@@ -23,12 +25,11 @@ class GetAllButton extends Component {
       return (
         <section className={'userNameForm'}>
           <div className={'buttonLocation'}>
-            <button className={'getAllButton'} onClick={this.handleClick}>
+            <button className="btn btn-info" type="submit" onClick={this.handleClick}>
             Get All Users
-            {/* this will toggle, wont populate input given */}
             </button>
-            </div>
-            <div>
+          </div>
+          <div>
               {this.state.allEvents ? <GetAllUserCards /> : null} 
           </div>
         </section>

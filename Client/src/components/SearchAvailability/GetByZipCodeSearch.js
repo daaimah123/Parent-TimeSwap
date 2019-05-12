@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
 import './style.css';
 // import { FaSearch } from "@fortawesome/react-fontawesome";
 import { FaSearch } from 'react-icons/fa';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class GetByZipCodeSearch extends Component {
     constructor(props) {
@@ -48,7 +49,7 @@ userCard = () => {
   const {items} = this.state;
     const mappedCard = items.map(item  => {
       return(
-          <div key={item.user_id} className="card" style={{width: '30rem', display: 'flex', flexDirection: 'row', justifyContent: "center"}}>
+          <div key={item.user_id} className="card m-5" style={{width: '20rem', display: 'flex', flexDirection: 'row', justifyContent: "center"}}>
               <div className="card-body">
                 <h1 className="card-title">{item.user_name}</h1>
                     <h4 className="card-text">{item.description}</h4>
@@ -86,20 +87,22 @@ userCard = () => {
       return (
         <div>
           <section>
-            <form className={'searchForm'} onSubmit={handleSubmit}>
-              <label>
+            <form className="form-group" onSubmit={handleSubmit} >
+              <label for="userSearchZipCode">
                 Submit Zip Code Here
               </label>
-                <input className={'searchInput'}
-                  type="text" 
-                  placeholder="i.e. 94545" 
-                  value={value} 
-                  onChange={handleChange} 
-                />
-              <button className={'submitButton'}>
-                <FaSearch/>
-              </button> 
-                {/* type="submit" value="Submit" /> */}  
+               <div className='form-inline'>
+                  <input 
+                    id="userSearchZipCode"
+                    className="form-control mr-sm-2"
+                    type="search" 
+                    placeholder="i.e. 94545" 
+                    value={value} 
+                    onChange={handleChange} 
+                    aria-label="Search"
+                  />
+                <button className="btn btn-info" type="submit"><FaSearch/></button>
+              </div>
             </form>
           </section>
           <div>

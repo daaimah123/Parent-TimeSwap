@@ -1,6 +1,8 @@
 import React from 'react';
 import './style.css';
 import { FaCommentDots } from 'react-icons/fa';
+import 'bootstrap/dist/css/bootstrap.css';
+
 class UsernameForm extends React.Component {
     constructor(props){
         super(props);
@@ -31,7 +33,7 @@ class UsernameForm extends React.Component {
                     />
                     {/* <div >placeholder=""</div> */}
                     {/* <input className={'submitButton'} type="submit"/> */}
-                    <button className={'submitButton'}>
+                    <button className="btn btn-outline-info my-2 my-sm-0" type="submit">
                         <FaCommentDots/>
                     </button> 
                 </form>

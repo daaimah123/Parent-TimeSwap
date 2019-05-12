@@ -2,20 +2,23 @@ import React from 'react';
 import GetAllButton from './GetAllButton';
 import GetByZipCodeSearch from './GetByZipCodeSearch';
 import { withAuthorization } from '../Session';
-
+import './style.css'
 
 class SearchAvailability extends React.Component {
     render() {
         return (
-            <section>
+            <section className='pageBackground'>
             <div>
                 <h1>Search Availability</h1>
             </div>
-            <GetAllButton />
-            <br/>
-            <br/>
-            <br/>
-            <GetByZipCodeSearch />
+            <div  >
+                    <div>
+                        <GetAllButton />
+                    </div>
+                    <div>
+                        <GetByZipCodeSearch />
+                    </div>
+            </div>
             </section>
         )
     }

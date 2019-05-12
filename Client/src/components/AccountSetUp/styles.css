@@ -3,7 +3,7 @@
 }
 
 .body {
-    background: turquoise!important;
+    background: #17a2b8 !important;
     color: black;
     line-height: 1.6;
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
@@ -74,7 +74,7 @@ ul {
 .contact form button, .contact form input, .contact form textarea{
     width: 100%;
     padding: 1em;
-    border: 1px solid #00b5ad;
+    border: 1px solid #17a2b8;
 }
 
 .contact form button{
@@ -84,7 +84,7 @@ ul {
 }
 
 /* .contact form button:hover, .contact form button:focus{
-    background: #00b5ad;
+    background: #17a2b8;
     color: white;
     outline: 0;
     transition: background-color 2s ease-out;

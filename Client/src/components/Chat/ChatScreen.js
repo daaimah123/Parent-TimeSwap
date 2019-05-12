@@ -33,16 +33,9 @@ class ChatScreen extends React.Component {
     chatManager.connect()
     .then(currentUser => {
         this.setState({ currentUser })
-        // console.log('Successful! Current user: ', currentUser)
         return currentUser.subscribeToRoom({
             roomId: "19407429", 
-            // messageLimit: 100, 
             hooks: {
-                // onPresenceChanged: (state, user) => {
-                //     //pass state.current to presence rendering in whosonlinelist
-                //     console.log(`User ${user.name} is ${state.current}`)
-                // },
-                // onMessage: message => {console.log("received message", message)},
                 onMessage: message => {
                     this.setState({
                         messages: [...this.state.messages, message]
@@ -60,15 +53,11 @@ class ChatScreen extends React.Component {
                         )
                     })
                 },
-                // onUserCameOnline: () => this.forceUpdate(), 
-                // onUserWentOffline: () => this.forceUpdate(), 
-                // onUserJoined: () => this.forceUpdate()
             },
         })
     })
     .then(currentRoom => {
         this.setState({currentRoom})
-        // console.log('current room', currentRoom)
     })
     .catch(error => console.error('Error: ', error))
 
@@ -77,8 +66,6 @@ class ChatScreen extends React.Component {
     .then(currentUser => {
         this.currentUser = currentUser
         this.getRooms()
-        // this.createRoom()
-        // this.subscribeToRoom()
     })
     .catch(err => console.log('Error on connecting: ', err))    
     }
@@ -153,7 +140,6 @@ class ChatScreen extends React.Component {
     }
 
     render() {
-        // console.log(this.props.userId)
         const styles = {
           container: {
             height: '100vh',
@@ -168,7 +154,7 @@ class ChatScreen extends React.Component {
             width: '300px',
             flex: 'none',
             padding: 20,
-            backgroundColor: 'turquoise',
+            backgroundColor: 'goldenrod',
             color: 'black',
           },
           chatListContainer: {
@@ -178,19 +164,15 @@ class ChatScreen extends React.Component {
             flexDirection: 'column',
           },
        }
-    //    console.log('hello', this.state.currentRoom.users)
-    //    console.log('blah blah blah ', this.state.currentRoom.users)
-      return (
+       return (
         <div>
-            <h1>Chat Screen</h1>
-            <h3>Hello, {this.props.currentUsername}</h3>
+            <h1 className='text-center'>Hello, {this.props.currentUsername}</h1>
             <div style={styles.container}>
                 <div style={styles.chatContainer}>
                     <aside style={styles.whosOnlineListContainer}>
                         <h2>Who's Online?</h2>
                         <WhosOnlineList 
                             handleUserChat={this.createPrivateRoom}
-                            // TODO: want to pass all users, not just users in room
                             users={this.state.currentRoom.users} 
                             currentUser={this.state.currentUser}/>
                         <RoomList 
