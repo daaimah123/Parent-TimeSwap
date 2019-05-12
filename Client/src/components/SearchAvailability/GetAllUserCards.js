@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 // import '../App.css';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
-
 
 class GetAllUserCards extends Component {
     constructor(props) { //set up telling component what we need to start
@@ -35,74 +34,52 @@ class GetAllUserCards extends Component {
           )
       }
 
-      renderTrails = () => {
-        
-          const trail= this.state.items.map(item  => {
+      userCard = () => {
+        const {items} = this.state;
+          const mappedCard = items.map(item  => {
             return(
-                <div className="card" style={{width: 30 + 'rem' }}>
-                  <img className="card-img-top" src={item.id ? ( item.name) : ("http://appalachiantrail.org/images/default-source/default-album/trailfocus.jpg?sfvrsn=2")} />
+                <div key={item.user_id} className="card" style={{width: '30rem', display: 'flex', flexDirection: 'row', justifyContent: "center"}}>
                     <div className="card-body">
-                      <h1 className="card-title">Name</h1>
-                        <h2 className="card-text">Location </h2>
-                          <h4 className="card-text">Summary </h4>
-      <ul className="list-group list-group-flush">
-                  <li className="list-group-item">Difficulty: </li>
-                  <li className="list-group-item">Length:  miles</li>
-                  <li className="list-group-item">Ascent:  ft, Descent:  ft</li>
-                  <li className="list-group-item">Conditions: </li>
-                  <li className="list-group-item">High: </li>
-                  <li className="list-group-item">Stars: </li>
-                  <li className="list-group-item"><a href='#' rel="noopener noreferrer" className="card-link">Trail Information</a></li>
-                  </ul>
-                  </div>
-              </div>
+                      <h1 className="card-title">{item.user_name}</h1>
+                          <h4 className="card-text">{item.description}</h4>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item"><strong>Zip Code:</strong> {item.home_zip_code}</li>
+                  <li className="list-group-item"><strong>Number Children:</strong> {item.num_children}</li>
+                  <li className="list-group-item"><strong>Children Age Group:</strong> {item.child_group}</li>
+                  <li className="list-group-item">
+                      <strong>Monday: </strong>{item.monday}<br/> 
+                      <strong>Tuesday: </strong>{item.tuesday} <br/> 
+                      <strong>Wednesday: </strong>{item.wednesday} <br/> 
+                      <strong>Thursday:</strong> {item.thursday} <br/> 
+                      <strong>Friday: </strong>{item.friday} <br/>
+                      <strong> Saturday: </strong>{item.saturday} <br/>
+                      <strong>Sunday: </strong>{item.sunday} 
+                  </li>
+                  <li className="list-group-item">
+                    <Link to={ROUTES.CHAT} id={item.user_id}><h3>Click to Chat</h3></Link>
+                  </li>
+                </ul>
+                </div>
+                </div>
             )
           })
           return(
             <div className = "row">
-              {trail}
+              {mappedCard}
             </div>
           )
         }
       
 
     render(){
-        const { error, isLoaded, items} = this.state; //allows this.state to be assumed
+        const { error, isLoaded} = this.state; //allows this.state to be assumed
         if (error) {
             return <div>Error: {error.message}</div>;
           } else if (!isLoaded) {
             return <div>Loading...</div>;
           } else {
         return (
-            <div className="card-group">
-                {items.map(item => (
-                    <div key={item.user_id} className="row">
-                      <Card className="text-center">
-                        <Card.Header>User Name: {item.user_name}
-                          <Link to={ROUTES.CHAT} id={item.user_id}><h3>Click to Chat</h3></Link>
-                        </Card.Header>
-                        <Card.Body>
-                          <Card.Title>User Zip Code: {item.home_zip_code}</Card.Title>
-                          <Card.Text>
-                          {item.description} <br/> 
-                          Number Children: {item.num_children}   |   Children Age Group: {item.child_group}
-                          </Card.Text>
-                        </Card.Body>
-                        <Card.Footer className="text-muted">
-                          <strong>Monday: </strong>{item.monday}<br/> 
-                          <strong>Tuesday: </strong>{item.tuesday} <br/> 
-                          <strong>Wednesday: </strong>{item.wednesday} <br/> 
-                          <strong>Thursday:</strong> {item.thursday} <br/> 
-                          <strong>Friday: </strong>{item.friday} <br/>
-                          <strong> Saturday: </strong>{item.saturday} <br/>
-                          <strong>Sunday: </strong>{item.sunday} 
-
-                        </Card.Footer>
-                      </Card>;
-                    </div>
-                ))}
-                <div>{this.renderTrails()}</div>
-            </div> 
+                <div>{this.userCard()}}</div>
             )
         }
     }

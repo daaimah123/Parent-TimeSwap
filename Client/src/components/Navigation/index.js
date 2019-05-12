@@ -22,9 +22,9 @@ const Navigation = () => (
 const NavigationAuth = () =>(
      <Navbar bg="info">
         <Nav className="mr-auto">
-            <Nav.Link>
+            {/* <Nav.Link>
                 <Link to={ROUTES.LANDING} style={{ color: '#FFF', fontSize: '17px'}}><strong>Landing   | </strong></Link>
-            </Nav.Link>
+            </Nav.Link> */}
             
             <Nav.Link >
                 <Link to={ROUTES.HOME} style={{ color: '#FFF', fontSize: '17px'}}><strong>  Home   | </strong></Link>
@@ -48,9 +48,9 @@ const NavigationAuth = () =>(
 const NavigationNonAuth = () => (
     <Navbar bg="info">
         <Nav className="mr-auto">
-            <Nav.Link>
+            {/* <Nav.Link>
                 <Link to={ROUTES.LANDING} style={{ color: '#FFF', fontSize: '17px'}}>Landing   | </Link>
-            </Nav.Link>
+            </Nav.Link> */}
             <Nav.Link >
                 <Link to={ROUTES.SIGN_IN} style={{ color: '#FFF' }}>Sign In   | </Link>
             </Nav.Link>

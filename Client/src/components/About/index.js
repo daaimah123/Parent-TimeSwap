@@ -44,7 +44,7 @@ class About extends React.Component {
                   </Row>
               </Container>
               <hr/>
-              <LandingLink />
+              {/* <LandingLink /> */}
               <SearchAvailabilityLink />
             </div>
         )

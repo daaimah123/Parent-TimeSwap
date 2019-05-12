@@ -1,4 +1,4 @@
-
+/* 
   .searchForm {
     height: 28px;
     font-size: 16px;
@@ -28,9 +28,9 @@
     border: 1px solid black;
     border-left: none;
     cursor: pointer;
-  }
+  } */
 
-  .getAllButton {
+  /* .getAllButton {
     float: left;
     width: 20%;
     padding: 10px;
@@ -51,4 +51,4 @@
     outline: none;
     margin-left:auto;
     max-width:1000px
-  }
+  } */
