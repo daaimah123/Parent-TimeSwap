@@ -86,10 +86,10 @@ userCard = () => {
       const { handleSubmit, handleChange } = this; 
       return (
         <div>
-          <section>
+          <section className='searchLocation'>
             <form className="form-group" onSubmit={handleSubmit} >
               <label for="userSearchZipCode">
-                Submit Zip Code Here
+               <h3> Search By Zip Code</h3>
               </label>
                <div className='form-inline'>
                   <input 

@@ -1,4 +1,22 @@
-  .pageBackground {
+.buttonLocation {
+  /* display: flex;  */
+  justify-content: center;
+  text-align:center;
+  /* display:inline-block;  */
+  margin:10px;
+}
+
+.searchPageText {
+  text-align:center;
+}
+
+.searchLocation {
+  display: flex; 
+  text-align:center;
+  justify-content: center;
+}
+
+.pageBackground {
     min-height: 100vh;
     display: block;
     justify-content: center; 

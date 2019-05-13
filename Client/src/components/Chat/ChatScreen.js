@@ -82,7 +82,7 @@ class ChatScreen extends React.Component {
     //create a private room
     createPrivateRoom = (userToChatWith) => {
             this.currentUser.createRoom({
-                name: "User Private4",
+                name: `Private Chat Room: ${this.currentUser.id} | ${userToChatWith}`,
                 private: true,
                 addUserIds: [this.currentUser.id, userToChatWith]
               }) 

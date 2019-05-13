@@ -23,10 +23,17 @@ class GetAllButton extends Component {
 
   render() {
       return (
-        <section className={'userNameForm'}>
-          <div className={'buttonLocation'}>
-            <button className="btn btn-info" type="submit" onClick={this.handleClick}>
-            Get All Users
+        <section className='userNameForm'>
+          <div className='buttonLocation' >
+              <p>
+                <h3> Retrieve All Users</h3>
+              </p>
+            <button 
+              className="btn btn-info" 
+              type="submit" 
+              onClick={this.handleClick}
+            >
+            View Everyone!
             </button>
           </div>
           <div>

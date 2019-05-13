@@ -23,7 +23,7 @@ class Home extends React.Component {
                     <div className="col-md-8 text-center">
                       <div class="card-body">
                           <h1 class="card-title">Play!</h1>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          <h3 class="card-text">Watch, learn, and teach different parenting styles, customs, and child needs together through playdates.</h3>
                       </div>
                     </div>
                   </div>
@@ -40,7 +40,7 @@ class Home extends React.Component {
                     <div className="col-md-8 text-center">
                         <div class="card-body">
                             <h1 class="card-title">Help!</h1>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <h3 class="card-text">Find parents that you vibe with? Check out their availability and see if they can help out with the kiddos now and again!</h3>
                         </div>
                     </div>
                     <div class="img-square-wrapper">
@@ -63,7 +63,7 @@ class Home extends React.Component {
                     <div className="col-md-8 text-center">
                       <div class="card-body">
                           <h1 class="card-title">Network!</h1>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          <h3 class="card-text">Find support in common ground and build new relationships that help with both personal and professional navigation.</h3>
                       </div>
                     </div>
                   </div>

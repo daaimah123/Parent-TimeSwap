@@ -3,7 +3,7 @@ import React from 'react';
 import { Row, Col, Container, Jumbotron} from 'react-bootstrap/';
 import { Card, /*Icon, Item */ Image} from 'semantic-ui-react';
 import SearchAvailabilityLink from '../SearchAvailability/SeachAvailabilityLink';
-import './style.css';
+import './about.css';
 
 /* ============= ABOUT PAGE CONTENT ============== */
 
@@ -12,17 +12,27 @@ class About extends React.Component {
         return (    
           <div>
             <div className='pageBackground'>
-              {/* <h1 style={{display: 'flex', justifyContent: 'center'}}>About</h1> */}
               <Container>
-                  <Row style={{display: 'flex', justifyContent: 'center'}}><h1>A Parent's Network</h1></Row>
-                  <Row style={{display: 'flex', justifyContent: 'center'}}><h3>Parent's helping other perents to stay productive!</h3></Row>
-                  {/* <Jumbotron  > */}
-                      <Image className='text-center' src='https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/57775029_10155892215401191_8643864400391831552_n.jpg?_nc_cat=107&_nc_ht=scontent-lax3-1.xx&oh=fbb00cbdc8f01fb0e9758bb1c91a5dd7&oe=5D6CB372' height="20%" width="20%" />
-                  {/* </Jumbotron> */}
+                  
+                  <Jumbotron  >
+                  <Row style={{display: 'flex', justifyContent: 'center'}}><h1>Parent TimeSwap</h1></Row>
+                      <Image centered className='text-center' src='https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/57775029_10155892215401191_8643864400391831552_n.jpg?_nc_cat=107&_nc_ht=scontent-lax3-1.xx&oh=fbb00cbdc8f01fb0e9758bb1c91a5dd7&oe=5D6CB372' height="20%" width="20%" />
+                  <Row style={{display: 'flex', justifyContent: 'center'}}><h3>A parent's network helping other parents to stay productive!</h3></Row>
+                  </Jumbotron>
+                  <Row >
+                  {
+                    userStories.map((story) => {
+                      return (
+                        <Col><UserCard key={story} src={story.src} name={story.name} meta={story.meta} description={story.description} /></Col>
+                      )  
+                    })
+                  }   
+                  </Row>
+              </Container>
+              <Container>
                   <Jumbotron className='imageBackground'>
                   <Row>
-                      <strong>Problem: </strong> 
-                      Parents that have commitments and no one to watch their children in order to productively complete.
+                      <strong>Problem:</strong> Parents that have commitments and no one to watch their children in order to productively complete.
                   </Row>
                   <br/>
                   <Row>
@@ -34,17 +44,6 @@ class About extends React.Component {
                       <strong>Who Is Target:</strong> Parents and caregivers with children who may be busy and have responsibilities outside of parenting. This population may not have the funds, support from others, or knowledge of how to get support with filling in care gaps. 
                   </Row>
                   </Jumbotron>
-              </Container>
-              <Container>
-                  <Row >
-                  {
-                    userStories.map((story) => {
-                      return (
-                        <Col><UserCard key={story} src={story.src} name={story.name} meta={story.meta} description={story.description} /></Col>
-                      )  
-                    })
-                  }   
-                  </Row>
               </Container>
               <hr/>
               {/* <LandingLink /> */}

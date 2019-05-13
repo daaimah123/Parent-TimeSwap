@@ -5,7 +5,6 @@ import PasswordForgetFormBase from './PasswordForgetFormBase';
 
 const PasswordForget = () => (
     <div>
-        <h1>Password Forget</h1>
         <PasswordForgetForm />
 
     </div>

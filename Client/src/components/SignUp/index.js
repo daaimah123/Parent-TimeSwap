@@ -12,7 +12,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SignUp = () =>(
     <div>
-        <h1>Sign Up</h1>
         <SignUpForm />
     </div>
 )
