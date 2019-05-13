@@ -1,7 +1,7 @@
 *Parents helping other parents to stay productive by swapping time!*
 ========
 
-[Final product recording here](Daaimah_final_project_parent_timeswap.gif)
+![Final product recording here](Daaimah_final_project_parent_timeswap.gif)
 
 Next Steps:
 stuff here
