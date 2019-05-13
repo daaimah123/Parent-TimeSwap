@@ -2,7 +2,7 @@
 ========
 
 ![Final product recording here](Daaimah_final_project_parent_timeswap.gif)
-
+----------------
 **Project description:** 
 A parents’ network helping other parents to stay productive by swapping time to help with each other’s children, schedule play dates, and build supportive relationships!
 
@@ -20,18 +20,19 @@ A parents’ network helping other parents to stay productive by swapping time t
 * User search for available parents based on zip code
 * User can chat with other parents to make a playdate request
 
-
 **Choices:**
 * Firebase to authenticate and authorize
   * why
   * tradeoff
-* Chat Room Message Storage
-* 
-* 
+* Chat Room Message Storage 
+  * why
+  * tradeoff
+* Card Size
+  * why
+  * tradeoff
 
 **Next Steps:**
-Chat Room(s)
-* leave the chat room feature
+* leave chat room feature
   * why
   * tradeoff
 * remove username form, autogenerate username into private room with another user when click chat link from search card
@@ -40,7 +41,12 @@ Chat Room(s)
 * is there research / facts that can be added to about page?
   * why
   * tradeoff
-
+* allow user to edit their profile and update database
+  * why
+  * tradeoff
+* email or send text button (will not reveal info to other users) to send connection request
+  * why
+  * tradeoff
 
 
 
