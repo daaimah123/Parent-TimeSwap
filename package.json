@@ -23,6 +23,7 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "create-react-app": "^2.1.8",
+    "dotenv": "7.0.0",
     "express-generator": "^4.16.0",
     "express-pino-logger": "^4.0.0",
     "node-env-run": "^3.0.2",
