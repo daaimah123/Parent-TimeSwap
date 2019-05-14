@@ -14,18 +14,13 @@ import About from '../About';
 import SearchAvailability from '../SearchAvailability';
 import AccountSetUp from '../AccountSetUp';
 import Chat from '../Chat/index';
-
-//importing all url routes in from routes file
 import * as ROUTES from '../../constants/routes';
-//make authenticated users available to all components
-import { withAuthentication } from '../Session'; 
+import { withAuthentication } from '../Session'; //make authenticated users available to all components
 
 const App = () => (
             <Router>
                 <div>
-                    {/* Navigation now uses the context to get the authenticated user */}
-                    <Navigation/>
-                    
+                    <Navigation/> {/* Navigation now uses the context to get the authenticated user */}
                     <hr />
                     {/* CREATING PAGE NAVIGATION WITH ROUTES: notice that the paths are the link-to's from navigation component and components props are pointing to their respective component content  */}
                     <Route path={ROUTES.SIGN_UP} component={SignUp}/>

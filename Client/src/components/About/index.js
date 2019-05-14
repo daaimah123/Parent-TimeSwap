@@ -1,12 +1,10 @@
 import React from 'react';
-// import { LandingLink } from '../Landing/index';
 import { Row, Col, Container, Jumbotron} from 'react-bootstrap/';
-import { Card, /*Icon, Item */ Image} from 'semantic-ui-react';
+import { Card, Image} from 'semantic-ui-react';
 import SearchAvailabilityLink from '../SearchAvailability/SeachAvailabilityLink';
 import './about.css';
 
 /* ============= ABOUT PAGE CONTENT ============== */
-
 class About extends React.Component {
     render() {
         return (    
@@ -46,8 +44,7 @@ class About extends React.Component {
                   </Jumbotron>
               </Container>
               <hr/>
-              {/* <LandingLink /> */}
-              
+
             </div>
             <SearchAvailabilityLink />
           </div>
@@ -81,7 +78,6 @@ const userStories = [
 
  const UserCard = (props) => (
     <Card>
-    {/* taking the props stated in UserCard instance and telling them where to go */}
       <Image src={props.src} />
       <Card.Content>
         <Card.Header>{props.header}</Card.Header>

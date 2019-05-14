@@ -1,8 +1,6 @@
 import React from 'react';
 import {Button,Form,Grid,Header, Segment} from 'semantic-ui-react';
 
-
-
 const INITIAL_STATE={
     email: '',
     error: null
@@ -13,8 +11,6 @@ class PasswordForgetFormBase extends React.Component{
         super(props);
         this.state = {...INITIAL_STATE};
     }
-    //TODO: get this message printed after email is sent
-    emailSent = () => {return "<div>Thank you, an email has been sent to you</div>"}
 
     onSubmit = event => {
         const { email } = this.state;
@@ -25,8 +21,7 @@ class PasswordForgetFormBase extends React.Component{
         )
         .then(
             alert("Successful!")
-            // TODO:if successfully sent, print message and default, if not do nothing
-        ) //FIXME: not sure how to get this message printed out once sent, thinking a conditional added to repsective button area
+        )
         event.preventDefault();
     }
 
@@ -34,11 +29,9 @@ class PasswordForgetFormBase extends React.Component{
         this.setState({[event.target.name] : event.target.value})
     }
 
-    
     render(){
         const { email, error } = this.state;
         const isInvalid = email === '';
-
         return(
         <div>
             <style>{`
@@ -73,6 +66,5 @@ class PasswordForgetFormBase extends React.Component{
         )
     }
 }
-
 
 export default PasswordForgetFormBase;

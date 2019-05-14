@@ -5,7 +5,6 @@ import { withFirebase } from '../Firebase';//router props accessible to componen
 import * as ROUTES from '../../constants/routes';
 import { Button, Form, Grid, Header,Icon, Image, Message, Segment } from 'semantic-ui-react';
 import PasswordForgetLink from '../PasswordForget/PasswordForgetLink.js';
-import SignUpGoogleBase from './SignUpGoogleBase';
 
 //reactstrap import
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -107,7 +106,6 @@ class SignUpFormBase extends React.Component {
                             type="password"
                             placeholder='Confirm Password'
                         />
-                        <SignUpGoogle/>
                         <Button color='teal' fluid size='large' disabled={isInvalid} type='submit'>Sign Up</Button>
                         {error && <p>{error.message}</p>}
                     </Segment>
@@ -140,9 +138,5 @@ const SignUpForm = compose(
     withRouter, withFirebase
     )(SignUpFormBase);
 
-const SignUpGoogle = compose(
-    withRouter,withFirebase
-    )(SignUpGoogleBase);
-
 export default SignUp;
-export { SignUpForm, SignUpLink, SignUpGoogle };
+export { SignUpForm, SignUpLink };

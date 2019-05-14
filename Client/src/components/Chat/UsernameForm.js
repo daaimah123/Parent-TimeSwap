@@ -29,16 +29,12 @@ class UsernameForm extends React.Component {
                             <h1>Enter a Username </h1>
                         </label>
                     </div>
-                    
                     <input 
-                    // className={"placeholder"}
                         className={'input'}
                         type="text"
                         placeholder="What is your full name?"
                         onChange={this.onChange}
-                    />
-                    {/* <div >placeholder=""</div> */}
-                    {/* <input className={'submitButton'} type="submit"/> */}
+                        />
                     <button className="btn btn-info my-2 my-sm-0" type="submit">
                         <FaCommentDots style={{color: 'black'}}/>
                     </button> 

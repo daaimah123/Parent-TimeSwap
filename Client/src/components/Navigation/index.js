@@ -1,7 +1,6 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
-//importing Link component from router-dom to create navigation links
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';//importing Link component from router-dom to create navigation links
 import SignOutButton from '../SignOut';
 
 //importing all url routes in from routes file
@@ -19,13 +18,11 @@ const Navigation = () => (
     </div>
 )
 
+/* =================== USERS CAN ACCESS WITH AUTHORIZATION ==================== */
+
 const NavigationAuth = () =>(
      <Navbar bg="info">
         <Nav className="mr-auto">
-            {/* <Nav.Link>
-                <Link to={ROUTES.LANDING} style={{ color: '#FFF', fontSize: '17px'}}><strong>Landing   | </strong></Link>
-            </Nav.Link> */}
-            
             <Nav.Link >
                 <Link to={ROUTES.HOME} style={{ color: '#FFF', fontSize: '17px'}}><strong>  Home   | </strong></Link>
             </Nav.Link>
@@ -38,12 +35,11 @@ const NavigationAuth = () =>(
             <Nav.Link >
                 <SignOutButton />
             </Nav.Link>
-            {/* <Nav.Link >
-                <Link to={ROUTES.ACCOUNT} style={{ color: '#FFF' }}>Account</Link>
-            </Nav.Link> */}
         </Nav>
     </Navbar>
 );
+
+/* =================== USERS CAN ACCESS WITHOUT AUTHORIZATION ==================== */
 
 const NavigationNonAuth = () => (
     <Navbar bg="info">

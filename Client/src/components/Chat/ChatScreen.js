@@ -166,7 +166,7 @@ class ChatScreen extends React.Component {
        }
        return (
         <div>
-            <h1 className='text-center'>Hello, {this.props.currentUsername}</h1>
+            <h1 className='text-center'>Hello, {this.props.currentUsername}! Welcome to the Chat Room! </h1>
             <div style={styles.container}>
                 <div style={styles.chatContainer}>
                     <aside style={styles.whosOnlineListContainer}>
@@ -174,23 +174,29 @@ class ChatScreen extends React.Component {
                         <WhosOnlineList 
                             handleUserChat={this.createPrivateRoom}
                             users={this.state.currentRoom.users} 
-                            currentUser={this.state.currentUser}/>
+                            currentUser={this.state.currentUser}
+                            />
                         <RoomList 
                             roomId={this.state.roomId}
                             subscribeToRoom={this.subscribeToRoom}
-                            rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}/>
+                            rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
+                            />
                         <NewRoomForm createRoom={this.createRoom}/>
                     </aside>
                     <section style={styles.chatListContainer}>
                         <MessagesList 
                             roomId={this.state.roomId}
                             messages={this.state.messages} 
-                            style={styles.chatList}/>
-                        <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping}/>
+                            style={styles.chatList}
+                            />
+                        <TypingIndicator 
+                            usersWhoAreTyping={this.state.usersWhoAreTyping}
+                            />
                         <SendMessageForm 
                             disabled={!this.state.roomId}
                             onSubmit={this.sendMessage} 
-                            onChange={this.sendTypingEvent}/>
+                            onChange={this.sendTypingEvent}
+                            />
                     </section>
                 </div>
             </div>

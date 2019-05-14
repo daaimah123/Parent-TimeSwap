@@ -1,34 +1,33 @@
 import React, { Component } from 'react';
 import './searchAvailibility.css';
-// import Card from 'react-bootstrap/Card';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
 
 class GetAllUserCards extends Component {
-    constructor(props) { //set up telling component what we need to start
+    constructor(props) { 
         super(props);
-        this.state = { //beginning state
+        this.state = { 
           error: null, 
           isLoaded: false, 
-          items: [] //info is stored here
+          items: [] 
         };
       }
     
-      componentWillMount() { //system in react, auto generates the function inside to go first; will not work when you need to manipulate info or provide info; auto-gets
+      componentWillMount() { 
         fetch("/user")
-          .then(res => res.json()) //turn response into json
+          .then(res => res.json()) 
           .then( 
-            (result) => { //use results in setState
+            (result) => { 
               console.log(result)
               this.setState({
-                isLoaded: true, //the result state is changed to true
-                items: result//the result state is changed to the info thats been fetched and turned into json
+                isLoaded: true, 
+                items: result
               });
             },
             (error) => {
               this.setState({
                 isLoaded: true,
-                error // the error that's received 
+                error 
               });
             }
           )
@@ -69,10 +68,9 @@ class GetAllUserCards extends Component {
             </div>
           )
         }
-      
 
     render(){
-        const { error, isLoaded} = this.state; //allows this.state to be assumed
+        const { error, isLoaded} = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
           } else if (!isLoaded) {
@@ -86,5 +84,3 @@ class GetAllUserCards extends Component {
 }
 
 export default GetAllUserCards;
-
-

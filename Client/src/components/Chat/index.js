@@ -31,7 +31,6 @@ class Chat extends React.Component {
     .catch(error => {console.log(error)})
   }
 
-
   render() {
     if (this.state.currentScreen === 'WhatIsYourUserNameScreen'){
       return <UsernameForm onSubmit={this.handleUsernameSubmitted}/>

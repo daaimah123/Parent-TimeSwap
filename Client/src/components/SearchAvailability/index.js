@@ -19,7 +19,6 @@ class SearchAvailability extends React.Component {
     }
 }
 
-
 const condition = authUser => authUser != null;
 
 export default withAuthorization(condition)(SearchAvailability);

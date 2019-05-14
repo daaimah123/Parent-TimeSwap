@@ -1,18 +1,12 @@
 import React from 'react';
 import SearchAvailabilityLink from '../SearchAvailability/SeachAvailabilityLink';
 import './styles.css';
-// import { Container} from 'semantic-ui-react';
-// import { withFirebase } from '../Firebase';
 import CheckboxOrRadioGroup from './form_components/CheckboxOrRadioGroup';
 import SingleInput from './form_components/SingleInput';
 import SelectInput from './form_components/SelectInput';
 import TextArea from './form_components/TextArea';
 import { withAuthorization } from '../Session';
-
-
-//second form with all settings (https://lorenstewart.me/2016/10/31/react-js-forms-controlled-components/)
 import './styles.css';  
-// import PasswordChange from '../PasswordChange';
 
 class AccountSetUp extends React.Component {
     render() {
@@ -26,7 +20,7 @@ class AccountSetUp extends React.Component {
     }
 }
 
-/*  ========================================== ACCOUNT SET UP FORM ========================================== */
+/*  ====================== ACCOUNT SET UP FORM ORIGINAL STATE & OPTIONS ====================== */
 class AccountSetUpForm extends React.Component{
     constructor(props) {
 		super(props);
@@ -238,7 +232,9 @@ class AccountSetUpForm extends React.Component{
                  </div>
                  <div className='contact'>
                      <h3>statement</h3>
-                     { this.state.formCompleted === false ? 
+
+                     { this.state.formCompleted === false ?  /* ============= conditional begin ============== */
+
                      <form onSubmit={this.handleFormSubmit}>
                         <section>
                             <CheckboxOrRadioGroup
@@ -351,7 +347,10 @@ class AccountSetUpForm extends React.Component{
                             <button  type="submit" value="Submit">Submit</button> {/*disabled={isInvalid}  */}
                          </section>                           
                      </form>
+
                      :
+
+                    /* ============= USER ACCOUNT FORM POST SUBMISSION ============== */
                      <div>
                         <dl>
                             <dt>Name</dt>
@@ -366,7 +365,9 @@ class AccountSetUpForm extends React.Component{
                             <dd>{this.state.description}</dd>
                         </dl>
                      </div>
-                    }
+
+                    } {/* ============= conditional end ============== */}
+
                  </div>
              </div>
          </div>

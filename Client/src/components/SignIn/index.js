@@ -1,11 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import SignInGoogleBase  from './SignInGoogleBase';
 import { SignUpLink } from '../SignUp';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
-
 import {Button,Form,Grid,Header,Image,Segment} from 'semantic-ui-react';
 
 const SignIn = () => (
@@ -14,6 +12,7 @@ const SignIn = () => (
         <SignUpLink />
     </div>
 )
+
 
 const INITIAL_STATE = {
     email: '',
@@ -27,7 +26,6 @@ class SignInFormBase extends React.Component {
         this.state = {...INITIAL_STATE}
     }
 
-    
     onSubmit = event => {
         const { email, password } = this.state;
         this.props.firebase
@@ -79,7 +77,6 @@ class SignInFormBase extends React.Component {
                         type="password"
                         placeholder="Enter Password"
                     />
-                    {/* <SignInGoogle/> */}
                     <Button color='teal' fluid size='large' disabled={isInvalid} type='submit'>Sign In</Button>
                     {error && <p>{error.message}</p>}
                     </Segment>
@@ -95,9 +92,5 @@ const SignInForm = compose(
     withRouter, withFirebase
     )(SignInFormBase);
 
-const SignInGoogle = compose(
-    withRouter,withFirebase
-    )(SignInGoogleBase);
-
 export default SignIn;
-export {SignInForm, SignInGoogle};
+export {SignInForm};

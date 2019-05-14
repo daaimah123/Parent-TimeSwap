@@ -1,15 +1,12 @@
 import React from 'react';
 
 class WhosOnlineList extends React.Component {
-    // constructor(props){
-    //     super(props);
-    // }
+
     renderUsers = () => {
 
         return (
             <ul>
                 {this.props.users.map((user, index) => {
-                  //console.log(user.presence.state)
           
                   if (user.id === this.props.currentUser.id) {
                     return (
@@ -64,15 +61,11 @@ class WhosOnlineListItem extends React.Component {
         marginRight: 10,
       },
     }
-    // console.log(this.props.presenceState)
     return (
       <li style={styles.li}>
       <button onClick={() => this.props.handleUserChat(this.props.userId)} >Start Chat</button>
-        <div
-          style={{
-            ...styles.div,
-            backgroundColor:
-              this.props.presenceState === 'online' ? 'green' : 'grey',
+        <div style={{...styles.div, 
+          backgroundColor: this.props.presenceState === 'online' ? 'green' : 'grey',
           }}
         />
         {this.props.children}

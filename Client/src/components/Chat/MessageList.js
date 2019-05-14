@@ -47,26 +47,24 @@ class MessagesList extends Component {
        return (
          <div>
           <h3>
-          <br/><br/><br/><br/><br/><br/>&larr; Start a Private Chat with Another Member! <br/><br/><br/> &larr; See "Your Rooms" to Join A Chat!<br/><br/><br/> &larr;  Create a New Public Room for Others to Join!
+          <br/><br/><br/><br/><br/><br/>
+          &larr; Start a Private Chat with Another Member! 
+          <br/><br/><br/> &larr; See "Your Rooms" to Join A Chat!
+          <br/><br/><br/> &larr;  Create a New Public Room for Others to Join!
            </h3>
          </div>
        )
      }
 
        return (
-           <div
-              style={{
-               ...this.props.style,
-               ...styles.container,
-             }}
-           >
+           <div style={{...this.props.style, ...styles.container}}>
            <ul style={styles.ul}>
                {this.props.messages.map((message, index) => (
                    <li key={index} style={styles.li}>
-                        <div>
-                            <span style={styles.senderUsername}>{message.senderId}</span>{' '}
-                        </div>
-                            <p style={styles.message}>{message.text}</p>
+                      <div>
+                          <span style={styles.senderUsername}>{message.senderId}</span>{' '}
+                      </div>
+                      <p style={styles.message}>{message.text}</p>
                    </li>
                ))}
            </ul>
@@ -74,6 +72,5 @@ class MessagesList extends Component {
        )
    }
 }
-
 
 export default MessagesList;

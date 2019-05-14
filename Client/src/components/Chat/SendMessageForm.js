@@ -52,7 +52,7 @@ class SendMessageForm extends React.Component {
                         onChange={this.onChange}
                         value={this.state.text}
                         style={styles.input}
-                    />
+                        />
                     <input type="submit"/>
                 </form>
                 </div>

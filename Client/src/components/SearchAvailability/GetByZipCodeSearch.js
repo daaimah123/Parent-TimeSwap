@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
-// import './searchAvailability.css';
-// import { FaSearch } from "@fortawesome/react-fontawesome";
 import { FaSearch } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -19,24 +16,24 @@ class GetByZipCodeSearch extends Component {
     }
   
     handleChange = (event) => {
-        this.setState({value: event.target.value}, () => console.log("zip code: " + this.state.value)); //id number typed into value box
+        this.setState({value: event.target.value}, () => console.log("zip code: " + this.state.value)); 
     }
 
     handleSubmit = (event) => {
         fetch(`/user/${this.state.value}`)
-          .then(res => res.json()) //turn response into json
+          .then(res => res.json()) 
           .then( 
-            (result) => { //use results in setState
+            (result) => { 
               console.log(result)
               this.setState({
-                isLoaded: !this.state.isLoaded,//true, //the result state is changed to true
-                items: result//the result state is changed to the info thats been fetched and turned into json
+                isLoaded: !this.state.isLoaded,
+                items: result
               });
             },
             (error) => {
               this.setState({
                 isLoaded: true,
-                error // the error that's received 
+                error 
               });
             }
           )
@@ -111,14 +108,9 @@ userCard = () => {
             : null
             }
           </div>
-        </div>
-          
-       
+        </div>     
       );
     }
 }
-
-    
-
 
   export default GetByZipCodeSearch;

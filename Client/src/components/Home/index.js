@@ -1,11 +1,11 @@
 import React from 'react';
-import SearchAvailabilityLink from '../SearchAvailability/SeachAvailabilityLink';
 import { withAuthorization } from '../Session';
 import 'bootstrap/dist/css/bootstrap.css';
 import './home.css'
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
+/* =================================== HOME PAGE CARDS =========================================== */
 class Home extends React.Component {
   render(){
     return (

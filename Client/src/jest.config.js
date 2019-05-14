@@ -3,5 +3,3 @@ module.exports = {
         '<rootDir>/src/setupTests.js'
     ]
 }
-
-//FIXME: do i need this???

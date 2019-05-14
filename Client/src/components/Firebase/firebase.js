@@ -1,7 +1,6 @@
 
 import app from 'firebase/app';
-//importing package responsible for all authentication
-import 'firebase/auth';
+import 'firebase/auth';//importing package responsible for all authentication
 
   // Initialize Firebase
   var config = {
@@ -18,7 +17,6 @@ class Firebase {
     constructor() {
         app.initializeApp(config);
         this.auth = app.auth(); //authentication
-        this.googleProvider = new app.auth.GoogleAuthProvider();
     }
 
 /*** =============== Authentication API =============== ***/
@@ -39,10 +37,6 @@ class Firebase {
   //change password
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
-  
-  //sign in with google auth
-  doSignInWithGoogle = () =>
-    this.auth.signInWithPopup(this.googleProvider);
 }
 
 export default Firebase;

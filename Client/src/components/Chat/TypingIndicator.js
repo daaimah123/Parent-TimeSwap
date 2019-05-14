@@ -11,11 +11,6 @@ class TypingIndicator extends React.Component {
                 </div>
             )
          } 
-        // else if (this.props.usersWhoAreTyping.length ===1){
-        //     return <p>{this.props.usersWhoAreTyping[0]} is typing...</p>
-        // } else if (this.props.usersWhoAreTyping.length.length > 1){
-        //     return <p>{this.props.usersWhoAreTyping.length.join(' and ')} are typing...}</p>
-        // }
         return <div/>
     }
 }

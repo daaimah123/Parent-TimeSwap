@@ -3,9 +3,6 @@ import {  Grid, Icon, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes';
 
-
-
-/* ================= Search Availability LINK ================= */
 const SearchAvailabilityLink = () => (
     <div>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>

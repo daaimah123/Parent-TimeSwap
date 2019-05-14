@@ -1,5 +1,4 @@
 // export urls for each page in your application to be represented 
-//THESE ARE URL VARIABLES = uppercase
 export const SIGN_UP = '/sign_up';
 export const SIGN_IN = '/sign_in'; //protected route with any verified authentication
 export const HOME = '/home'; //protected route with any verified authentication
