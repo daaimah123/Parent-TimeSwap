@@ -1,7 +1,7 @@
 *Parents helping other parents to stay productive by swapping time!*
 ========
 
-![Final product recording here](Daaimah_final_project_parent_timeswap.gif)
+![Final product recording here](Client/images/Daaimah_final_project_parent_timeswap.gif)
 ----------------
 **Project description:** 
 A parents’ network helping other parents to stay productive by swapping time to help with each other’s children, schedule play dates, and build supportive relationships!
