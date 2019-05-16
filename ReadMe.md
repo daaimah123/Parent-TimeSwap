@@ -45,30 +45,30 @@ A parents’ network helping other parents to stay productive by swapping time t
 **Built-with:** Node, Express, PostgreSQL, React, CSS, Bootstrap, Semantic UI
 
 **Steps:**
-* Database Schema  
+ - [x] Database Schema  
   * User data
   * Zip codes
   * Number of children
   * Availability
-* Firebase Authentication API
+ - [x] Firebase Authentication API
   * Creating user
   * Signing in existing user
   * Signing out authenticated user
   * Reset password
   * Change password
   * React-App Components
-* User Profiles
-  * Existing
+- [x] User Profiles
+  * Existing Profiles in Cards
   * New / Create A Profile
-* Search Queries by Zip Code
-* Three GET queries: 
+- [x] Search Queries by Zip Code
+- [x] Three GET queries: 
   * user default zip, 
   * user entered zip
-* Pusher ChatKit - Messaging between users
-* CSS
-* Code clean up
-* Tests
-* Deploy to server
+- [x] Pusher ChatKit - Messaging between users
+- [x] CSS
+- [x] Code clean up
+- [x] Tests
+- [ ] Deploy to server
 
 ----------------
 
