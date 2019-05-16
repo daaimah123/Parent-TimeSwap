@@ -13,11 +13,14 @@ Parents and caregivers with children who may be busy and have responsibilities o
 
 ----------------
 
-**MVP (minimum viable product)** 
-* User can create a profile or login to existing profile
-* User post availability on certain dates
-* User search for available parents based on zip code
-* User can chat with other parents to make a playdate request
+**MVP (minimum viable product)**
+====================
+
+**Prioritization:**
+* Be able to create a profile
+* Enter profile data
+* Be able to query by zip code
+* Be able to send message to another user
 
 **Pages**
 * Home
