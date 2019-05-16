@@ -61,6 +61,129 @@ A parents’ network helping other parents to stay productive by swapping time t
 
 ----------------
 
+Set Up
+==========
+* Clone the repo
+* Copy the package.jsons for client and server below
+* `npm install`
+* `npm start` on Client/ and `npm start` on root
+
+Client/package.json
+````
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@pusher/chatkit-client": "^1.5.0",
+    "babel-cli": "^6.26.0",
+    "bootstrap": "^4.3.1",
+    "firebase": "^5.9.4",
+    "npm": "^6.9.0",
+    "i": "^0.3.6",
+    "materialize-css": "^1.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.8",
+    "react-dom": "^16.8.6",
+    "react-icons": "^3.7.0",
+    "react-materialize": "^3.3.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.0",
+    "reactstrap": "^8.0.0",
+    "recompose": "^0.30.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.86.0"
+  },
+  "scripts": {
+    "start": "PORT=3000 react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest --verbose",
+    "test:watch": "jest --watchAll --verbose",
+    "test:coverage": "jest --verbose --coverage",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/register": "^7.4.0",
+    "babel": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react-app": "^8.0.0",
+    "dotenv": "^7.0.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "enzyme-to-json": "^3.3.5",
+    "ignore-styles": "^5.0.1",
+    "jasmine": "^3.4.0",
+    "jasmine-enzyme": "^7.0.2",
+    "jsdom": "^15.0.0",
+    "react-test-renderer": "^16.8.6"
+  },
+  "proxy": "http://localhost:3003",
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
+}
+````
+package.json (Server-side, but on root)
+````
+{
+  "name": "react_firebase_profile_management",
+  "version": "1.0.0",
+  "description": "\"app shell with postgres, express and react\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Server_pg/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daaimah123/React_Firebase_Profile_Management.git"
+  },
+  "author": "Daaimah Tibrey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daaimah123/React_Firebase_Profile_Management/issues"
+  },
+  "homepage": "https://github.com/daaimah123/React_Firebase_Profile_Management#readme",
+  "dependencies": {
+    "@pusher/chatkit-client": "^1.5.0",
+    "@pusher/chatkit-server": "^1.1.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "create-react-app": "^2.1.8",
+    "dotenv": "7.0.0",
+    "express-generator": "^4.16.0",
+    "express-pino-logger": "^4.0.0",
+    "node-env-run": "^3.0.2",
+    "nodemailer": "^6.1.1",
+    "nodemon": "^1.18.10",
+    "npm-run-all": "^4.1.5",
+    "pg": "^7.9.0",
+    "pino-colada": "^1.4.4",
+    "twilio": "^3.30.2"
+  },
+  "devDependencies": {}
+}
+````
+
+----------------
+
 **Why Parent TimeSwap:**
 Parent TimeSwap a space for parents to build an instant network of local parent support towards goals (i.e. school, interviewing, work, conferences, mental health break) by viewing the time availability of local parents, and setting up playdates to determine whether their families are a good fit to help one another during the available times listed. 
 
