@@ -1,7 +1,15 @@
 *Parents helping other parents to stay productive by swapping time!*
 ========
+**Why Parent TimeSwap:**
+Parent TimeSwap a space for parents to build an instant network of local parent support towards goals (i.e. school, interviewing, work, conferences, mental health break) by viewing the time availability of local parents, and setting up playdates to determine whether their families are a good fit to help one another during the available times listed. 
 
 ![Final product recording here](Client/images/Daaimah_final_project_parent_timeswap.gif)
+
+**User Target:** 
+Parents and caregivers with children who may be busy and have responsibilities outside of parenting. This population may not have the funds, support from others, or knowledge of how to get support with filling in care gaps. Parents that have commitments and no one to watch their children in order to productively complete. Parents that don't have relatable or currently insecure support system in place. Parents that wish to connect with others for advices, mentorship, and friendship.
+
+**User Stories:** 
+![User Stories Here](Client/images/users.png)
 
 ----------------
 
@@ -181,18 +189,6 @@ package.json (Server-side, but on root)
   "devDependencies": {}
 }
 ````
-
-----------------
-
-**Why Parent TimeSwap:**
-Parent TimeSwap a space for parents to build an instant network of local parent support towards goals (i.e. school, interviewing, work, conferences, mental health break) by viewing the time availability of local parents, and setting up playdates to determine whether their families are a good fit to help one another during the available times listed. 
-
-**User Target:** 
-Parents and caregivers with children who may be busy and have responsibilities outside of parenting. This population may not have the funds, support from others, or knowledge of how to get support with filling in care gaps. Parents that have commitments and no one to watch their children in order to productively complete. Parents that don't have relatable or currently insecure support system in place. Parents that wish to connect with others for advices, mentorship, and friendship.
-
-**User Stories:** 
-![User Stories Here](Client/images/users.png)
-
 ----------------
 
 **Choices:**
