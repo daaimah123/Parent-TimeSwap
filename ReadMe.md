@@ -2,7 +2,9 @@
 ========
 
 ![Final product recording here](Client/images/Daaimah_final_project_parent_timeswap.gif)
+
 ----------------
+
 **Project description:** 
 A parents’ network helping other parents to stay productive by swapping time to help with each other’s children, schedule play dates, and build supportive relationships!
 
@@ -14,44 +16,38 @@ A parents’ network helping other parents to stay productive by swapping time t
 
 **Built-with:** Node, Express, PostgreSQL, React, CSS, Bootstrap, Semantic UI
 
+----------------
+
 **MVP (minimum viable product)** 
 * User can create a profile or login to existing profile
 * User post availability on certain dates
 * User search for available parents based on zip code
 * User can chat with other parents to make a playdate request
 
+**Why Parent TimeSwap**
+Parent TimeSwap a space for parents to build an instant network of local parent support towards goals (i.e. school, interviewing, work, conferences, mental health break) by viewing the time availability of local parents, and setting up playdates to determine whether their families are a good fit to help one another during the available times listed. 
+
+**User Target** 
+Parents and caregivers with children who may be busy and have responsibilities outside of parenting. This population may not have the funds, support from others, or knowledge of how to get support with filling in care gaps. Parents that have commitments and no one to watch their children in order to productively complete. Parents that don't have relatable or currently insecure support system in place. Parents that wish to connect with others for advices, mentorship, and friendship.
+
+----------------
+
 **Choices:**
+What is something fairly large you had to tweak in your project as a result of feedback?
 * Firebase to authenticate and authorize
-  * why
-  * tradeoff
-* Chat Room Message Storage 
-  * why
-  * tradeoff
-* Card Size
-  * why
-  * tradeoff
+* Chat Room (Start at Public & Buttons to Make Private)
+* Chat Username Screen
+* User Profile Cards
 
 **Next Steps:**
+What would you like to add to your project next and how would you break down the tasks?
 * leave chat room feature
-  * why
-  * tradeoff
 * remove username form, autogenerate username into private room with another user when click chat link from search card
-  * why
-  * tradeoff
 * is there research / facts that can be added to about page?
-  * why
-  * tradeoff
 * allow user to edit their profile and update database
-  * why
-  * tradeoff
 * email or send text button (will not reveal info to other users) to send connection request
-  * why
-  * tradeoff
-
-
-
-
-
-
+  
+**Challenges**
+Describe a bug or technical challenge you encountered while building your project, and how you investigated and solved it.
 
 ------------------
