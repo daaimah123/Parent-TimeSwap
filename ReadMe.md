@@ -1,4 +1,4 @@
-*Parents helping other parents to stay productive by swapping time!*
+*Parent TimeSwap: Parents helping other parents to stay productive by swapping time!*
 ========
 **Why Parent TimeSwap:**
 Parent TimeSwap a space for parents to build an instant network of local parent support towards goals (i.e. school, interviewing, work, conferences, mental health break) by viewing the time availability of local parents, and setting up playdates to determine whether their families are a good fit to help one another during the available times listed. 
