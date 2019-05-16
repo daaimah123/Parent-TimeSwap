@@ -16,7 +16,7 @@ Parents and caregivers with children who may be busy and have responsibilities o
 **MVP (minimum viable product)**
 ====================
 
-**Prioritization:**
+**Prioritization of Features:**
 * Be able to create a profile
 * Enter profile data
 * Be able to query by zip code
@@ -194,7 +194,7 @@ package.json (Server-side, but on root)
 ````
 ----------------
 
-**Choices:**
+**Choices Made:**
 * Removed multiple search options and narrowed down to two search requests
 * User Profile Cards vs Entire Profile - ruled out having to populate a new endpoint for each user
 * Firebase to authenticate and authorize
@@ -214,5 +214,4 @@ Creating a private chat room from chatkit - I had the docs to help me design the
 ````
 logged in user clicks button --> button generates room between logged in user and clicked user --> room populates in room list for the two users
 ````
-
 I then had to figure out how to get the private room over to the 'clicked user' and into the room list component. I eventually saw that I was creating the room, but was unable to see which users were being passed in because I hadn't passed the property set on whos online list component to both components in whos online list file. Fixing this helped to show the prescence of which users were in the newly created rooms.
