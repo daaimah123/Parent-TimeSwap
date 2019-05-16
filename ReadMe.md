@@ -11,16 +11,53 @@
 * User search for available parents based on zip code
 * User can chat with other parents to make a playdate request
 
+**Pages**
+* Home
+* Login
+* About 
+* Sign In
+* Account Set Up
+* Search Availability
+
 **Project description:** 
 A parents’ network helping other parents to stay productive by swapping time to help with each other’s children, schedule play dates, and build supportive relationships!
 
-**APIs:** Firebase (Authorization & Authentication) & Pusher (Chatkit)
+**APIs:** 
+* Firebase (Authorization & Authentication)
+* React (Context API)
+* Pusher (Chatkit)
 
 **Hardest part of building your project:** Setting up Private Rooms in Chat
 
 **Favorite part of building your project:** Working with chatkit, securing authorization on specific pages, figuring out how to apply problem solving skills, watching page authentication breaking past blocks
 
 **Built-with:** Node, Express, PostgreSQL, React, CSS, Bootstrap, Semantic UI
+
+**Steps:**
+* Database Schema  
+  * User data
+  * Zip codes
+  * Number of children
+  * Availability
+* Firebase Authentication API
+  * Creating user
+  * Signing in existing user
+  * Signing out authenticated user
+  * Reset password
+  * Change password
+  * React-App Components
+* User Profiles
+  * Existing
+  * New / Create A Profile
+* Search Queries by Zip Code
+* Three GET queries: 
+  * user default zip, 
+  * user entered zip
+* Pusher ChatKit - Messaging between users
+* CSS
+* Code clean up
+* Tests
+* Deploy to server
 
 ----------------
 
