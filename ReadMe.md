@@ -50,7 +50,7 @@ Parents and caregivers with children who may be busy and have responsibilities o
 * allow user to edit their profile and update database
 * email or send text button (will not reveal info to other users) to send connection request
   
-**Challenges**
+**Challenges:**
 Creating a private chat room from chatkit - I had the docs to help me design the function needed to create a room and wasnt abel to generate a working room. I had a difficult time connecting the logic for how I wanted the room to generate, so i broke down the logic:
 ````
 logged in user clicks button --> button generates room between logged in user and clicked user --> room populates in room list for the two users
