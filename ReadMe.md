@@ -5,6 +5,12 @@
 
 ----------------
 
+**MVP (minimum viable product)** 
+* User can create a profile or login to existing profile
+* User post availability on certain dates
+* User search for available parents based on zip code
+* User can chat with other parents to make a playdate request
+
 **Project description:** 
 A parents’ network helping other parents to stay productive by swapping time to help with each other’s children, schedule play dates, and build supportive relationships!
 
@@ -17,12 +23,6 @@ A parents’ network helping other parents to stay productive by swapping time t
 **Built-with:** Node, Express, PostgreSQL, React, CSS, Bootstrap, Semantic UI
 
 ----------------
-
-**MVP (minimum viable product)** 
-* User can create a profile or login to existing profile
-* User post availability on certain dates
-* User search for available parents based on zip code
-* User can chat with other parents to make a playdate request
 
 **Why Parent TimeSwap:**
 Parent TimeSwap a space for parents to build an instant network of local parent support towards goals (i.e. school, interviewing, work, conferences, mental health break) by viewing the time availability of local parents, and setting up playdates to determine whether their families are a good fit to help one another during the available times listed. 
