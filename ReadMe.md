@@ -57,4 +57,3 @@ logged in user clicks button --> button generates room between logged in user an
 ````
 
 I then had to figure out how to get the private room over to the 'clicked user' and into the room list component. I eventually saw that I was creating the room, but was unable to see which users were being passed in because I hadn't passed the property set on whos online list component to both components in whos online list file. Fixing this helped to show the prescence of which users were in the newly created rooms.
-------------------
