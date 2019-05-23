@@ -44,7 +44,13 @@ A parents’ network helping other parents to stay productive by swapping time t
 
 **Built-with:** Node, Express, PostgreSQL, React, CSS, Bootstrap, Semantic UI
 
-**Data Model Columns**
+**Data Model**
+
+Table Name: user_profile
+
+Datatypes Respectively: serial, varchar, varchar, integer, varchar, integer, varchar, varchar, varchar, varchar, varchar, varchar, varchar, varchar, varchar
+
+Columns:
 
 | user_id  |  user_name    | email |  home_zip_code | phone_number |  nume_children |  child_group |  monday |  tuesday |  wednesday |  thursday  |  saturday |  sunday |  friday  |   description   |
 |----------|:-------------:|------:|---------------:|-------------:|---------------:|-------------:|--------:|---------:|---------------:|----------:|----------:|--------:|---------:|----------------:|
