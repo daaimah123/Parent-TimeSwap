@@ -1,10 +1,10 @@
 
-import app from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import 'firebase/auth';//importing package responsible for all authentication
 
   // Initialize Firebase
   var config = {
-    apiKey: 'AIzaSyDXvrRc5eu1m-cY5UAJNEXqtf9o1V1sng4',//can be public according to firebase docs.
+    apiKey: process.env.REACT_APP_API_KEY,//can be public according to firebase docs.
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
     databaseURL: process.env.REACT_APP_DATABASE_URL,
     projectId: process.env.REACT_APP_PROJECT_ID,
@@ -15,8 +15,8 @@ import 'firebase/auth';//importing package responsible for all authentication
 //class encapsulation
 class Firebase {
     constructor() {
-        app.initializeApp(config);
-        this.auth = app.auth(); //authentication
+      const app = initializeApp(config);
+        this.auth = app.auth; //authentication
     }
 
 /*** =============== Authentication API =============== ***/
